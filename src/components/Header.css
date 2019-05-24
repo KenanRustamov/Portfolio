@@ -1,0 +1,105 @@
+.App-header {
+    background-color: #282c34;
+    color: black;
+    width: 100%;
+    flex: none;
+    position: fixed;
+    height: 60px;
+  }
+
+.App-header.smaller {
+  background-color: #282c34;
+  color: black;
+  width: 100%;
+  flex: none;
+  position: fixed;
+  height: 30px;
+}
+  .Title {
+    float:left;
+    padding: 0px;
+    top: auto;
+    margin: 0px;
+  }
+  
+  .Title ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: inline;
+  }
+  
+  .Title ul li {
+    display: inline;
+  }
+  
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+    height: 50px;
+    position: relative;
+    top: 7px;
+    pointer-events: none;
+  }
+  
+  .krLogo {
+    position:relative;
+    height: 50px;
+    top: 7px;
+    fill: #61DAFB;
+  }
+  
+  .Links {
+    position: relative;
+    float: right;
+    bottom: 5px;
+    padding: 0px;
+  }
+  
+  .Links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .Links ul li {
+    display: inline;
+    margin:5px;
+  }
+  
+  .gitHubLogo path{
+    fill: #8e8e8e;
+    transition: fill .4s ease;
+      transition-property: fill;
+      transition-duration: .4s;
+      transition-timing-function: ease;
+      transition-delay: 0s;
+    height: 25px;
+  }
+  
+  .gitHubLogo:hover path {  
+    fill: #61DAFB;
+    transition: fill .4s ease;
+      transition-property: fill;
+      transition-duration: .4s;
+      transition-timing-function: ease;
+      transition-delay: 0s;
+  }
+  
+  .linkedInLogo path{
+    fill: #8e8e8e;
+    transition: fill .6s ease;
+      transition-property: fill;
+      transition-duration: .6s;
+      transition-timing-function: ease;
+      transition-delay: 0s;
+    height: 25px;
+  }
+  
+  .linkedInLogo:hover path {
+    fill: #61DAFB;
+    transition: fill .6s ease;
+      transition-property: fill;
+      transition-duration: .6s;
+      transition-timing-function: ease;
+      transition-delay: 0s;
+  }

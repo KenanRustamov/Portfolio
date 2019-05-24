@@ -1,0 +1,17 @@
+.footer {
+    position: relative;
+    width: 100%;
+    color: white;
+    bottom: 0;
+    flex: none;
+  
+  }
+  
+  .footer ul li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: inline;
+  }
+  
+ 
