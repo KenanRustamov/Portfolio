@@ -5,7 +5,12 @@
     flex: none;
     position: fixed;
     height: 60px;
+    transition: top .6s;
   }
+
+.headerHide {
+  
+}
 
 .App-header.smaller {
   background-color: #282c34;
