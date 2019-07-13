@@ -1,7 +1,6 @@
-main {
-    margin-top: 60px;
-    height: 100%;
-    color: white;
-    -webkit-overflow-scrolling: touch;
-    flex: auto;
+.data {
+  position:relative;
+  color: white;
+  -webkit-overflow-scrolling: touch;
+  padding-top: 100px;
   }

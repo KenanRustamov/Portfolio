@@ -18,13 +18,13 @@ function App() {
   
   return (
     <div className="App">
-      <body>
+      <main>
         <React.Fragment>
           <Header />
           <DataBlocks />
           <Footer links= {links}/>
         </React.Fragment>
-      </body>
+      </main>
     </div>
   );
 }

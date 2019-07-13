@@ -2,73 +2,54 @@
     background-color: #282c34;
     color: black;
     width: 100%;
-    flex: none;
     position: fixed;
     height: 60px;
-    transition: top .6s;
+    z-index: 1;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0px -1px 13px 10px #20232a;
+    transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
   }
 
-.headerHide {
-  
+.headerBigger {
+  height: 80px;
+  box-shadow:none;
 }
 
-.App-header.smaller {
-  background-color: #282c34;
-  color: black;
-  width: 100%;
-  flex: none;
-  position: fixed;
-  height: 30px;
-}
-  .Title {
-    float:left;
-    padding: 0px;
-    top: auto;
-    margin: 0px;
-  }
-  
-  .Title ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: inline;
-  }
-  
-  .Title ul li {
-    display: inline;
+.Title {
+  align-self:center;
+  padding: 0px;
+  margin: 0px;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
   }
   
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
     height: 50px;
     position: relative;
-    top: 7px;
     pointer-events: none;
   }
   
   .krLogo {
     position:relative;
     height: 50px;
-    top: 7px;
     fill: #61DAFB;
   }
   
   .Links {
-    position: relative;
-    float: right;
-    bottom: 5px;
     padding: 0px;
-  }
-  
-  .Links ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .Links ul li {
-    display: inline;
-    margin:5px;
+    margin: 0px;
+    justify-self: flex-end;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-content: center;
+    width: 70px;
+    margin-left: auto;
   }
   
   .gitHubLogo path{
