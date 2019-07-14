@@ -1,4 +1,6 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Portfolio
+
+Hello, my name is Kenan Rustamov a Junior at the University of Pittsburgh studying Computer Science and Pre-Med.  This is my portfolio writting in Typescript, CSS, HTML, and React.  Everything in this portfolio was coded by myself and no bootstrap was used in the project.  Hope you enjoy, the details for running the project is found below, but this website should be online soon!
 
 ## Available Scripts
 
