@@ -1,0 +1,21 @@
+.dataBlock {
+    display:flex;
+    justify-content: center;
+    font-size: 35px;
+    color: white;
+}
+.title {
+    display: flex;
+    flex-basis: auto;
+    align-content:stretch;
+    font-weight: bold;
+    flex-direction: column;
+    color: rgb(101, 167, 185);
+}
+
+.bottomBorder {
+    color: rgb(101, 167, 185);
+    width: 75%;
+    margin:auto;
+    border-bottom: 2px solid;
+}

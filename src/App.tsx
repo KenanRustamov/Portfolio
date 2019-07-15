@@ -5,14 +5,21 @@ import DataBlocks from "./components/DataBlocks"
 import Footer from "./components/Footer"
 
 function App() {
-  console.log(window.pageYOffset);
   let links: object[] = [
     {
-      text: "Learn React",
+      text: "PROFILE",
       href: "https://www.google.com/"
     },
     {
-      text: "Github",
+      text: "SKILLS",
+      href: "https://www.google.com/"
+    },
+    {
+      text: "PROJECTS",
+      href: "https://www.google.com/"
+    },
+    {
+      text: "CONTACT",
       href: "https://www.google.com/"
     }];
   
@@ -20,7 +27,7 @@ function App() {
     <div className="App">
       <main>
         <React.Fragment>
-          <Header />
+          <Header links = {links}/>
           <DataBlocks />
           <Footer links= {links}/>
         </React.Fragment>

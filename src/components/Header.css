@@ -41,7 +41,7 @@
   .krLogo {
     position:relative;
     height: 50px;
-    fill: #61DAFB;
+    fill: rgb(101, 167, 185);
   }
   
   .Links {
@@ -54,42 +54,4 @@
     align-content: center;
     width: 70px;
     margin-left: auto;
-  }
-  
-  .gitHubLogo path{
-    fill: #8e8e8e;
-    transition: fill .4s ease;
-      transition-property: fill;
-      transition-duration: .4s;
-      transition-timing-function: ease;
-      transition-delay: 0s;
-    height: 25px;
-  }
-  
-  .gitHubLogo:hover path {  
-    fill: #61DAFB;
-    transition: fill .4s ease;
-      transition-property: fill;
-      transition-duration: .4s;
-      transition-timing-function: ease;
-      transition-delay: 0s;
-  }
-  
-  .linkedInLogo path{
-    fill: #8e8e8e;
-    transition: fill .6s ease;
-      transition-property: fill;
-      transition-duration: .6s;
-      transition-timing-function: ease;
-      transition-delay: 0s;
-    height: 25px;
-  }
-  
-  .linkedInLogo:hover path {
-    fill: #61DAFB;
-    transition: fill .6s ease;
-      transition-property: fill;
-      transition-duration: .6s;
-      transition-timing-function: ease;
-      transition-delay: 0s;
   }
