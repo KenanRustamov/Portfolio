@@ -14,56 +14,6 @@ const DataBlocks = (props: any) => {
         <p>Hello, this is the main body</p>
         <p>Hello, this is the main body</p>
         <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
-        <p>Hello, this is the main body</p>
   </div>;
     return content;
 };
