@@ -1,6 +1,5 @@
 import React from 'react';
-import "./Footer.css";
-import Links from "./Links"
+import "./Footer.scss";
 
 const Footer = (props: any) => {
   let content = 

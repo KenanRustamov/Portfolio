@@ -1,5 +1,5 @@
 import React from 'react'
-import "./DataBlock.css";
+import "./DataBlock.scss";
 import kenanPhoto from "../images/kenanRustamov.jpg";
 
 const DataBlock = (props: any) => {
@@ -15,7 +15,7 @@ const DataBlock = (props: any) => {
                 <div className ="subtitle">Full Stack Developer</div>
                 <div className="infoText">I currently study Computer Science and am on the Pre-Med track at the University of Pittsburgh.</div>
             </div>
-            <img className = "image" src={kenanPhoto} width={photoWidth} height = {photoWidth*1.105}></img>
+            <img className = "image" src={kenanPhoto} alt = "kenan profile" width={photoWidth} height = {photoWidth*1.105}></img>
         </div>
     </div>
     ;

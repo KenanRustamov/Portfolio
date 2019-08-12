@@ -1,0 +1,41 @@
+.navMenu {
+    width: 35px;
+    height: 20px;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.lineWrapper {
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    & *{
+        transition: transform .2s ease-in;
+    }
+}
+
+.lineWrapper-animation {
+    & *{
+        transform: translateX(300px)
+    }
+}
+
+.topLine {
+    height: 4px;
+    background-color: rgb(101, 167, 185);
+    transition-delay: .1s;
+}
+
+.middleLine {
+    height: 4px;
+    background-color: rgb(101, 167, 185);
+    transition-delay: .2s;
+}
+
+.bottomLine {
+    height: 4px;
+    background-color: rgb(101, 167, 185);
+    transition-delay: .3s;
+}

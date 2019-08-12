@@ -1,5 +1,5 @@
 import React from 'react'
-import "./DataBlocks.css";
+import "./DataBlocks.scss";
 import DataBlock from "./DataBlock";
 
 const DataBlocks = (props: any) => {

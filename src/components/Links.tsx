@@ -1,5 +1,5 @@
 import React from 'react'
-import "./Links.css";
+import "./Links.scss";
 import Link from "./Link"
 
 const Links = (props: any) => {
