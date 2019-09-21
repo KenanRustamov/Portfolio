@@ -8,14 +8,18 @@ function App() {
   let links: object[] = [
     {
       text: "PROFILE",
-      href: "https://www.google.com/"
+      href: "#dataBlock"
     },
     {
-      text: "SKILLS",
+      text: "WORK EXPERIENCE",
       href: "https://www.google.com/"
     },
     {
       text: "PROJECTS",
+      href: "https://www.google.com/"
+    },
+    {
+      text: "SKILLS",
       href: "https://www.google.com/"
     },
     {

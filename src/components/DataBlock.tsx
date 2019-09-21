@@ -1,22 +1,21 @@
 import React from 'react'
 import "./DataBlock.scss";
-import kenanPhoto from "../images/kenanRustamov.jpg";
 
 const DataBlock = (props: any) => {
-    const photoWidth = 250;
     const content = 
     <div className = "dataBlock">
         <div className="title">
-            <div className="text">PROFILE</div>
+            <div className="text">{props.propInput.title}</div>
             <div className="bottomBorder"></div>
         </div>
-        <div className="info">
-            <div className="infoTitle">Kenan Rustamov
-                <div className ="subtitle">Full Stack Developer</div>
-                <div className="infoText">I currently study Computer Science and am on the Pre-Med track at the University of Pittsburgh.</div>
+        {props.propInput.infoTitle != null? <div className="info">
+            <div className="infoTitle">{props.propInput.infoTitle}
+                <div className ="subtitle">{props.propInput.infoSubtitle}</div>
+                <div className="infoText">{props.propInput.infoText}</div>
             </div>
-            <img className = "image" src={kenanPhoto} alt = "kenan profile" width={photoWidth} height = {photoWidth*1.105}></img>
-        </div>
+            {props.propInput.infoImg != null ? <img className = "image" src={props.propInput.infoImg} alt = {props.alt} ></img> : null}
+            {props.propInput.other}
+        </div> : null}
     </div>
     ;
     return content ;

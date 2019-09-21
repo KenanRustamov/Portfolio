@@ -1,4 +1,5 @@
-import React, {useState} from 'react'
+import React, {useState} from 'react';
+import Links from "./Links";
 import "./NavMenu.scss";
 
 const NavMenu = (props: any) => {
@@ -11,7 +12,17 @@ const NavMenu = (props: any) => {
                 <div className ={"topLine"}></div>
                 <div className ={"middleLine"}></div>
                 <div className ={"bottomLine"}></div>
-            </div>
+        </div>
+        <div className = {`slate ${animate? "slate-animation" : ""}`}>
+          <div className={`exitIcon`} onClick= {() => {setAnimate(!animate);}}>
+            <div className={`leftLine`}></div>
+            <div className={`rightLine`}></div>
+          </div>
+          <div className="linksWrapper">
+            <Links links={props.links} />
+          </div>
+        </div>
+        
     </div>
 
 

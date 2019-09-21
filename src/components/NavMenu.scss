@@ -1,21 +1,93 @@
 .navMenu {
-    width: 35px;
-    height: 20px;
-    &:hover {
-        cursor: pointer;
-    }
+    width: 25px;
+    height: 25px;
+    position: fixed;
+    right: 1.5em;
 }
 
 .lineWrapper {
+    z-index: 1;
     height: inherit;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    &:hover {
+        cursor: pointer;
+    }
     & *{
         transition: transform .2s ease-in;
     }
 }
 
+.leftLine {
+    position: absolute;
+    height: 5px;
+    width: 25px;
+    background-color: #282c34;
+    transform: rotate(45deg);
+    transition: transform .5s ease-out;
+    transition-delay: .1s;
+}
+
+.rightLine {
+    position: absolute;
+    height: 5px;
+    width: 25px;
+    background-color: #282c34;
+    transform: rotate(-45deg);
+    transition: transform .5s ease-out;
+    transition-delay: .1s;
+}
+
+.exitIcon {
+    right: 3em;
+    top: 2.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: inherit; 
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.linksWrapper{
+    height: 30vh;
+    display:flex;
+    flex-direction: column;
+    justify-content:space-around;
+    align-items:center;
+    font-size: 20px;
+    color: #282c34;
+}
+.linksWrapper .App-link {
+    color: #282c34;
+}
+
+.linksWrapper .App-link:hover { 
+    color: #646466;
+}
+
+.linksWrapper .App-link:after { 
+    background-color: #646466;
+}
+.slate {
+    font-size: 16px;
+    z-index:  -1;
+    position: fixed;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    top: 0px;
+    left: -100vw;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(101, 167, 185);
+    transition: transform .5s ease-out;
+}
+.slate-animation {
+    transform: translateX(100vw);
+}
 .lineWrapper-animation {
     & *{
         transform: translateX(300px)
@@ -23,19 +95,19 @@
 }
 
 .topLine {
-    height: 4px;
+    height: 5px;
     background-color: rgb(101, 167, 185);
     transition-delay: .1s;
 }
 
 .middleLine {
-    height: 4px;
+    height: 5px;
     background-color: rgb(101, 167, 185);
     transition-delay: .2s;
 }
 
 .bottomLine {
-    height: 4px;
+    height: 5px;
     background-color: rgb(101, 167, 185);
     transition-delay: .3s;
 }
