@@ -1,0 +1,35 @@
+.App-link {
+    color: #999;
+    text-decoration: none;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+  }
+  
+.App-link:hover {
+  cursor: pointer;
+  color: rgb(101, 167, 185);
+  transition: color .4s ease;
+    transition-property: color;
+    transition-duration: .4s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+  }
+  
+.App-link:after {    
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  background: rgb(101, 167, 185);
+  transition: width 0.4s ease 0s, left 0.4s ease 0s;
+  width: 0;
+  }
+.App-link:hover:after { 
+  width: 100%; 
+  left: 0; 
+}
+  
