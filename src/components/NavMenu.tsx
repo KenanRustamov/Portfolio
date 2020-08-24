@@ -14,10 +14,10 @@ const NavMenu = (props: any) => {
                 <div className ={"bottomLine"}></div>
         </div>
         <div className = {`slate ${animate? "slate-animation" : ""}`}>
-          <div className={`exitIcon`} onClick= {() => {setAnimate(!animate);}}>
+          {animate ? <div className={`exitIcon`} onClick= {() => {setAnimate(!animate);}}>
             <div className={`leftLine`}></div>
             <div className={`rightLine`}></div>
-          </div>
+          </div> : null}
           <div className="linksWrapper">
             <Links links={props.links} onClick= {() => {setAnimate(!animate);}} id={props.id} />
           </div>
