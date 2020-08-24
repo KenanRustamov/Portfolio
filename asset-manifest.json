@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/Portfolio/static/css/main.614eb5f4.chunk.css",
+    "main.js": "/Portfolio/static/js/main.bd5573e5.chunk.js",
+    "main.js.map": "/Portfolio/static/js/main.bd5573e5.chunk.js.map",
+    "runtime-main.js": "/Portfolio/static/js/runtime-main.e440ee5a.js",
+    "runtime-main.js.map": "/Portfolio/static/js/runtime-main.e440ee5a.js.map",
+    "static/js/2.13452fd5.chunk.js": "/Portfolio/static/js/2.13452fd5.chunk.js",
+    "static/js/2.13452fd5.chunk.js.map": "/Portfolio/static/js/2.13452fd5.chunk.js.map",
+    "index.html": "/Portfolio/index.html",
+    "precache-manifest.8696a6dbb0c4b155aaa43254ac42811a.js": "/Portfolio/precache-manifest.8696a6dbb0c4b155aaa43254ac42811a.js",
+    "service-worker.js": "/Portfolio/service-worker.js",
+    "static/css/main.614eb5f4.chunk.css.map": "/Portfolio/static/css/main.614eb5f4.chunk.css.map",
+    "static/js/2.13452fd5.chunk.js.LICENSE.txt": "/Portfolio/static/js/2.13452fd5.chunk.js.LICENSE.txt",
+    "static/media/BentleyPhoto.jpeg": "/Portfolio/static/media/BentleyPhoto.1b920709.jpeg",
+    "static/media/bnymellon.png": "/Portfolio/static/media/bnymellon.b71a8a62.png",
+    "static/media/kenanRustamov.jpg": "/Portfolio/static/media/kenanRustamov.31e40586.jpg",
+    "static/media/krLogo.svg": "/Portfolio/static/media/krLogo.edf16145.svg",
+    "static/media/partify.png": "/Portfolio/static/media/partify.bca6e022.png",
+    "static/media/reactLogo.svg": "/Portfolio/static/media/reactLogo.cf227adb.svg",
+    "static/media/snackcheck.png": "/Portfolio/static/media/snackcheck.8d2afbe9.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e440ee5a.js",
+    "static/js/2.13452fd5.chunk.js",
+    "static/css/main.614eb5f4.chunk.css",
+    "static/js/main.bd5573e5.chunk.js"
+  ]
+}
