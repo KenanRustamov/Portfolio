@@ -30,12 +30,31 @@
 }
 
 .image {
-    border: 2px solid rgb(101, 167, 185);
-    -webkit-border: 2px solid rgb(101, 167, 185);
-    max-width:100%;
+    min-width: 200px;
+    min-height: 200px;
+    max-width:400px;
     max-height:300px;
-    object-fit:contain;
     margin: 15px;
+}
+
+.line {
+    -webkit-border: 2px solid rgb(101, 167, 185);
+    border: 2px solid rgb(101, 167, 185);
+    max-width:400px;
+    max-height:300px;
+    margin: 15px;
+}
+
+.clickable{
+    border:2px solid transparent;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    transition: transform .4s ease-in-out;
+    -webkit-transition: transform .4s ease-in-out;
+}
+.clickable:hover {
+    transition: transform .4s ease-in-out;
+    transform: scale(1.05);
+    border:2px solid rgb(101, 167, 185);
 }
 
 .infoTitle {

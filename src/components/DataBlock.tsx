@@ -23,7 +23,7 @@ const DataBlock = (props: any) => {
                 <div className ="subtitle">{props.propInput.infoSubtitle}</div>
                 <div className="infoText">{props.propInput.infoText}</div>
             </div>: null}
-            {props.propInput.infoImg != null ? <img className = "image" src={props.propInput.infoImg} alt = {props.alt} ></img> : null}
+            {!props.icon ? props.propInput.infoImg && props.link ? <a href={props.link} target={"_blank"} rel="noopener noreferrer"><img className = "image clickable" src={props.propInput.infoImg} alt = {props.propInput.alt}></img></a>: <img className =  {props.textOnly ? "line" : "image"} src={props.propInput.infoImg} alt = {props.propInput.alt}></img>: null}
             {props.propInput.other}
          </div> : null}
     </div>
