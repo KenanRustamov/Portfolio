@@ -19,6 +19,11 @@
     width: 75%;
     border-bottom: 2px solid;
 }
+
+.linkLogo :first-child{
+    fill:none !important;
+}
+
 .info {
     margin-top: 50px;
     margin-bottom: 40px;
@@ -30,6 +35,7 @@
 }
 
 .image {
+    border-radius: 10px;
     min-width: 200px;
     min-height: 200px;
     max-width:400px;
