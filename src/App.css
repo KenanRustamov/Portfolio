@@ -62,11 +62,11 @@ main::-webkit-scrollbar-thumb
   display: flex;
   flex-direction: column;
   height: 350px;
-  width: 40px;
+  width: 9%;
   bottom: 0px;
   justify-content: space-between;
   align-items: center;
-  left: 20px;
+  left: 0px;
 } 
 }
 
