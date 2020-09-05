@@ -3,15 +3,9 @@ import "./DataBlock.scss";
 
 const DataBlock = (props: any) => {
     const ref: RefObject<any> = React.createRef();
-    const handleClick = () => {
-        ref.current.scrollIntoView({
-            behavior:'smooth',
-            block: 'start',
-        })
-    }
-
+    
     const content = 
-    <div ref={ref} className = "dataBlock" id={props.id}>
+    <div ref={ref} className = {`dataBlock ${props.className ? props.className : ""}`} id={props.id}>
         <div className="title">
             <div className="text">{props.propInput.title}</div>
             <div className="bottomBorder"></div>
