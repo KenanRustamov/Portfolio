@@ -55,3 +55,219 @@
     width: 70px;
     margin-left: auto;
   }
+
+.navContainer {
+    width: 100%;
+    height: 80px; // Fixed height
+    display: flex;
+    position: fixed; // Make header fixed
+    top: 0;
+    left: 0;
+    z-index: 1000; // Ensure header stays on top
+    background-color: var(--header-background); // Use variable
+    color: var(--text-color); // Use variable
+    align-items: center;
+    justify-content: space-between; // Space out logo and links
+    padding: 0 5%; // Add some horizontal padding
+    box-sizing: border-box;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); // Optional: subtle shadow
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navLogoContainer {
+    // Styles for logo container if needed
+    flex-shrink: 0; // Prevent logo from shrinking
+    // Example: Add link styling if logo is clickable
+    a {
+        display: inline-block; // Ensure link wraps the logo correctly
+        line-height: 0; // Prevent extra space below logo
+    }
+}
+
+.logo {
+    height: 40px; // Adjust logo size
+    // Add other logo styles if necessary
+}
+
+.navLinksContainer {
+    display: flex;
+    align-items: center;
+}
+
+// New Theme Switch Styles
+.theme-switch-container {
+    display: flex;
+    align-items: center;
+    margin-left: 25px; // Keep spacing consistent
+}
+
+.theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px; // Width of the switch
+    height: 26px; // Height of the switch
+    margin: 0 10px; // Space around the switch
+}
+
+.theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc; // Default background of the slider track
+    transition: .4s;
+    border-radius: 26px; // Make it rounded
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px; // Size of the inner circle
+    width: 18px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white; // Color of the inner circle
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--primary-color); // Use primary color when checked (e.g., dark mode)
+}
+
+// Adjust slider background for light theme if primary color isn't suitable
+body[data-theme='light'] .theme-switch input:checked + .slider {
+    background-color: #4a4a4a; // Example: Dark grey for dark mode toggle in light theme
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px var(--primary-color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(24px); // Move the circle to the right
+}
+
+// Sun and Moon Icons
+.theme-icon {
+    width: 18px;
+    height: 18px;
+    fill: var(--text-color); // Icon color based on theme
+    transition: fill 0.3s ease;
+}
+
+// Styles for the main navigation links (desktop)
+.mainNavLinks {
+    display: flex;
+    @media (max-width: 900px) { // Adjusted breakpoint
+        display: none;
+    }
+}
+
+// Styles for the hamburger menu icon (mobile)
+.hamburgerMenu {
+    display: none;
+    cursor: pointer;
+    padding: 10px;
+    margin-left: 15px; // Space before theme toggle
+    // Simple 3-line hamburger icon:
+    div {
+      width: 25px;
+      height: 3px;
+      background-color: var(--text-color);
+      margin: 5px 0;
+      transition: all 0.3s ease;
+    }
+
+    @media (max-width: 900px) { // Show only on smaller screens
+        display: block; 
+    }
+
+    // Animation for hamburger to X (optional)
+    &.open {
+      div:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+      }
+      div:nth-child(2) {
+        opacity: 0;
+      }
+      div:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+      }
+    }
+}
+
+// Styles for the mobile menu overlay/dropdown
+.mobileMenu {
+    display: flex; // Use flex to control visibility with transform/opacity
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 80px; // Position below header
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 80px); // Full height minus header
+    background-color: var(--header-background);
+    padding: 30px 20px;
+    box-sizing: border-box;
+    transform: translateX(-100%); // Start off-screen
+    opacity: 0;
+    transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+    z-index: 999; // Below header but above content
+
+    &.open {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    // Links within the mobile menu
+    .linksContainer {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .linkItem {
+      width: 100%;
+      margin: 0;
+      text-align: center;
+      border-bottom: 1px solid var(--secondary-color); // Separator
+
+      &:last-child {
+          border-bottom: none;
+      }
+
+      a {
+        display: block; // Make link take full width
+        padding: 15px 0; // More padding
+        width: 100%;
+        font-size: 18px; // Larger font size
+        color: var(--link-color);
+        text-decoration: none;
+
+        &:hover {
+            color: var(--link-hover-color);
+            background-color: rgba(128, 128, 128, 0.1); // Subtle hover background
+        }
+        // Remove underline effect for mobile? Optional.
+        &:after { 
+          display: none; 
+        }
+      }
+      &.active a {
+         color: var(--link-hover-color);
+         font-weight: bold;
+         // Remove underline effect for mobile? Optional.
+         &:after { 
+          display: none; 
+         }
+      }
+    }
+}

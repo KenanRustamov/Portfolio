@@ -33,3 +33,56 @@
   left: 0; 
 }
   
+.linksContainer {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+}
+
+.linkItem {
+    margin: 0 15px; // Spacing between links
+
+    a {
+        color: var(--link-color); // Use variable
+        text-decoration: none;
+        font-weight: 500; // Adjust font weight as needed
+        position: relative;
+        transition: color 0.3s ease;
+        padding-bottom: 5px; // Space for underline
+
+        &:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            display: block;
+            margin-top: 5px;
+            right: 0;
+            background: var(--link-hover-color); // Use variable
+            transition: width 0.3s ease;
+            -webkit-transition: width 0.3s ease;
+        }
+
+        &:hover {
+            color: var(--link-hover-color); // Use variable
+            &:after {
+                width: 100%;
+                left: 0;
+                background: var(--link-hover-color); // Use variable
+            }
+        }
+    }
+
+    // Style for the currently active link (if tracking scroll position)
+    &.active a {
+      color: var(--link-hover-color);
+       &:after {
+            width: 100%;
+            left: 0;
+            background: var(--link-hover-color);
+       }
+    }
+}
+  

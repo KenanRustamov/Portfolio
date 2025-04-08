@@ -55,3 +55,63 @@
       display:none;
     }
   }
+
+.footerContainer {
+    width: 100%;
+    padding: 20px 5%; // Consistent padding
+    background-color: var(--footer-background); // Use variable
+    color: var(--text-color); // Use variable
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    text-align: center;
+    border-top: 1px solid var(--secondary-color); // Optional top border
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.footerLinks {
+    margin-bottom: 15px;
+
+    // Reuse link styles if they are the same as header, or define specific footer link styles
+    .linkItem {
+        margin: 0 10px;
+
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+
+            &:hover {
+                color: var(--link-hover-color);
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+.socialLinks {
+    margin-bottom: 15px;
+
+    a {
+        margin: 0 10px;
+        color: var(--svg-fill); // Use SVG fill color for consistency
+        transition: color 0.3s ease;
+
+        svg {
+            height: 20px; // Adjust size as needed
+            width: auto;
+            fill: currentColor; // Inherit color from parent 'a' tag
+        }
+
+        &:hover {
+            color: var(--link-hover-color);
+        }
+    }
+}
+
+.footerText {
+    font-size: 12px;
+    color: var(--secondary-color); // Use secondary color for less emphasis
+}

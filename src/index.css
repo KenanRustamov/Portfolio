@@ -7,6 +7,40 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Define CSS Variables for colors */
+:root {
+  --background-color: #282c34; /* Dark background */
+  --text-color: #ffffff; /* Light text */
+  --primary-color: #61dafb; /* React blue - adjust as needed */
+  --secondary-color: #8e8e8e; /* Grey for accents/lines */
+  --header-background: #20232a; /* Slightly darker header */
+  --footer-background: #20232a; /* Slightly darker footer */
+  --link-color: #ffffff;
+  --link-hover-color: #61dafb;
+  --block-background: #3a3f47; /* Background for content blocks */
+  --svg-fill: #ffffff;
+  --scrollbar-track: #bfc2c9;
+  --scrollbar-thumb: #555;
+  --scrollbar-background: rgba(233, 223, 223, 0.479);
+  --underline-color: var(--primary-color);
+}
+
+body[data-theme='light'] {
+  --background-color: #f4f7f6; /* Light background */
+  --text-color: #1c1c1e; /* Dark text */
+  --primary-color: #007aff; /* Example light mode primary */
+  --secondary-color: #8e8e8e; /* Keep grey or adjust */
+  --header-background: #ffffff; /* White header */
+  --footer-background: #e5e5ea; /* Light grey footer */
+  --link-color: #1c1c1e;
+  --link-hover-color: #007aff;
+  --block-background: #ffffff; /* White content blocks */
+  --svg-fill: #1c1c1e;
+  --scrollbar-track: #e5e5ea;
+  --scrollbar-thumb: #8e8e8e;
+  --scrollbar-background: rgba(0, 0, 0, 0.1);
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
