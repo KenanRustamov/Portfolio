@@ -39,18 +39,30 @@
     padding: 0;
     margin: 0;
     align-items: center;
+    gap: 24px;
 }
 
 .linkItem {
-    margin: 0 15px; // Spacing between links
+    white-space: nowrap;
+    padding: 0;
+
+    &:first-child {
+        margin-left: 0;
+    }
+
+    &:last-child {
+        margin-right: 0;
+    }
 
     a {
-        color: var(--link-color); // Use variable
+        color: var(--link-color);
         text-decoration: none;
-        font-weight: 500; // Adjust font weight as needed
+        font-weight: 500;
         position: relative;
         transition: color 0.3s ease;
-        padding-bottom: 5px; // Space for underline
+        padding: 5px 0;
+        white-space: nowrap;
+        display: block;
 
         &:after {
             content: '';
@@ -60,22 +72,21 @@
             display: block;
             margin-top: 5px;
             right: 0;
-            background: var(--link-hover-color); // Use variable
+            background: var(--link-hover-color);
             transition: width 0.3s ease;
             -webkit-transition: width 0.3s ease;
         }
 
         &:hover {
-            color: var(--link-hover-color); // Use variable
+            color: var(--link-hover-color);
             &:after {
                 width: 100%;
                 left: 0;
-                background: var(--link-hover-color); // Use variable
+                background: var(--link-hover-color);
             }
         }
     }
 
-    // Style for the currently active link (if tracking scroll position)
     &.active a {
       color: var(--link-hover-color);
        &:after {

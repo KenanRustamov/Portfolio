@@ -7,7 +7,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 5%;
+    padding: 0 20px;
     box-sizing: border-box;
     background-color: var(--header-background);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -78,11 +78,9 @@
 }
 
 .navLogoContainer {
-    flex-shrink: 0;
-    a {
-        display: inline-block;
-        line-height: 0;
-    }
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: flex-start;
 }
 
 .logo {
@@ -90,16 +88,17 @@
 }
 
 .navLinksContainer {
+    flex: 0 0 auto;
     display: flex;
     align-items: center;
-    margin-left: auto;
+    justify-content: flex-end;
+    gap: 15px;
 }
 
 // Theme switch in the HEADER BAR (Desktop)
 .theme-switch-container {
     display: flex;
     align-items: center;
-    margin-left: 25px;
     @media (max-width: 900px) {
         display: none;
     }
@@ -169,6 +168,8 @@ input:checked + .slider:before {
 // Main nav links in HEADER BAR (Desktop)
 .mainNavLinks {
     display: flex;
+    justify-content: center;
+    gap: 24px;
     @media (max-width: 900px) {
         display: none;
     }
@@ -284,27 +285,29 @@ input:checked + .slider:before {
     }
 }
 
-.App-header .navLogoContainer { // Left Section
-    flex: 1; // Allow it to take space
+.App-header .navLogoContainer {
+    flex: 0 0 auto;
     display: flex;
-    justify-content: flex-start; // Align logo to the start
+    justify-content: flex-start;
 }
 
-// New container for centered desktop links
-.App-header .navCenterContainer { // Center Section
-    flex: 2; // Allow it to take more space and center content
+.App-header .navCenterContainer {
+    flex: 1 1 auto;
     display: flex;
     justify-content: center;
-    @media (max-width: 900px) { // Hide center container on mobile 
+    margin: 0 20px;
+    min-width: 0;
+    @media (max-width: 900px) {
         display: none;
     }
 }
 
-.App-header .navLinksContainer { // Right Section
-    flex: 1; // Allow it to take space
+.App-header .navLinksContainer {
+    flex: 0 0 auto;
     display: flex;
     align-items: center;
-    justify-content: flex-end; // Align items to the end
+    justify-content: flex-end;
+    gap: 15px;
 }
 
 // Theme switch in the HEADER BAR (Now inside Right Section)
