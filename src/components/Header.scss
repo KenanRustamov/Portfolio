@@ -1,17 +1,20 @@
 .App-header {
-    background-color: #282c34;
     color: black;
     width: 100%;
     position: fixed;
     height: 60px;
-    z-index: 1;
-    display:flex;
+    z-index: 1000;
+    display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0px -1px 13px 10px #20232a;
-    transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+    padding: 0 5%;
+    box-sizing: border-box;
+    background-color: var(--header-background);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1) 0s, background-color 0.3s ease;
     top: 0px;
-  }
+    color: var(--text-color);
+}
 .hideHeader {
   top: -60px;
   transition: top .3s ease-in-out;
@@ -75,38 +78,39 @@
 }
 
 .navLogoContainer {
-    // Styles for logo container if needed
-    flex-shrink: 0; // Prevent logo from shrinking
-    // Example: Add link styling if logo is clickable
+    flex-shrink: 0;
     a {
-        display: inline-block; // Ensure link wraps the logo correctly
-        line-height: 0; // Prevent extra space below logo
+        display: inline-block;
+        line-height: 0;
     }
 }
 
 .logo {
-    height: 40px; // Adjust logo size
-    // Add other logo styles if necessary
+    height: 40px;
 }
 
 .navLinksContainer {
     display: flex;
     align-items: center;
+    margin-left: auto;
 }
 
-// New Theme Switch Styles
+// Theme switch in the HEADER BAR (Desktop)
 .theme-switch-container {
     display: flex;
     align-items: center;
-    margin-left: 25px; // Keep spacing consistent
+    margin-left: 25px;
+    @media (max-width: 900px) {
+        display: none;
+    }
 }
 
 .theme-switch {
     position: relative;
     display: inline-block;
-    width: 50px; // Width of the switch
-    height: 26px; // Height of the switch
-    margin: 0 10px; // Space around the switch
+    width: 50px;
+    height: 26px;
+    margin: 0 10px;
 }
 
 .theme-switch input {
@@ -122,30 +126,29 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ccc; // Default background of the slider track
+    background-color: #ccc;
     transition: .4s;
-    border-radius: 26px; // Make it rounded
+    border-radius: 26px;
 }
 
 .slider:before {
     position: absolute;
     content: "";
-    height: 18px; // Size of the inner circle
+    height: 18px;
     width: 18px;
     left: 4px;
     bottom: 4px;
-    background-color: white; // Color of the inner circle
+    background-color: white;
     transition: .4s;
     border-radius: 50%;
 }
 
 input:checked + .slider {
-    background-color: var(--primary-color); // Use primary color when checked (e.g., dark mode)
+    background-color: var(--primary-color);
 }
 
-// Adjust slider background for light theme if primary color isn't suitable
 body[data-theme='light'] .theme-switch input:checked + .slider {
-    background-color: #4a4a4a; // Example: Dark grey for dark mode toggle in light theme
+    background-color: #4a4a4a;
 }
 
 input:focus + .slider {
@@ -153,32 +156,30 @@ input:focus + .slider {
 }
 
 input:checked + .slider:before {
-    transform: translateX(24px); // Move the circle to the right
+    transform: translateX(24px);
 }
 
-// Sun and Moon Icons
 .theme-icon {
     width: 18px;
     height: 18px;
-    fill: var(--text-color); // Icon color based on theme
+    fill: var(--svg-fill);
     transition: fill 0.3s ease;
 }
 
-// Styles for the main navigation links (desktop)
+// Main nav links in HEADER BAR (Desktop)
 .mainNavLinks {
     display: flex;
-    @media (max-width: 900px) { // Adjusted breakpoint
+    @media (max-width: 900px) {
         display: none;
     }
 }
 
-// Styles for the hamburger menu icon (mobile)
+// Hamburger menu icon in HEADER BAR (Mobile)
 .hamburgerMenu {
     display: none;
     cursor: pointer;
     padding: 10px;
-    margin-left: 15px; // Space before theme toggle
-    // Simple 3-line hamburger icon:
+    margin-left: 15px;
     div {
       width: 25px;
       height: 3px;
@@ -186,13 +187,13 @@ input:checked + .slider:before {
       margin: 5px 0;
       transition: all 0.3s ease;
     }
-
-    @media (max-width: 900px) { // Show only on smaller screens
-        display: block; 
+    @media (max-width: 900px) {
+        display: block;
     }
-
-    // Animation for hamburger to X (optional)
     &.open {
+      div {
+        background-color: var(--text-color); 
+      }
       div:nth-child(1) {
         transform: rotate(-45deg) translate(-5px, 6px);
       }
@@ -205,69 +206,130 @@ input:checked + .slider:before {
     }
 }
 
-// Styles for the mobile menu overlay/dropdown
+// Mobile menu OVERLAY - Adjusted to slide UNDER header
 .mobileMenu {
-    display: flex; // Use flex to control visibility with transform/opacity
+    display: flex;
     flex-direction: column;
     align-items: center;
     position: fixed;
-    top: 80px; // Position below header
+    top: 60px; /* Start below the default header height */
     left: 0;
     width: 100%;
-    height: calc(100vh - 80px); // Full height minus header
+    height: calc(100vh - 60px); /* Fill remaining viewport height */
     background-color: var(--header-background);
-    padding: 30px 20px;
+    padding: 30px 20px; /* Adjust padding as needed, top padding less critical now */
     box-sizing: border-box;
-    transform: translateX(-100%); // Start off-screen
+    transform: translateX(-100%);
     opacity: 0;
+    pointer-events: none; 
     transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
-    z-index: 999; // Below header but above content
+    z-index: 999; /* Ensure it's below the header (z-index: 1000) */
+    overflow-y: auto; // Allow scrolling within the menu if content overflows
 
     &.open {
         transform: translateX(0);
         opacity: 1;
+        pointer-events: auto; 
+        // No change to z-index needed, stays below header
     }
+    
+    // Adjust top if header is bigger (optional, depends if animation desired)
+    // .headerBigger + & { 
+    //    top: 80px; 
+    //    height: calc(100vh - 80px);
+    // }
 
-    // Links within the mobile menu
     .linksContainer {
       flex-direction: column;
       width: 100%;
+      margin-bottom: 30px;
     }
 
     .linkItem {
-      width: 100%;
-      margin: 0;
-      text-align: center;
-      border-bottom: 1px solid var(--secondary-color); // Separator
-
-      &:last-child {
-          border-bottom: none;
-      }
-
-      a {
-        display: block; // Make link take full width
-        padding: 15px 0; // More padding
         width: 100%;
-        font-size: 18px; // Larger font size
-        color: var(--link-color);
-        text-decoration: none;
-
-        &:hover {
+        margin: 0;
+        text-align: center;
+        border-bottom: 1px solid var(--secondary-color);
+        &:last-child {
+            border-bottom: none;
+        }
+        a {
+            display: block;
+            padding: 15px 0;
+            width: 100%;
+            font-size: 18px;
+            color: var(--link-color);
+            text-decoration: none;
+            &:hover {
+                color: var(--link-hover-color);
+                background-color: rgba(128, 128, 128, 0.1);
+            }
+            &:after { display: none; }
+        }
+        &.active a {
             color: var(--link-hover-color);
-            background-color: rgba(128, 128, 128, 0.1); // Subtle hover background
+            font-weight: bold;
+            &:after { display: none; }
         }
-        // Remove underline effect for mobile? Optional.
-        &:after { 
-          display: none; 
-        }
-      }
-      &.active a {
-         color: var(--link-hover-color);
-         font-weight: bold;
-         // Remove underline effect for mobile? Optional.
-         &:after { 
-          display: none; 
-         }
-      }
+    }
+
+    .theme-switch-container {
+        display: flex;
+        align-items: center;
+        margin-top: auto;
+        padding-top: 20px;
+        border-top: 1px solid var(--secondary-color);
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+.App-header .navLogoContainer { // Left Section
+    flex: 1; // Allow it to take space
+    display: flex;
+    justify-content: flex-start; // Align logo to the start
+}
+
+// New container for centered desktop links
+.App-header .navCenterContainer { // Center Section
+    flex: 2; // Allow it to take more space and center content
+    display: flex;
+    justify-content: center;
+    @media (max-width: 900px) { // Hide center container on mobile 
+        display: none;
+    }
+}
+
+.App-header .navLinksContainer { // Right Section
+    flex: 1; // Allow it to take space
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; // Align items to the end
+}
+
+// Theme switch in the HEADER BAR (Now inside Right Section)
+.App-header .theme-switch-container {
+    display: flex; 
+    align-items: center;
+    order: 1; // Place before hamburger if needed
+    @media (max-width: 900px) {
+        display: none;
+    }
+}
+
+// Main nav links (Now inside Center Section)
+.App-header .mainNavLinks {
+   // display: flex; // This style is now on navCenterContainer
+   // Media query hiding is now on navCenterContainer
+}
+
+// Hamburger menu icon (Now inside Right Section)
+.App-header .hamburgerMenu {
+    display: none; 
+    cursor: pointer;
+    padding: 10px;
+    order: 2; // Place after theme switch if needed
+    @media (max-width: 900px) { 
+        display: block; 
     }
 }

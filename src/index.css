@@ -5,40 +5,126 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background-color); /* Apply background globally */
+  color: var(--text-color); /* Apply text color globally */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
 }
 
 /* Define CSS Variables for colors */
 :root {
-  --background-color: #282c34; /* Dark background */
-  --text-color: #ffffff; /* Light text */
-  --primary-color: #61dafb; /* React blue - adjust as needed */
-  --secondary-color: #8e8e8e; /* Grey for accents/lines */
-  --header-background: #20232a; /* Slightly darker header */
-  --footer-background: #20232a; /* Slightly darker footer */
-  --link-color: #ffffff;
-  --link-hover-color: #61dafb;
-  --block-background: #3a3f47; /* Background for content blocks */
-  --svg-fill: #ffffff;
-  --scrollbar-track: #bfc2c9;
-  --scrollbar-thumb: #555;
-  --scrollbar-background: rgba(233, 223, 223, 0.479);
+  /* Dark Mode Defaults */
+  --background-color: #2d3748; /* Slightly darker, less blue dark */
+  --text-color: #e2e8f0; /* Off-white/light gray */
+  --primary-color: #63b3ed; /* Softer blue */
+  --secondary-color: #4a5568; /* Darker gray for accents */
+  --header-background: #2d3748; /* Header background */
+  --footer-background: #2d3748; /* Footer background */
+  --link-color: var(--text-color);
+  --link-hover-color: #63b3ed;
+  --block-background: #2d3748; /* Background for content blocks */
+  --svg-fill: var(--text-color);
+  --scrollbar-track: #4a5568;
+  --scrollbar-thumb: #718096;
+  --scrollbar-background: rgba(45, 55, 72, 0.5);
   --underline-color: var(--primary-color);
 }
 
 body[data-theme='light'] {
-  --background-color: #f4f7f6; /* Light background */
-  --text-color: #1c1c1e; /* Dark text */
-  --primary-color: #007aff; /* Example light mode primary */
-  --secondary-color: #8e8e8e; /* Keep grey or adjust */
+  /* Light Mode Overrides - Modern Palette */
+  --background-color: #ffffff; /* Clean white */
+  --text-color: #2d3748; /* Dark grayish blue for text */
+  --primary-color: #4299e1; /* Slightly stronger blue for primary actions */
+  --secondary-color: #a0aec0; /* Lighter gray for accents/borders */
   --header-background: #ffffff; /* White header */
-  --footer-background: #e5e5ea; /* Light grey footer */
-  --link-color: #1c1c1e;
-  --link-hover-color: #007aff;
+  --footer-background: #f7fafc; /* Very light gray footer */
+  --link-color: var(--primary-color); /* Links use primary color */
+  --link-hover-color: #2b6cb0; /* Darker blue on hover */
   --block-background: #ffffff; /* White content blocks */
-  --svg-fill: #1c1c1e;
-  --scrollbar-track: #e5e5ea;
-  --scrollbar-thumb: #8e8e8e;
-  --scrollbar-background: rgba(0, 0, 0, 0.1);
+  --svg-fill: #4a5568; /* Slightly darker gray for icons */
+  --scrollbar-track: #edf2f7;
+  --scrollbar-thumb: #cbd5e0;
+  --scrollbar-background: rgba(237, 242, 247, 0.8);
+  --underline-color: var(--primary-color);
+
+  /* --- Explicit Overrides (Keep these for specificity) --- */
+  
+  /* Header */
+  .navContainer {
+    background-color: var(--header-background) !important;
+    color: var(--text-color) !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.06); /* Softer shadow */
+  }
+  .navContainer .theme-icon {
+    fill: var(--svg-fill);
+  }
+  .navContainer .slider {
+    background-color: #cbd5e0; /* Match scrollbar thumb */
+  }
+  .navContainer input:checked + .slider {
+    background-color: #4a5568; /* Dark gray when dark mode active */
+  }
+  .navContainer .hamburgerMenu div {
+    background-color: var(--text-color);
+  }
+
+  /* Data Block Text */
+  .dataBlock .info,
+  .dataBlock .infoTitle {
+    color: var(--text-color) !important;
+  }
+  .dataBlock .info p {
+     color: var(--text-color) !important;
+  }
+  .dataBlock .title .text {
+    color: var(--primary-color) !important;
+  }
+  .dataBlock .title .bottomBorder {
+     border-bottom: 3px solid var(--underline-color) !important;
+  }
+
+  /* Skills Block List Items */
+  .skillsBlock li {
+    background-color: #edf2f7; /* Light background for skills */
+    color: var(--text-color);
+    box-shadow: none; /* Remove shadow for flatter look */
+  }
+  .skillsBlock li:hover {
+    background-color: var(--primary-color);
+    color: #ffffff; /* White text on primary hover */
+  }
+  
+  /* Side Links */
+  .sideLinks svg path,
+  .sideLinks svg {
+    fill: var(--svg-fill);
+  }
+  .sideLinks line {
+    stroke: var(--secondary-color);
+  }
+  .sideLinks a:hover svg path,
+  .sideLinks a:hover svg {
+    fill: var(--link-hover-color);
+  }
+  
+  /* Footer */
+  .footerContainer {
+     background-color: var(--footer-background);
+     color: var(--text-color);
+     border-top: 1px solid #e2e8f0; /* Slightly lighter border */
+  }
+  .footerLinks .linkItem a {
+    color: #4a5568; /* Darker gray for footer links */
+  }
+  .footerText {
+    color: #718096; /* Even lighter gray for footer text */
+  }
+  .socialLinks a {
+    color: #4a5568; /* Match footer link color */
+  }
+  .footerLinks .linkItem a:hover,
+  .socialLinks a:hover {
+    color: var(--link-hover-color);
+  }
 }
 
 code {

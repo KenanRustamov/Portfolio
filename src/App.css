@@ -24,6 +24,8 @@ main {
   flex-direction: column;
   padding: 0;
   min-height: 100vh; /* Ensure main takes full height */
+  position: relative; /* Ensure main creates a stacking context */
+  z-index: 0; /* Keep it behind the header */
 }
 
 /* Apply scrollbar variables */
