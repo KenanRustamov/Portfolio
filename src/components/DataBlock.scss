@@ -1,10 +1,12 @@
 .dataBlock {
     display:flex;
     width: 80%;
+    max-width: 1100px;
     font-size: 50px;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 3rem;
 }
 .title {
     color: rgb(101, 167, 185); 
@@ -25,13 +27,23 @@
 }
 
 .info {
-    margin-top: 50px;
     margin-bottom: 40px;
     width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    align-items: center;
+    gap: 20px;
+}
+
+.info > div:first-child {
+    flex: 1;
+    min-width: 300px;
+}
+
+.info > img, .info > a > img {
+    flex-shrink: 0;
 }
 
 .image {
@@ -39,6 +51,7 @@
     width: 350px;
     height: 350px;
     margin: 15px;
+    object-fit: cover;
 }
 
 .line {
@@ -63,16 +76,18 @@
 
 .infoTitle {
     display: flex;
-    font-size: .75em;
-    width: 300px;
+    font-size: 1.1em;
+    font-weight: 600;
     flex-direction: column;
     margin:15px;
+    line-height: 1.3;
 }
 
 .subtitle {
-    color: #999999;
-    font-size: .5em;
-    margin-top: 10px;
+    color: #cccccc;
+    font-size: 0.6em;
+    margin-top: 8px;
+    font-weight: 400;
 }
 
 .emailButton {
@@ -104,9 +119,11 @@
     }
 }
 
-
 .infoText {
-    font-size: .5em;
+    font-size: 0.3em;
+    color: #e0e0e0;
+    line-height: 1.6;
+    margin-top: 15px;
 }
 
 .card {
@@ -255,4 +272,110 @@
       color: #ffffff;
       border-color: var(--primary-color);
     }
+}
+
+.dataBlock.card:first-child .info {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+
+.dataBlock.card:first-child .image {
+    width: 400px;
+    height: 400px;
+}
+
+@media (max-width: 768px) {
+    .info {
+        flex-direction: column;
+        align-items: center;
+    }
+    .dataBlock.card:first-child .info {
+        gap: 20px;
+    }
+    .image, .dataBlock.card:first-child .image {
+        width: 300px;
+        height: 300px;
+    }
+    .infoTitle {
+       width: 90%;
+       text-align: center;
+    }
+    .infoText {
+         text-align: center;
+    }
+}
+
+.dataBlock-icons {
+    margin-top: 15px;
+    display: flex;
+    gap: 15px;
+}
+
+.interior .info {
+    align-items: flex-start;
+    text-align: left;
+}
+
+@media (max-width: 768px) {
+    .interior .info {
+        align-items: center;
+        text-align: center;
+    }
+}
+
+/* Styles for Skills Section (4th Card) */
+.data > .dataBlock.card:nth-child(4) {
+    margin-bottom: 2rem; /* Adjust spacing below skills section */
+
+    .title { /* "Skills" title */
+        font-size: 1em; /* Smaller section title */
+        margin-bottom: 15px; /* Less space below title */
+    }
+
+    .interior {
+        margin-bottom: 0.5rem; /* Less space between Languages/Other */
+        width: 100%; /* Ensure interior takes full width */
+        padding: 0 15px; /* Add some horizontal padding */
+        box-sizing: border-box;
+    }
+
+    .interior .info {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        padding: 10px 0; /* Adjust vertical padding within info */
+        justify-content: flex-start; /* Align content to the start */
+    }
+
+    .infoTitle { /* "Languages:", "Other...:" */
+        font-size: 0.7em;
+        font-weight: 500;
+        margin: 5px 0;
+        width: auto; /* Allow natural width */
+        text-align: left;
+    }
+
+    .subtitle { /* Skill lists */
+        font-size: 0.4em;
+        color: #b0b0b0;
+        line-height: 1.5;
+        margin-top: 3px;
+        text-align: left;
+    }
+}
+
+@media (max-width: 768px) {
+    .data > .dataBlock.card:nth-child(4) {
+        .interior .info,
+        .infoTitle,
+        .subtitle {
+            text-align: center; /* Center text on small screens */
+            justify-content: center;
+        }
+        .infoTitle {
+            width: 100%; /* Take full width when centered */
+        }
+    }
+    // ... existing mobile styles ...
 }
