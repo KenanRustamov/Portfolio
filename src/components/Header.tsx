@@ -3,8 +3,6 @@ import "./Header.scss";
 import Links from "./Links";
 import NavMenu from "./NavMenu";
 import { useTheme } from '../contexts/ThemeContext';
-import { ReactComponent as SunSvg } from '../images/sun.svg';
-import { ReactComponent as MoonSvg } from '../images/moon.svg';
 
 interface LinkData {
     text: string;
@@ -17,17 +15,8 @@ interface HeaderProps {
     links: LinkData[];
 }
 
-// Updated Icon Components using SVGR
-const SunIcon = () => (
-    <SunSvg className="theme-icon" />
-);
-
-const MoonIcon = () => (
-    <MoonSvg className="theme-icon" />
-);
-
 const Header: React.FC<HeaderProps> = ({ links }) => {
-  const { theme, toggleTheme } = useTheme();
+  const { theme } = useTheme();
   const [currentScroll, setCurrentScroll] = useState(window.pageYOffset);
   const [scrollDirection, setScrollDirection] = useState("down");
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -85,21 +74,6 @@ const Header: React.FC<HeaderProps> = ({ links }) => {
     }
   };
 
-  const ThemeSwitch = () => (
-    <div className="theme-switch-container">
-      <SunIcon />
-      <label className="theme-switch">
-        <input 
-          type="checkbox" 
-          checked={theme === 'dark'}
-          onChange={toggleTheme} 
-        />
-        <span className="slider"></span>
-      </label>
-      <MoonIcon />
-    </div>
-  );
-
   const headerClasses = [
     'App-header',
     currentScroll < 1 ? 'headerBigger' : '',
@@ -119,7 +93,6 @@ const Header: React.FC<HeaderProps> = ({ links }) => {
       </div>
     </div>
     <div className="navLinksContainer">
-      <ThemeSwitch />
       <div className={`hamburgerMenu ${isMobileMenuOpen ? 'open' : ''}`} onClick={handleToggleMobileMenu}>
         <div></div>
         <div></div>
@@ -128,7 +101,6 @@ const Header: React.FC<HeaderProps> = ({ links }) => {
     </div>
     <div className={`mobileMenu ${isMobileMenuOpen ? 'open' : ''}`}>
       <Links links={links} onLinkClick={handleLinkClick} />
-      <ThemeSwitch />
     </div>
   </nav>;
 

@@ -5,8 +5,11 @@
     font-size: 50px;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     margin-bottom: 3rem;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    box-sizing: border-box;
 }
 .title {
     color: rgb(101, 167, 185); 
@@ -52,6 +55,12 @@
     height: 350px;
     margin: 15px;
     object-fit: cover;
+    transition: filter 0.4s ease-in-out;
+    filter: grayscale(40%) brightness(90%);
+
+    &:hover {
+        filter: none;
+    }
 }
 
 .line {
@@ -65,13 +74,20 @@
 .clickable{
     border:2px solid transparent;
     box-shadow: 0px 0px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    transition: transform .4s ease-in-out;
-    -webkit-transition: transform .4s ease-in-out;
 }
-.clickable:hover {
-    transition: transform .4s ease-in-out;
-    transform: scale(1.05);
-    border:2px solid rgb(101, 167, 185);
+
+.infoTextContainer {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 300px;
+}
+
+.introText {
+    font-size: 0.6em;
+    color: #b0b0b0;
+    margin-bottom: 5px;
+    font-weight: 300;
 }
 
 .infoTitle {
@@ -274,16 +290,73 @@
     }
 }
 
-.dataBlock.card:first-child .info {
-    flex-direction: row;
-    align-items: center;
+.dataBlock.card:first-child {
+    min-height: 100vh;
     justify-content: center;
-    gap: 40px;
+    margin-bottom: 0;
+
+    .info {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+    }
+
+    .image {
+        width: 400px;
+        height: 400px;
+    }
+
+    .infoTextContainer {
+        align-items: flex-start;
+    }
+
+    .introText {
+        text-align: left;
+    }
+    
+    .infoTitle {
+        font-size: clamp(1.5rem, 4vw, 3rem);
+        text-align: left;
+    }
+
+    .subtitle {
+        font-size: clamp(0.875rem, 2vw, 1.25rem);
+        text-align: left;
+    }
+
+    .infoText {
+        text-align: left;
+    }
+
+    .dataBlock-icons {
+        justify-content: flex-start;
+    }
 }
 
-.dataBlock.card:first-child .image {
-    width: 400px;
-    height: 400px;
+@media (max-width: 1000px) {
+    .dataBlock.card:first-child .info {
+        flex-direction: column;
+        gap: 25px;
+    }
+    .dataBlock.card:first-child .infoTextContainer {
+        align-items: center;
+        order: 2;
+    }
+     .dataBlock.card:first-child .image {
+        order: 1;
+        width: 300px;
+        height: 300px;
+    }
+    .dataBlock.card:first-child .introText,
+    .dataBlock.card:first-child .infoTitle,
+    .dataBlock.card:first-child .subtitle,
+    .dataBlock.card:first-child .infoText {
+         text-align: center;
+    }
+     .dataBlock.card:first-child .dataBlock-icons {
+        justify-content: center;
+    }
 }
 
 @media (max-width: 768px) {
@@ -291,10 +364,7 @@
         flex-direction: column;
         align-items: center;
     }
-    .dataBlock.card:first-child .info {
-        gap: 20px;
-    }
-    .image, .dataBlock.card:first-child .image {
+    .image {
         width: 300px;
         height: 300px;
     }
@@ -304,6 +374,10 @@
     }
     .infoText {
          text-align: center;
+    }
+    .interior .info {
+        align-items: center;
+        text-align: center;
     }
 }
 

@@ -58,19 +58,21 @@ main::-webkit-scrollbar-thumb
   }
 }
 
+/* Remove all styles related to .sideLinks */
+/*
 .sideLinks {
   display: none;
 }
 
 .sideLinks svg path,
 .sideLinks svg {
-  fill: var(--svg-fill); /* Apply variable to SVG fill */
+  fill: var(--svg-fill); 
   transition: fill 0.3s ease;
 }
 
 .sideLinks a:hover svg path,
 .sideLinks a:hover svg {
-  fill: var(--link-hover-color); /* Hover color for SVGs */
+  fill: var(--link-hover-color); 
 }
 
 @media (min-width: 750px){
@@ -86,6 +88,7 @@ main::-webkit-scrollbar-thumb
   left: 0px;
 } 
 }
+*/
 
 line {
   stroke: var(--secondary-color); /* Use secondary color variable */
