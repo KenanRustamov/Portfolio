@@ -14,50 +14,57 @@ body {
 /* Define CSS Variables for colors */
 :root {
   /* Dark Mode Defaults */
-  --background-color: #002539; /* Updated background */
+  --background-color: #002539;
   --text-color: #e2e8f0;
-  --primary-color: #63b3ed;
-  --secondary-color: #4a5568;
-  --header-background: #002539; /* Match new background */
-  --footer-background: #002539; /* Match new background */
+  --primary-color: #63b3ed; /* Sky Blue */
+  --secondary-color: #4a5568; /* Cool Gray */
+  --header-background: #002539;
+  --footer-background: #002539;
   --link-color: var(--text-color);
-  --link-hover-color: #63b3ed;
-  --block-background: #002539; /* Match new background */
-  --svg-fill: var(--text-color);
+  --link-hover-color: #90cdf4; /* Lighter Sky Blue on hover */
+  --block-background: #002539;
+  --svg-fill: #a0aec0; /* Slightly lighter gray for icons */
   --scrollbar-track: #4a5568;
   --scrollbar-thumb: #718096;
-  --scrollbar-background: rgba(0, 37, 57, 0.5); /* Adjust based on new background */
+  --scrollbar-background: rgba(0, 37, 57, 0.5);
   --underline-color: var(--primary-color);
+  --data-block-text: #cbd5e0; /* Specific text color for data blocks */
+  --data-block-title: #ffffff; /* White for main titles */
+  --data-block-subtitle: #a0aec0; /* Gray for subtitles */
 }
 
 body[data-theme='light'] {
-  /* Light Mode Overrides - Improved Contrast */
-  --background-color: #ffffff;
-  --text-color: #1a202c; /* Darker text for better contrast */
-  --primary-color: #3182ce; /* Slightly darker blue */
-  --secondary-color: #a0aec0; /* Keep for subtle accents */
-  --header-background: #ffffff;
-  --footer-background: #f7fafc;
-  --link-color: var(--primary-color);
-  --link-hover-color: #2c5282; /* Even darker blue hover */
-  --block-background: #ffffff;
-  --svg-fill: #4a5568; /* Keep this gray for icons */
+  /* Light Mode Overrides - Brighter Palette */
+  --background-color: #f7fafc; /* Very Light Gray background */
+  --text-color: #2d3748; /* Dark Gray text */
+  --primary-color: #3182ce; /* Standard Blue */
+  --secondary-color: #a0aec0; /* Medium Gray */
+  --header-background: #ffffff; /* White header */
+  --footer-background: #edf2f7; /* Light Gray footer */
+  --link-color: #2b6cb0; /* Darker Blue links */
+  --link-hover-color: #2c5282; /* Even Darker Blue hover */
+  --block-background: #ffffff; /* White blocks */
+  --svg-fill: #4a5568; /* Dark Gray for icons (incl. moon) */
   --scrollbar-track: #edf2f7;
   --scrollbar-thumb: #cbd5e0;
   --scrollbar-background: rgba(237, 242, 247, 0.8);
   --underline-color: var(--primary-color);
+  --data-block-text: #4a5568; /* Darker gray for data block text */
+  --data-block-title: #1a202c; /* Very dark gray for titles */
+  --data-block-subtitle: #718096; /* Medium gray for subtitles */
 
-  /* --- Explicit Overrides (Remove unnecessary ones) --- */
-  
-  /* Header */
+  /* Remove potential incorrect icon override */
+  /* .navContainer .theme-icon { 
+    fill: var(--svg-fill); /* This was potentially redundant or incorrect */
+  /* } */
+
+  /* Keep other specific light-theme overrides if needed */
   .navContainer {
     background-color: var(--header-background) !important;
     color: var(--text-color) !important;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.06);
   }
-  .navContainer .theme-icon {
-    fill: var(--svg-fill);
-  }
+  /* Styles for slider remain */
   .navContainer .slider {
     background-color: #cbd5e0;
   }
@@ -68,24 +75,6 @@ body[data-theme='light'] {
     background-color: var(--text-color);
   }
 
-  /* Remove specific Data Block overrides - rely on base vars */
-  /*
-  .dataBlock .info,
-  .dataBlock .infoTitle {
-    color: var(--text-color) !important;
-  }
-  .dataBlock .info p {
-     color: var(--text-color) !important;
-  }
-  .dataBlock .title .text {
-    color: var(--primary-color) !important;
-  }
-  .dataBlock .title .bottomBorder {
-     border-bottom: 3px solid var(--underline-color) !important;
-  }
-  */
-
-  /* Skills Block List Items */
   .skillsBlock li {
     background-color: #edf2f7;
     color: var(--text-color);
@@ -95,10 +84,7 @@ body[data-theme='light'] {
     background-color: var(--primary-color);
     color: #ffffff;
   }
-  
-  /* Side Links - Removed */
-  
-  /* Footer */
+
   .footerContainer {
      background-color: var(--footer-background);
      color: var(--text-color);
