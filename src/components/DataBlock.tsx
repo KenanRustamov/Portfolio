@@ -8,7 +8,6 @@ const DataBlock = (props: any) => {
     <div ref={ref} className = {`dataBlock ${props.className ? props.className : ""}`} id={props.id}>
         <div className="title">
             <div className="text">{props.propInput.title}</div>
-            <div className="bottomBorder"></div>
         </div>
         {props.propInput.ignoreInfo == null? 
          <div className="info">
