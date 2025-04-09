@@ -39,7 +39,29 @@
     width: 100%;
     flex-direction: row;
     justify-content: center;
-    align-content: center;
+    align-items: center;
+    gap: 25px;
+
+    a {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        text-decoration: none;
+        color: #8e8e8e;
+        transition: color .6s ease;
+
+        &:hover {
+            color: rgb(101, 167, 185);
+            .dynamicLogo path {
+                fill: rgb(101, 167, 185);
+            }
+        }
+
+        .icon-label {
+            font-size: 14px;
+            font-weight: 400;
+        }
+    }
   }
 
   .bottomText {
