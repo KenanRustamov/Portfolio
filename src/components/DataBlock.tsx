@@ -1,4 +1,5 @@
-import React, { RefObject } from 'react'
+import React, { RefObject } from 'react';
+import { motion } from 'framer-motion';
 import "./DataBlock.scss";
 
 // Define layout types
@@ -28,8 +29,20 @@ interface DataBlockProps {
 }
 
 const DataBlock = (props: DataBlockProps) => {
-    const ref: RefObject<any> = React.createRef();
-    const layout = props.layoutType || 'standard'; // Default to 'standard'
+    const layout = props.layoutType || 'standard';
+
+    // Framer Motion animation variants
+    const blockVariants = {
+        hidden: { opacity: 0, y: 20 }, // Start hidden and slightly down
+        visible: { 
+            opacity: 1, 
+            y: 0, 
+            transition: { duration: 0.6, ease: "easeOut" } // Define transition here
+        }
+    };
+
+    // Animate all blocks by default now
+    const isIntro = layout === 'intro';
 
     const renderStandardLayout = () => (
         <>
@@ -119,11 +132,19 @@ const DataBlock = (props: DataBlockProps) => {
      );
 
     const content =
-    <div ref={ref} className={`dataBlock ${props.className || ""} layout-${layout}`} id={props.id}>
+    <motion.div 
+        className={`dataBlock ${props.className || ""} layout-${layout}`}
+        id={props.id}
+        variants={blockVariants}
+        initial="hidden"
+        animate={isIntro ? "visible" : undefined}
+        whileInView={!isIntro ? "visible" : undefined}
+        viewport={!isIntro ? { once: true, amount: 0.1 } : undefined}
+    >
          {!props.propInput.ignoreInfo ? (
              layout === 'intro' ? renderIntroLayout() : renderStandardLayout()
          ) : null}
-    </div>
+    </motion.div>
     ;
     return content ;
 }
