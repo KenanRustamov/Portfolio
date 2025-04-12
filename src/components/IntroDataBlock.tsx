@@ -81,6 +81,14 @@ const IntroDataBlock = (props: IntroDataBlockProps) => {
         : null
     );
 
+    // Scroll handler function
+    const handleScrollDown = () => {
+        const nextSection = document.getElementById('work-experience-section');
+        if (nextSection) {
+            nextSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     // The main structure of the IntroDataBlock
     const content = (
         <motion.div
@@ -90,6 +98,7 @@ const IntroDataBlock = (props: IntroDataBlockProps) => {
             initial="hidden"
             animate="visible" // Always animate intro block on load
             viewport={{ once: true, amount: 0.1 }} // Keep viewport settings if desired
+            style={{ position: 'relative' }} // Ensure parent is positioned for absolute child
         >
             {/* Optional title rendering (usually not needed for intro) */}
             {props.propInput.title &&
@@ -116,6 +125,13 @@ const IntroDataBlock = (props: IntroDataBlockProps) => {
                     {props.propInput.other}
                 </div>
             )}
+
+            {/* Scroll Down Icon Container */}
+            <div className="scroll-down-icon-container" onClick={handleScrollDown}>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="scroll-down-icon">
+                    <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/>
+                </svg>
+            </div>
         </motion.div>
     );
 

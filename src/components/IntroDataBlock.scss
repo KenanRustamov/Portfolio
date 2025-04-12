@@ -193,3 +193,45 @@
         }
      }
 }
+
+/* Keyframes for bounce animation */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px); /* Adjust bounce height */
+  }
+  60% {
+    transform: translateY(-5px); /* Adjust bounce height */
+  }
+}
+
+/* Scroll Down Icon Styles */
+.scroll-down-icon-container {
+    position: absolute;
+    bottom: 40px; /* Adjust vertical position */
+    left: 0px; /* Adjust horizontal position */
+    cursor: pointer;
+    animation: bounce 2s infinite; /* Apply bounce animation */
+
+    .scroll-down-icon {
+        width: 30px; /* Adjust icon size */
+        height: 30px; /* Adjust icon size */
+        fill: currentColor; /* Inherit color from parent text color */
+        color: var(--text-color); /* Set the color explicitly using a theme variable */
+        transition: color 0.3s ease; /* Smooth color transition */
+
+        &:hover {
+             color: var(--link-hover-color); /* Change color on hover */
+        }
+    }
+}
+
+/* Adjust position for smaller screens if needed */
+@media (max-width: 768px) {
+    .scroll-down-icon-container {
+        left: 0px; /* Closer to edge on small screens */
+        bottom: 20px;
+    }
+}

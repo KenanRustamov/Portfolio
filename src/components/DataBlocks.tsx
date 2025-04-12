@@ -38,6 +38,7 @@ const DataBlocks = (props: any) => {
             propInput ={{infoTitle:"Kenan Rustamov", infoSubtitle:"Full Stack Developer", infoText:"I currently major in Computer Science with a minor in Chemistry at the University of Pittsburgh. I am a co-founder of a club for minorities in computing and fundraising chair of Oakland Outreach, a volunteer club. Currently, I also TA for Discrete Structures.", infoImg: kenanPhoto, alt: "Professionalish looking photo at the beach"}}
         />
         <motion.div 
+            id="work-experience-section"
             className="dataBlock card standard-block-group"
             variants={groupVariants}
             initial="hidden"
