@@ -35,7 +35,7 @@ body {
 
 body[data-theme='light'] {
   /* Light Mode Overrides - Brighter Palette */
-  --background-color: #f7fafc; /* Very Light Gray background */
+  --background-color: White; /* Very Light Gray background */
   --text-color: #2d3748; /* Dark Gray text */
   --primary-color: #3182ce; /* Standard Blue */
   --secondary-color: #a0aec0; /* Medium Gray */

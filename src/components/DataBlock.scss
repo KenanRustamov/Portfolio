@@ -58,11 +58,11 @@
     margin: 15px;
     object-fit: cover;
     transition: filter 0.4s ease-in-out;
-    filter: grayscale(40%) brightness(90%);
+    // filter: grayscale(40%) brightness(90%);
 
-    &:hover {
-        filter: none;
-    }
+    // &:hover {
+    //     filter: none;
+    // }
 }
 
 .line {
@@ -599,4 +599,8 @@
             font-weight: 300;
         }
     }
+}
+
+.layout-standard .info {
+    align-items: flex-start;
 }
