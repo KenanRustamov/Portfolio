@@ -1,0 +1,193 @@
+/* Styles specifically for IntroDataBlock */
+.introDataBlock {
+    display:flex;
+    width: 80%;
+    max-width: 1100px;
+    font-size: 60px; /* Larger base font size for intro */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 3rem; /* Keep consistent bottom margin */
+    padding-top: 70px; /* Specific padding for intro */
+    padding-bottom: 70px;
+    box-sizing: border-box;
+    position: relative;
+    min-height: 100vh; /* Make intro block fill viewport height */
+    justify-content: center;
+    margin-bottom: 0; /* Remove bottom margin if it fills height */
+
+    /* Copied and adapted styles from DataBlock.scss relevant to intro */
+    .title.intro-title {
+        color: rgb(101, 167, 185);
+        font-weight: bold;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
+        width: 100%;
+    }
+
+    .info {
+        margin-bottom: 40px;
+        width: 100%;
+        display: flex;
+        flex-direction: row; /* Default to row */
+        flex-wrap: wrap;
+        justify-content: center; /* Center items */
+        align-items: center;
+        gap: 40px; /* Larger gap for intro */
+    }
+
+    .infoTextContainer {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        min-width: 300px;
+        align-items: flex-start; /* Align text start by default */
+    }
+
+    .introText {
+        font-size: 0.6em;
+        color: #b0b0b0;
+        margin-bottom: 5px;
+        font-weight: 300;
+        text-align: left;
+    }
+
+    .infoTitle {
+        display: flex;
+        font-size: 1.3em; /* Larger title */
+        font-weight: 600;
+        flex-direction: column;
+        margin-top:15px;
+        margin-bottom:15px;
+        line-height: 1.3;
+        color: var(--data-block-title);
+        font-size: clamp(1.5rem, 4vw, 3rem); /* Responsive title size */
+        text-align: left;
+    }
+
+    .subtitle {
+        color: var(--data-block-subtitle);
+        font-size: 0.6em;
+        margin-top: 8px;
+        font-weight: 400;
+        font-size: clamp(0.875rem, 2vw, 1.25rem); /* Responsive subtitle size */
+        text-align: left;
+    }
+
+    .infoText {
+        font-size: 0.4em; /* Larger text */
+        color: var(--data-block-text);
+        line-height: 1.6;
+        margin-top: 15px;
+        text-align: left;
+    }
+
+    .image {
+        border-radius: 10px;
+        width: 400px; /* Larger image for intro */
+        height: 400px;
+        margin: 15px;
+        object-fit: cover;
+        flex-shrink: 0;
+    }
+
+    .clickable {
+        border: 2px solid transparent;
+        cursor: pointer; /* Indicate clickability */
+    }
+
+    /* Icons styling copied from DataBlock.scss */
+    .dataBlock-icons {
+        margin-top: 20px;
+        display: flex;
+        gap: 20px; /* Adjusted gap slightly from footer's 25px */
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: flex-start; /* Align icons start by default */
+
+        /* Styles adapted from Footer.scss .logoLinks */
+        a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px; /* Gap from footer */
+            text-decoration: none;
+            color: var(--svg-fill); /* Use theme variable */
+            transition: color .6s ease;
+
+            &:hover {
+                color: var(--link-hover-color); /* Use theme variable */
+                .dynamicLogo path { /* Ensure SVG path color changes on hover */
+                     fill: var(--link-hover-color); /* Use theme variable */
+                }
+            }
+
+            .dynamicLogo {
+                 height: 20px; /* Match footer icon height */
+                 width: auto; /* Allow auto width */
+                 margin-left: 5px; // Added margin from footer styles
+                 margin-right: 5px; // Added margin from footer styles
+                 path {
+                     fill: currentColor; /* Make path inherit color from 'a' tag */
+                     transition: fill .6s ease; /* Keep transition on path */
+                 }
+            }
+
+            /* Remove specific hover for dynamicLogo path as parent 'a' hover handles it */
+            // .dynamicLogo:hover path {
+            //     fill: var(--link-hover-color);
+            // }
+
+            .icon-label {
+                font-size: 14px; /* Match footer font size */
+                font-weight: 400; /* Match footer font weight */
+                // font-size: 0.3em; // Remove relative font size
+                // font-weight: 300; // Remove relative font weight
+            }
+        }
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1000px) {
+        .info {
+            flex-direction: column; /* Stack vertically */
+            gap: 25px;
+        }
+        .infoTextContainer {
+            align-items: center; /* Center text */
+            order: 2; /* Text below image */
+        }
+        .image {
+            order: 1; /* Image above text */
+            width: 300px; /* Smaller image */
+            height: 300px;
+        }
+        .introText,
+        .infoTitle,
+        .subtitle,
+        .infoText {
+            text-align: center; /* Center all text */
+        }
+        .dataBlock-icons {
+            justify-content: center; /* Center icons */
+        }
+    }
+
+     @media (max-width: 768px) {
+        font-size: 50px; // Slightly smaller base font size on smaller screens
+        padding-top: 50px;
+        padding-bottom: 50px;
+
+        .infoTitle {
+            font-size: clamp(1.3rem, 5vw, 2.5rem); // Adjust clamp range
+        }
+         .subtitle {
+            font-size: clamp(0.8rem, 2.5vw, 1.1rem); // Adjust clamp range
+        }
+        .image {
+             width: 250px;
+             height: 250px;
+        }
+     }
+}

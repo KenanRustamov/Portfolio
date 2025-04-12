@@ -1,12 +1,9 @@
-import React, { RefObject } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import "./DataBlock.scss";
+import "./IntroDataBlock.scss"; // Import specific styles
 
-// Define layout types
-// type LayoutType = 'intro' | 'standard'; // Removed layout types
-
-// Define Props interface for better type safety
-interface DataBlockProps {
+// Define Props interface specifically for IntroDataBlock
+interface IntroDataBlockProps {
     className?: string;
     id?: string;
     github?: string;
@@ -14,59 +11,30 @@ interface DataBlockProps {
     instagram?: string;
     resume?: string;
     propInput: {
-        title?: string;
-        infoTitle?: string;
-        infoSubtitle?: string;
-        infoText?: string;
-        infoImg?: string;
+        title?: string; // Title is optional here, often not used in intro
+        infoTitle: string; // Required for Intro
+        infoSubtitle: string; // Required for Intro
+        infoText: string; // Required for Intro
+        infoImg: string; // Required for Intro
         alt?: string;
         ignoreInfo?: boolean;
         other?: React.ReactNode;
     };
-    icon?: boolean; // Assuming this is for hiding the image if an icon is present?
-    textOnly?: boolean; // Assuming this affects image styling?
-    // layoutType?: LayoutType; // Removed layoutType prop
 }
 
-const DataBlock = (props: DataBlockProps) => {
-    // const layout = props.layoutType || 'standard'; // Removed layout logic
+const IntroDataBlock = (props: IntroDataBlockProps) => {
 
-    // Framer Motion animation variants
+    // Framer Motion animation variants (can be kept or moved to parent)
     const blockVariants = {
-        hidden: { opacity: 0, y: 20 }, // Start hidden and slightly down
-        visible: { 
-            opacity: 1, 
-            y: 0, 
-            transition: { duration: 0.6, ease: "easeOut" } // Define transition here
+        hidden: { opacity: 0, y: 20 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.6, ease: "easeOut" }
         }
     };
 
-    // Animate all blocks by default now
-    // const isIntro = layout === 'intro'; // Removed isIntro flag
-
-    const renderStandardLayout = () => (
-        <>
-            {props.propInput.title && (
-                <div className="title-container standard-title">
-                    <div className="title-text">{props.propInput.title}</div>
-                </div>
-            )}
-            <div className={`info ${!props.propInput.title ? 'no-title-sibling' : ''}`}>
-                <div className="infoTextContainer">
-                    {/* Title and Subtitle are now handled differently in standard layout if needed */}
-                    {props.propInput.infoTitle && (
-                        <div className="infoTitle">{props.propInput.infoTitle}
-                            {props.propInput.infoSubtitle && <div className="subtitle">{props.propInput.infoSubtitle}</div>}
-                        </div>
-                    )}
-                    <div className="infoText">{props.propInput.infoText}</div>
-                    {renderIcons()}
-                </div>
-                {renderImage()}
-            </div>
-        </>
-    );
-
+    // Helper function to render social/link icons
     const renderIcons = () => (
         <div className="dataBlock-icons">
             {props.github && (
@@ -75,7 +43,7 @@ const DataBlock = (props: DataBlockProps) => {
                     <span className="icon-label">GitHub</span>
                 </a>
             )}
-            {props.link && !props.propInput.infoImg && ( // Only show LinkedIn text if it's not the main link for an image block
+             {props.link && (
                  <a href={props.link} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
                     <svg className="dynamicLogo" xmlns="http://www.w3.org/2000/svg" height="25" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                     <span className="icon-label">LinkedIn</span>
@@ -96,37 +64,58 @@ const DataBlock = (props: DataBlockProps) => {
         </div>
     );
 
-     const renderImage = () => (
-         !props.icon && props.propInput.infoImg ?
-            (props.link ?
-                <a href={props.link} target={"_blank"} rel="noopener noreferrer" aria-label={props.propInput.alt || "Link related to image"}>
+    // Helper function to render the image
+    const renderImage = () => (
+        props.propInput.infoImg ?
+            (props.link ? // If a link is provided for the image (e.g., profile pic links to LinkedIn)
+                <a href={props.link} target="_blank" rel="noopener noreferrer" aria-label={props.propInput.alt || "Link related to image"}>
                     <img className="image clickable" src={props.propInput.infoImg} alt={props.propInput.alt}/>
                 </a>
                 :
-                <img className={props.textOnly ? "line" : "image"} src={props.propInput.infoImg} alt={props.propInput.alt}/>
+                <img className="image" src={props.propInput.infoImg} alt={props.propInput.alt}/>
             )
-         : null
-     );
+        : null
+    );
 
-    const content =
-    <motion.div
-        // className={`dataBlock ${props.className || ""} layout-${layout}`} // Use standard class
-        className={`dataBlock standard-layout ${props.className || ""}`} // Apply standard layout class directly
-        id={props.id}
-        variants={blockVariants}
-        initial="hidden"
-        // animate={isIntro ? "visible" : undefined} // Removed conditional animation
-        // whileInView={!isIntro ? "visible" : undefined} // Always use whileInView
-        whileInView="visible"
-        // viewport={!isIntro ? { once: true, amount: 0.1 } : undefined} // Always use viewport
-        viewport={{ once: true, amount: 0.1 }}
-    >
-         {!props.propInput.ignoreInfo ? (
-             // layout === 'intro' ? renderIntroLayout() : renderStandardLayout() // Always render standard
-             renderStandardLayout()
-         ) : null}
-    </motion.div>
-    ;
-    return content ;
-}
-export default DataBlock;
+    // The main structure of the IntroDataBlock
+    const content = (
+        <motion.div
+            className={`introDataBlock ${props.className || ""}`}
+            id={props.id}
+            variants={blockVariants}
+            initial="hidden"
+            animate="visible" // Always animate intro block on load
+            viewport={{ once: true, amount: 0.1 }} // Keep viewport settings if desired
+        >
+            {/* Optional title rendering (usually not needed for intro) */}
+            {props.propInput.title &&
+                 <div className="title intro-title">
+                     <div className="text">{props.propInput.title}</div>
+                 </div>}
+
+            {!props.propInput.ignoreInfo && (
+                <div className="info">
+                    <div className="infoTextContainer">
+                        {/* Specific intro text */} 
+                        <div className="introText">Hello, my name is</div>
+                        {/* Main titles and text */} 
+                        <div className="infoTitle">{props.propInput.infoTitle}
+                            <div className ="subtitle">{props.propInput.infoSubtitle}</div>
+                        </div>
+                        <div className="infoText">{props.propInput.infoText}</div>
+                        {/* Icons */}
+                        {renderIcons()}
+                    </div>
+                    {/* Image */}
+                    {renderImage()}
+                    {/* Any other content passed via props.propInput.other */} 
+                    {props.propInput.other}
+                </div>
+            )}
+        </motion.div>
+    );
+
+    return content;
+};
+
+export default IntroDataBlock;

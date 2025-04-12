@@ -457,38 +457,9 @@
     // ... existing mobile styles ...
 }
 
-/* Intro Layout Specific Styles */
-.layout-intro {
-    font-size: 60px;
-    padding-top: 70px;
-    padding-bottom: 70px;
-
-    .infoTitle {
-        font-size: 1.3em;
-    }
-
-    .infoText {
-        font-size: 0.4em;
-        color: var(--data-block-text);
-    }
-
-    .title.intro-title {
-        color: rgb(101, 167, 185);
-        font-weight: bold;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-bottom: 20px;
-        width: 100%;
-    }
-
-    .title.intro-title .text {
-        // Specific styles for intro title text if needed
-    }
-}
-
 /* Standard Layout Specific Styles */
-.layout-standard {
+/* Renaming .layout-standard to .standard-layout for clarity */
+.standard-layout {
     width: 100%;
     padding-top: 30px;
     padding-bottom: 30px;
@@ -518,23 +489,26 @@
 }
 
 /* Adjust .info container for standard layout */
-.layout-standard .info {
+/* Renaming .layout-standard .info to .standard-layout .info */
+.standard-layout .info {
     flex: 1;
     flex-direction: row;
     margin-bottom: 0;
     width: auto;
     gap: 20px;
-    align-items: center;
+    align-items: center; /* Default alignment */
 }
 
 /* Add margin to info block when title is absent to align content */
-.layout-standard .info.no-title-sibling {
+/* Renaming .layout-standard .info.no-title-sibling to .standard-layout .info.no-title-sibling */
+.standard-layout .info.no-title-sibling {
     /* Title width (180px) + Title padding (20px) + Title border (2px) + Layout gap (30px) */
     margin-left: calc(180px + 20px + 2px + 30px);
 }
 
 /* Adjust text container within standard layout */
-.layout-standard .infoTextContainer {
+/* Renaming .layout-standard .infoTextContainer to .standard-layout .infoTextContainer */
+.standard-layout .infoTextContainer {
      min-width: 250px;
      display: flex;
      flex-direction: column;
@@ -542,31 +516,36 @@
 }
 
 /* Adjust image within standard layout */
-.layout-standard .image, .layout-standard .image.clickable {
+/* Renaming .layout-standard .image to .standard-layout .image */
+.standard-layout .image, .standard-layout .image.clickable {
     width: 200px;
     height: 200px;
     margin: 0;
 }
 
-.layout-standard .infoTitle {
+/* Renaming .layout-standard .infoTitle to .standard-layout .infoTitle */
+.standard-layout .infoTitle {
     font-size: 0.8em;
     margin-top: 0;
     color: var(--data-block-title);
 }
 
-.layout-standard .subtitle {
+/* Renaming .layout-standard .subtitle to .standard-layout .subtitle */
+.standard-layout .subtitle {
      font-size: 0.5em;
      color: var(--data-block-subtitle);
 }
 
-.layout-standard .infoText {
+/* Renaming .layout-standard .infoText to .standard-layout .infoText */
+.standard-layout .infoText {
     font-size: 0.3em;
     margin-top: 10px;
     color: var(--data-block-text);
 }
 
 /* Styles for Icons and Labels */
-.layout-standard .dataBlock-icons {
+/* Renaming .layout-standard .dataBlock-icons to .standard-layout .dataBlock-icons */
+.standard-layout .dataBlock-icons {
     margin-top: 15px;
 }
 
@@ -601,6 +580,7 @@
     }
 }
 
-.layout-standard .info {
-    align-items: flex-start;
+/* Renaming .layout-standard .info to .standard-layout .info */
+.standard-layout .info {
+    align-items: flex-start; /* Specific alignment for standard */
 }
