@@ -14,13 +14,12 @@
     margin-right: 5px;
   }
   .dynamicLogo path{
-    fill: #8e8e8e;    
+    fill: #8e8e8e;
     transition: fill .6s ease;
       transition-property: fill;
       transition-duration: .6s;
       transition-timing-function: ease;
       transition-delay: 0s;
-    height: 25px;
   }
   
   .dynamicLogo:hover path {
@@ -43,24 +42,44 @@
     gap: 25px;
 
     a {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        text-decoration: none;
-        color: #8e8e8e;
-        transition: color .6s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px; /* Gap from footer */
+      text-decoration: none;
+      color: var(--svg-fill); /* Use theme variable */
+      transition: color .6s ease;
 
-        &:hover {
-            color: rgb(101, 167, 185);
-            .dynamicLogo path {
-                fill: rgb(101, 167, 185);
-            }
-        }
+      &:hover {
+          color: var(--link-hover-color); /* Use theme variable */
+          .dynamicLogo path { /* Ensure SVG path color changes on hover */
+               fill: var(--link-hover-color); /* Use theme variable */
+          }
+      }
 
-        .icon-label {
-            font-size: 14px;
-            font-weight: 400;
-        }
+      .dynamicLogo {
+           height: 20px; /* Match footer icon height */
+           width: auto; /* Allow auto width */
+           margin-left: 5px; // Added margin from footer styles
+           margin-right: 5px; // Added margin from footer styles
+           fill: currentColor; /* Apply fill directly to the SVG component */
+
+           path {
+               fill: currentColor; /* Make path inherit color from parent SVG */
+               // transition: fill .6s ease; /* Transition might be better on the parent SVG fill */
+           }
+      }
+
+      /* Remove specific hover for dynamicLogo path as parent 'a' hover handles it */
+      // .dynamicLogo:hover path {
+      //     fill: var(--link-hover-color);
+      // }
+
+      .icon-label {
+          font-size: 14px; /* Match footer font size */
+          font-weight: 400; /* Match footer font weight */
+          // font-size: 0.3em; // Remove relative font size
+          // font-weight: 300; // Remove relative font weight
+      }
     }
   }
 

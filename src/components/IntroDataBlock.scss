@@ -128,9 +128,11 @@
                  width: auto; /* Allow auto width */
                  margin-left: 5px; // Added margin from footer styles
                  margin-right: 5px; // Added margin from footer styles
+                 fill: currentColor; /* Apply fill directly to the SVG component */
+
                  path {
-                     fill: currentColor; /* Make path inherit color from 'a' tag */
-                     transition: fill .6s ease; /* Keep transition on path */
+                     fill: currentColor; /* Make path inherit color from parent SVG */
+                     // transition: fill .6s ease; /* Transition might be better on the parent SVG fill */
                  }
             }
 
