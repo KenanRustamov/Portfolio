@@ -207,6 +207,19 @@
   }
 }
 
+/* Blinking cursor animation */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.typing-cursor {
+  animation: blink 1s step-end infinite;
+  font-weight: normal; /* Adjust if needed */
+  margin-left: 2px;
+  color: inherit; /* Inherit color from .introText */
+}
+
 /* Scroll Down Icon Styles */
 .scroll-down-icon-container {
     position: absolute;

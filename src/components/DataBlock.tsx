@@ -1,4 +1,4 @@
-import React, { RefObject } from 'react';
+import React, { RefObject, useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import "./DataBlock.scss";
 import { ReactComponent as PdfIcon } from "../images/pdf.svg"; // Import SVG as component
@@ -21,7 +21,9 @@ interface DataBlockProps {
         title?: string;
         infoTitle?: string;
         infoSubtitle?: string;
-        infoText?: string;
+        infoText?: string; // For blocks without expansion
+        infoTextShort?: string; // Short version
+        infoTextLong?: string; // Long version
         infoImg?: string;
         alt?: string;
         ignoreInfo?: boolean;
@@ -35,6 +37,84 @@ interface DataBlockProps {
 const DataBlock = (props: DataBlockProps) => {
     // const layout = props.layoutType || 'standard'; // Removed layout logic
 
+    const { infoTextShort, infoTextLong, infoText } = props.propInput;
+    const hasExpandableText = infoTextShort && infoTextLong;
+
+    // State for managing expanded view and typing animation
+    const [isExpanded, setIsExpanded] = useState(false);
+    const [displayText, setDisplayText] = useState(infoTextShort || infoText || "");
+    const [isTyping, setIsTyping] = useState(false);
+    const [showCursor, setShowCursor] = useState(false);
+    const typingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+    const cursorTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+    const initialLoadRef = useRef<boolean>(true);
+    const hasExpandedChangedRef = useRef<boolean>(false); // Ref to track if user interacted
+
+    // Function to clear all timeouts and reset animation state
+    const clearTimeoutsAndResetState = () => {
+        if (typingTimeoutRef.current) clearTimeout(typingTimeoutRef.current);
+        if (cursorTimeoutRef.current) clearTimeout(cursorTimeoutRef.current);
+        typingTimeoutRef.current = null;
+        cursorTimeoutRef.current = null;
+        // Reset state as well, important for StrictMode cleanup
+        setIsTyping(false); 
+        setShowCursor(false);
+    };
+
+    // Effect for typewriter animation
+    useEffect(() => {
+        // Skip effect entirely on initial mount
+        if (initialLoadRef.current) {
+            initialLoadRef.current = false;
+            return;
+        }
+
+        // If isExpanded hasn't actually changed from initial state (false),
+        // and we are not currently expanded, don't run the animation.
+        // This prevents the animation on the second Strict Mode mount 
+        // unless the button was clicked or state is already expanded.
+        if (!hasExpandedChangedRef.current && !isExpanded) {
+             return;
+        }
+
+        // --- Animation Logic --- (Only runs if initialLoadRef is false AND hasExpandedChangedRef is true or isExpanded is true)
+        if (!hasExpandableText || !infoTextShort || !infoTextLong) return;
+
+        clearTimeoutsAndResetState();
+
+        setIsTyping(true);
+        setShowCursor(true);
+
+        const targetText = isExpanded ? infoTextLong : infoTextShort;
+        let currentText = "";
+        let typingDelay = 15;
+        let cursorBlinkDuration = 3000;
+
+        setDisplayText("");
+
+        const type = () => {
+            if (!typingTimeoutRef.current && !cursorTimeoutRef.current) return; 
+
+            if (currentText.length < targetText.length) {
+                currentText = targetText.substring(0, currentText.length + 1);
+                setDisplayText(currentText);
+                typingTimeoutRef.current = setTimeout(type, typingDelay);
+            } else {
+                setIsTyping(false);
+                typingTimeoutRef.current = null; 
+                cursorTimeoutRef.current = setTimeout(() => {
+                    setShowCursor(false);
+                    cursorTimeoutRef.current = null;
+                }, cursorBlinkDuration);
+            }
+        };
+
+        typingTimeoutRef.current = setTimeout(type, 50);
+
+        return clearTimeoutsAndResetState;
+
+    }, [isExpanded]); // Dependency is correct
+
     // Framer Motion animation variants
     const blockVariants = {
         hidden: { opacity: 0, y: 20 }, // Start hidden and slightly down
@@ -47,6 +127,23 @@ const DataBlock = (props: DataBlockProps) => {
 
     // Animate all blocks by default now
     // const isIntro = layout === 'intro'; // Removed isIntro flag
+
+    // Handler for Learn More/Less toggle
+    const handleToggleExpand = () => {
+        if (!isTyping) {
+            hasExpandedChangedRef.current = true; // Mark that interaction has occurred
+            setIsExpanded(!isExpanded);
+        }
+    };
+
+    // Handler for Complete button
+    const handleCompleteTyping = () => {
+        if (!infoTextShort || !infoTextLong) return;
+        clearTimeoutsAndResetState();
+        const targetText = isExpanded ? infoTextLong : infoTextShort;
+        setDisplayText(targetText);
+        // Setting hasExpandedChangedRef is not needed here, only tracks user *toggle* action
+    };
 
     const renderStandardLayout = () => (
         <>
@@ -63,8 +160,23 @@ const DataBlock = (props: DataBlockProps) => {
                             {props.propInput.infoSubtitle && <div className="subtitle">{props.propInput.infoSubtitle}</div>}
                         </div>
                     )}
-                    <div className="infoText">{props.propInput.infoText}</div>
+                    {/* Display state-managed text */} 
+                    <div className="infoText"> 
+                         {displayText}
+                         {showCursor && <span className="typing-cursor">|</span>} 
+                    </div>
                     {renderIcons()}
+                     {/* Add Learn More/Less button if applicable */} 
+                     {hasExpandableText && (
+                        <button
+                            className="learn-more-button"
+                            onClick={isTyping ? handleCompleteTyping : handleToggleExpand} // Conditional onClick
+                            disabled={false} // Button is never truly disabled, action just changes
+                        >
+                             {/* Add arrow icon */}
+                            {isTyping ? "Complete" : (isExpanded ? <>Learn Less <span className="button-arrow">▲</span></> : <>Learn More <span className="button-arrow">▼</span></>)}
+                        </button>
+                    )}
                 </div>
                 {renderImage()}
             </div>

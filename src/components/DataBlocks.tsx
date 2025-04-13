@@ -26,6 +26,12 @@ const DataBlocks = (props: any) => {
         }
     };
 
+    // Define longer descriptions
+    const bnyLongText = "During my internship at BNY Mellon, I contributed to a critical internal tool designed for transaction verification via the Fircosoft platform. My role involved full-stack development within an Agile framework, emphasizing Test-Driven Development (TDD). Key contributions included implementing comprehensive CRUD (Create, Read, Update, Delete) operations for core data models, setting up the initial database schema using Liquibase for version control, and configuring the Java Spring Boot project structure. This project aimed to streamline compliance checks and improve the efficiency of verifying large-scale financial transactions.";
+    const bentleyLongText = "At Bentley Systems, I worked on enhancing project user management capabilities within a large-scale web application. My main task was to develop the front-end (React) and back-end (C# .NET) components necessary to allow administrators and project managers to add or remove team members from specific projects directly through the UI. This involved designing API endpoints, updating database schemas to reflect user-project relationships, and ensuring data persistence and integrity across the system. The feature improved project collaboration and access control for end-users.";
+    const partifyLongText = "Partify is a web application built with React, TypeScript, and SCSS, leveraging the Spotify API to generate collaborative playlists. Users can log in with their Spotify accounts, create a 'Partify' session, and invite friends. The application analyzes the musical preferences of all participants by fetching their top tracks and artists from Spotify. It then employs an algorithm to identify common genres and musical features, generating a unique playlist tailored to the group's collective taste, perfect for parties or shared listening experiences. The project involved complex API interactions, state management, and responsive UI design.";
+    const snackCheckLongText = "SnackCheck is a mobile application developed using React Native and Expo, targeting users with specific dietary needs. It allows users to search for recipes while filtering based on various dietary restrictions (e.g., vegan, gluten-free) and common allergies (e.g., nuts, shellfish, dairy). The app utilizes external recipe APIs to fetch and display relevant recipes, providing detailed ingredient lists and cooking instructions. Key challenges included managing API integrations, implementing robust filtering logic, and creating an intuitive user interface suitable for mobile platforms.";
+
     let content = 
     <div className={"data"}>
         <IntroDataBlock 
@@ -49,12 +55,27 @@ const DataBlocks = (props: any) => {
                 className="interior" 
                 id={"2"} 
                 link={"https://bnymellon.com"} 
-                propInput={{title: "Work Experience",infoTitle:"BNY Mellon", infoSubtitle:"Full-Stack Software Engineering Intern", infoText: "Worked on a project to allow internal users to communicate with Fircosoft to verify large transactions utilizing test-driven development in an agile environment.  Specifically worked on creating CRUD operations for the project and database/project setup.", infoImg: bnymellon, alt: "image of bnymellon"}}
+                propInput={{
+                    title: "Work Experience",
+                    infoTitle:"BNY Mellon",
+                    infoSubtitle:"Full-Stack Software Engineering Intern",
+                    infoTextShort: "Worked on a project to allow internal users to communicate with Fircosoft to verify large transactions utilizing test-driven development in an agile environment. Specifically worked on creating CRUD operations for the project and database/project setup.",
+                    infoTextLong: bnyLongText,
+                    infoImg: bnymellon,
+                    alt: "image of bnymellon"
+                }}
             />
             <DataBlock 
                 className="interior" 
                 link={"https://www.bentley.com/en"} 
-                propInput={{infoTitle:"Bentley Systems", infoSubtitle:"Full-Stack Software Engineering Intern", infoText: "Created the ability for end users of the application to add and remove users from projects, persisted in the backend.", infoImg: BentleyPhoto, alt: "Yes, that is my favorite shirt"}}
+                propInput={{
+                    infoTitle:"Bentley Systems",
+                    infoSubtitle:"Full-Stack Software Engineering Intern",
+                    infoTextShort: "Created the ability for end users of the application to add and remove users from projects, persisted in the backend.",
+                    infoTextLong: bentleyLongText,
+                    infoImg: BentleyPhoto,
+                    alt: "Yes, that is my favorite shirt"
+                }}
             />
         </motion.div>
         <motion.div 
@@ -69,12 +90,27 @@ const DataBlocks = (props: any) => {
                 id ={"3"} 
                 github={"https://github.com/KenanRustamov/Partify"} 
                 link ={"http://www.partify-us.com/"} 
-                propInput={{title: "Projects",infoTitle:"Partify", infoSubtitle:"React TypeScript Scss", infoText:"Partify is an app that allows you to create a custom tailored playlist for any occasion based on the user and their friends' music tastes.", infoImg: partifyImg, alt: "Image of my partify application"}}
+                propInput={{
+                    title: "Projects",
+                    infoTitle:"Partify",
+                    infoSubtitle:"React TypeScript Scss",
+                    infoTextShort:"Partify is an app that allows you to create a custom tailored playlist for any occasion based on the user and their friends' music tastes.",
+                    infoTextLong: partifyLongText,
+                    infoImg: partifyImg,
+                    alt: "Image of my partify application"
+                }}
             />
             <DataBlock 
                 className="interior" 
                 link ={"https://github.com/KenanRustamov/SnackCheck"} 
-                propInput ={{infoTitle:"SnackCheck", infoSubtitle:"JavaScript React-Native Expo", infoText:"SnackCheck allows users to find recipes based on dietary preferences such as veganism or allergies such as shellfish.", infoImg: SnackCheck, alt: "Image of my snackcheck application"}}
+                propInput ={{
+                    infoTitle:"SnackCheck",
+                    infoSubtitle:"JavaScript React-Native Expo",
+                    infoTextShort:"SnackCheck allows users to find recipes based on dietary preferences such as veganism or allergies such as shellfish.",
+                    infoTextLong: snackCheckLongText,
+                    infoImg: SnackCheck,
+                    alt: "Image of my snackcheck application"
+                }}
             />
         </motion.div>
   </div>;

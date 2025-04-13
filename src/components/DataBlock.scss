@@ -146,7 +146,6 @@
 
 .card {
     @media (min-width: 600px) {
-        margin-bottom:2rem;
     }
 }
 
@@ -585,6 +584,44 @@
     align-items: flex-start; /* Specific alignment for standard */
 }
 
+/* Blinking cursor animation */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.typing-cursor {
+  animation: blink 1s step-end infinite;
+  font-weight: bold;
+  margin-left: 2px;
+  color: var(--text-color); /* Match text color */
+}
+
+/* Learn More Button Styles */
+.learn-more-button {
+    background-color: transparent;
+    border: 1px solid var(--link-hover-color);
+    color: var(--link-hover-color);
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.25em; /* Adjust font size relative to parent */
+    font-weight: 500;
+    margin-top: 20px; /* Add space above the button */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    align-self: flex-start; /* Align button to the start */
+
+    &:hover:not(:disabled) {
+        background-color: var(--link-hover-color);
+        color: var(--button-text-hover-color, #ffffff); /* Use variable or default white */
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+        opacity: 0.6;
+    }
+}
+
 /* Responsive adjustments for standard layout */
 @media (max-width: 1000px) {
     .standard-layout {
@@ -619,6 +656,11 @@
              text-align: center; /* Center the text itself */
              min-width: unset; /* Allow shrinking */
              width: 100%;
+
+             /* Center button in vertical layout */
+             .learn-more-button {
+                 align-self: center;
+             }
         }
 
         /* Adjust image for vertical stacking */

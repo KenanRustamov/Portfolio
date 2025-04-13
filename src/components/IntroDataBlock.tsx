@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import "./IntroDataBlock.scss"; // Import specific styles
 import { ReactComponent as PdfIcon } from "../images/pdf.svg"; // Import SVG as component
@@ -27,6 +27,45 @@ interface IntroDataBlockProps {
 }
 
 const IntroDataBlock = (props: IntroDataBlockProps) => {
+
+    // State for intro text animation
+    const introTextTarget = "Hello, my name is";
+    const [introTypedText, setIntroTypedText] = useState("");
+    const [showIntroCursor, setShowIntroCursor] = useState(true); // Start visible
+    const introTypingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+    const introCursorTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+    // Effect for intro text typewriter
+    useEffect(() => {
+        let currentText = "";
+        let typingDelay = 80; // Slower typing for intro
+        let cursorBlinkDuration = 3000; // 3 seconds
+
+        const typeIntro = () => {
+            if (currentText.length < introTextTarget.length) {
+                currentText = introTextTarget.substring(0, currentText.length + 1);
+                setIntroTypedText(currentText);
+                introTypingTimeoutRef.current = setTimeout(typeIntro, typingDelay);
+            } else {
+                // Finished typing intro
+                introTypingTimeoutRef.current = null;
+                // Keep cursor blinking for a bit, then hide
+                introCursorTimeoutRef.current = setTimeout(() => {
+                    setShowIntroCursor(false);
+                    introCursorTimeoutRef.current = null;
+                }, cursorBlinkDuration);
+            }
+        };
+
+        // Start typing after a short delay
+        introTypingTimeoutRef.current = setTimeout(typeIntro, 500); // Delay before intro typing starts
+
+        // Cleanup
+        return () => {
+            if (introTypingTimeoutRef.current) clearTimeout(introTypingTimeoutRef.current);
+            if (introCursorTimeoutRef.current) clearTimeout(introCursorTimeoutRef.current);
+        };
+    }, []); // Empty dependency array means run only once on mount
 
     // Framer Motion animation variants (can be kept or moved to parent)
     const blockVariants = {
@@ -109,8 +148,11 @@ const IntroDataBlock = (props: IntroDataBlockProps) => {
             {!props.propInput.ignoreInfo && (
                 <div className="info">
                     <div className="infoTextContainer">
-                        {/* Specific intro text */} 
-                        <div className="introText">Hello, my name is</div>
+                        {/* Specific intro text with typewriter */}
+                        <div className="introText">
+                             {introTypedText}
+                             {showIntroCursor && <span className="typing-cursor">|</span>} 
+                        </div>
                         {/* Main titles and text */} 
                         <div className="infoTitle">{props.propInput.infoTitle}
                             <div className ="subtitle">{props.propInput.infoSubtitle}</div>
