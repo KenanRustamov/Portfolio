@@ -18,7 +18,7 @@
 
     /* Copied and adapted styles from DataBlock.scss relevant to intro */
     .title.intro-title {
-        color: rgb(101, 167, 185);
+        color: var(--link-hover-color);
         font-weight: bold;
         display: flex;
         flex-direction: column;

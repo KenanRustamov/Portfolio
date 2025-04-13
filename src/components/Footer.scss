@@ -23,7 +23,7 @@
   }
   
   .dynamicLogo:hover path {
-    fill: rgb(101, 167, 185);
+    fill: var(--link-hover-color);
     transition: fill .6s ease;
       transition-property: fill;
       transition-duration: .6s;
@@ -51,9 +51,10 @@
 
       &:hover {
           color: var(--link-hover-color); /* Use theme variable */
-          .dynamicLogo path { /* Ensure SVG path color changes on hover */
-               fill: var(--link-hover-color); /* Use theme variable */
-          }
+          /* Remove explicit fill change for the SVG on hover */
+          // .dynamicLogo {
+          //     fill: var(--link-hover-color);
+          // }
       }
 
       .dynamicLogo {
