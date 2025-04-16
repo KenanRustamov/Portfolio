@@ -1,5 +1,5 @@
 import React, { RefObject, useState, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import "./DataBlock.scss";
 import { ReactComponent as PdfIcon } from "../images/pdf.svg"; // Import SVG as component
 import { ReactComponent as GitHubIcon } from "../images/gitHubLogo.svg";
@@ -49,6 +49,7 @@ const DataBlock = (props: DataBlockProps) => {
     const cursorTimeoutRef = useRef<NodeJS.Timeout | null>(null);
     const initialLoadRef = useRef<boolean>(true);
     const hasExpandedChangedRef = useRef<boolean>(false); // Ref to track if user interacted
+    const [isAnimatingCollapse, setIsAnimatingCollapse] = useState(false); // State for collapse text delay
 
     // Function to clear all timeouts and reset animation state
     const clearTimeoutsAndResetState = () => {
@@ -125,12 +126,75 @@ const DataBlock = (props: DataBlockProps) => {
         }
     };
 
+    // Variants for image transitions
+    const singleImageVariants = {
+        initial: { opacity: 0 }, // Start hidden
+        animate: { opacity: 1, transition: { duration: 0.3, delay: 0.1 } }, // Match total stacked duration, fade in with button
+        exit: { opacity: 0, transition: { duration: 0.3 } } // Fade out quick
+    };
+
+    const expandedImageContainerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                duration: 0.3, // Faster container fade-in
+                when: "beforeChildren", // Ensure container is visible before children animate
+                staggerChildren: 0.2 // Stagger the images
+            }
+        },
+        exit: { opacity: 0, transition: { duration: 0.3 } }
+    };
+
+    const expandedImageVariants = {
+        hidden: { opacity: 0, y: 10 }, // Start slightly down
+        visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } } // Eased fade-in
+    };
+
+    // Combined container variants for the stack (handles stagger)
+    const imageStackContainerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                when: "beforeChildren", // Animate children after container is visible
+                staggerChildren: 0.2 // Stagger the images
+            }
+        },
+        exit: {
+            opacity: 0,
+            transition: {
+                 when: "afterChildren", // Ensure children finish exiting first
+                 staggerChildren: 0.1, // Stagger exit slightly
+                 staggerDirection: -1 // Reverse stagger on exit
+            }
+        }
+    };
+
+    // Variants for individual images within the stack
+    const stackedImageVariants = {
+        hidden: { opacity: 0, y: 15 }, // Start slightly down
+        visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } }, // Eased fade-in
+        exit: { opacity: 0, y: -15, transition: { duration: 0.3, ease: "easeIn" } } // Fade out upwards
+    };
+
+    // Variants for button fade
+    const buttonVariants = {
+        // Use 'initial' and 'animate' states for consistency
+        initial: { opacity: 0 },
+        animate: { opacity: 1, transition: { duration: 0.4, delay: 0.9 } }, // Significantly delay enter
+        exit: { opacity: 0, transition: { duration: 0.3 } } // Slightly longer exit
+    };
+
     // Animate all blocks by default now
     // const isIntro = layout === 'intro'; // Removed isIntro flag
 
     // Handler for Learn More/Less toggle
     const handleToggleExpand = () => {
         if (!isTyping) {
+            if (isExpanded) { // If we are currently expanded (about to collapse)
+                setIsAnimatingCollapse(true); // Signal that collapse animation is starting
+            }
             hasExpandedChangedRef.current = true; // Mark that interaction has occurred
             setIsExpanded(!isExpanded);
         }
@@ -144,6 +208,19 @@ const DataBlock = (props: DataBlockProps) => {
         setDisplayText(targetText);
         // Setting hasExpandedChangedRef is not needed here, only tracks user *toggle* action
     };
+
+    // Effect to reset isAnimatingCollapse after collapse animation
+    useEffect(() => {
+        // Only run if state is collapsed AND we were animating the collapse
+        if (!isExpanded && isAnimatingCollapse) {
+            const timer = setTimeout(() => {
+                setIsAnimatingCollapse(false);
+            }, 300); // Duration slightly longer than button exit animation (0.25s)
+
+            // Cleanup timeout on unmount or if dependencies change before timer fires
+            return () => clearTimeout(timer);
+        }
+    }, [isExpanded, isAnimatingCollapse]); // Depend on both states
 
     const renderStandardLayout = () => (
         <>
@@ -166,18 +243,33 @@ const DataBlock = (props: DataBlockProps) => {
                          {showCursor && <span className="typing-cursor">|</span>} 
                     </div>
                     {renderIcons()}
-                     {/* Add Learn More/Less button if applicable */} 
-                     {hasExpandableText && (
-                        <button
-                            className="learn-more-button"
-                            onClick={isTyping ? handleCompleteTyping : handleToggleExpand} // Conditional onClick
-                            disabled={false} // Button is never truly disabled, action just changes
-                        >
-                             {/* Add arrow icon */}
-                            {isTyping ? "Complete" : (isExpanded ? <>Learn Less <span className="button-arrow">▲</span></> : <>Learn More <span className="button-arrow">▼</span></>)}
-                        </button>
+                    {/* Button back inside text container, wrapped for animation */} 
+                    {hasExpandableText && (
+                        <AnimatePresence mode="wait">
+                            {/* Always render the wrapper if expandable, use key to animate changes */}
+                            <motion.div
+                                key={isExpanded ? 'expanded-button' : 'collapsed-button'}
+                                variants={buttonVariants}
+                                initial="initial"
+                                animate="animate"
+                                exit="exit"
+                                className="button-motion-wrapper"
+                            >
+                                {/* Button content depends on expanded state, typing state, AND collapse animation state */}
+                                <button
+                                    className="learn-more-button"
+                                    onClick={isTyping ? handleCompleteTyping : handleToggleExpand}
+                                    disabled={false}
+                                >
+                                    {(isExpanded || isAnimatingCollapse) // Show expanded text if expanded OR animating collapse
+                                        ? (isTyping ? "Complete" : <>Learn Less <span className="button-arrow">▲</span></>)
+                                        : <>Learn More <span className="button-arrow">▼</span></>}
+                                </button>
+                            </motion.div>
+                        </AnimatePresence>
                     )}
                 </div>
+                {/* Image is a direct sibling again */} 
                 {renderImage()}
             </div>
         </>
@@ -212,17 +304,60 @@ const DataBlock = (props: DataBlockProps) => {
         </div>
     );
 
-     const renderImage = () => (
-         !props.icon && props.propInput.infoImg ?
-            (props.link ?
-                <a href={props.link} target={"_blank"} rel="noopener noreferrer" aria-label={props.propInput.alt || "Link related to image"}>
-                    <img className="image clickable" src={props.propInput.infoImg} alt={props.propInput.alt}/>
-                </a>
-                :
-                <img className={props.textOnly ? "line" : "image"} src={props.propInput.infoImg} alt={props.propInput.alt}/>
-            )
-         : null
-     );
+     const renderImage = () => {
+         if (props.icon || !props.propInput.infoImg) {
+             return null; // Don't render if icon is present or no image provided
+         }
+
+         const { infoImg, alt } = props.propInput;
+         const placeholderAlt = alt || "Placeholder image";
+
+         return (
+            // Add conditional class for styling purposes if needed
+            <div className={`image-container ${isExpanded ? 'expanded-stack-active' : ''}`}>
+                <AnimatePresence mode="wait">
+                    {!isExpanded ? (
+                        <motion.div
+                            key="single-image" // Unique key for the single image state
+                            initial="initial"
+                            animate="animate" // Use animate state for fade-in
+                            exit="exit"
+                            variants={singleImageVariants}
+                        >
+                             {props.link ? (
+                                 <a href={props.link} target={"_blank"} rel="noopener noreferrer" aria-label={alt || "Link related to image"}>
+                                     <img className="image clickable single-image-element" src={infoImg} alt={alt}/>
+                                 </a>
+                             ) : (
+                                 <img className="image single-image-element" src={infoImg} alt={alt}/>
+                             )}
+                         </motion.div>
+                     ) : (
+                         // Use a motion.div wrapper for the stack to apply staggerChildren
+                         <motion.div
+                             key="expanded-image-stack" // Unique key for the stacked images state
+                             className="expanded-image-stack" // Class for the stack container
+                             variants={imageStackContainerVariants}
+                             initial="hidden"
+                             animate="visible"
+                             exit="exit"
+                         >
+                             {[1, 2, 3].map((index) => (
+                                 <motion.img
+                                     key={`stacked-img-${index}`} // Unique key for each stacked image
+                                     className="image stacked-image-item" // Use common 'image' class + specific stack item class
+                                     src={infoImg} // Use the same image as placeholder
+                                     alt={`${placeholderAlt} ${index}`}
+                                     variants={stackedImageVariants} // Apply individual item animation
+                                     // initial, animate, exit are handled by container variants + stagger
+                                 />
+                             ))}
+                         </motion.div>
+                     )}
+                 </AnimatePresence>
+             </div>
+         );
+     };
 
     const content =
     <motion.div

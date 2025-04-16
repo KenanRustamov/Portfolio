@@ -488,8 +488,9 @@
     flex-direction: row;
     margin-bottom: 0;
     width: auto;
-    gap: 20px;
-    align-items: center; /* Default alignment */
+    gap: 30px; /* Keep increased gap */
+    /* align-items: flex-end; */
+    align-items: stretch; /* Stretch children to match tallest */
 }
 
 /* Add margin to info block when title is absent to align content */
@@ -505,7 +506,8 @@
      min-width: 250px;
      display: flex;
      flex-direction: column;
-     justify-content: center;
+     min-height: 300px; /* Minimum height to prevent button jump */
+     transition: height 0.8s ease-in-out; /* Add transition for smooth resize */
 }
 
 /* Adjust image within standard layout */
@@ -579,11 +581,6 @@
     }
 }
 
-/* Renaming .layout-standard .info to .standard-layout .info */
-.standard-layout .info {
-    align-items: flex-start; /* Specific alignment for standard */
-}
-
 /* Blinking cursor animation */
 @keyframes blink {
   0%, 100% { opacity: 1; }
@@ -605,11 +602,12 @@
     padding: 8px 16px;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 0.25em; /* Adjust font size relative to parent */
+    font-size: 0.25em;
     font-weight: 500;
-    margin-top: 20px; /* Add space above the button */
     transition: background-color 0.3s ease, color 0.3s ease;
-    align-self: flex-start; /* Align button to the start */
+    align-self: flex-start; /* Default horizontal alignment */
+
+    /* Remove auto margin - handled by wrapper */
 
     &:hover:not(:disabled) {
         background-color: var(--link-hover-color);
@@ -660,6 +658,7 @@
              /* Center button in vertical layout */
              .learn-more-button {
                  align-self: center;
+                 margin-top: 20px; /* Restore default margin-top for mobile */
              }
         }
 
@@ -687,4 +686,98 @@
             justify-content: center; /* Center icons */
         }
     }
+}
+
+/* Image container styles */
+.image-container {
+    width: 200px; /* Match original standard layout image width */
+    /* height: 200px; Remove fixed height to allow for stacking */
+    display: flex;
+    flex-direction: column; /* Base direction is column */
+    justify-content: flex-start; /* Align content to the top */
+    align-items: center; /* Center items horizontally */
+    position: relative; /* Needed for AnimatePresence */
+}
+
+/* Container for the single image */
+.image-container > div[key="single-image"] { // Target the specific motion.div
+    width: 100%;
+    height: 200px; /* Explicit height for single image container */
+}
+
+/* The single image element itself */
+.single-image-element {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block; /* Prevents extra space below img */
+}
+
+/* Container for the STACK of expanded images */
+.expanded-image-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: center; // Center images vertically in the stack
+    gap: 15px; // Space between stacked images
+    width: 100%; // Take container width
+}
+
+/* Individual image within the stack */
+.stacked-image-item {
+    width: 200px;  /* Explicitly set desired size (same as original single) */
+    height: 200px; /* Explicitly set desired size */
+    border-radius: 10px; /* Match original image rounding */
+    object-fit: cover;
+    display: block; /* Prevents extra space below img */
+}
+
+
+/* Responsive adjustments for images */
+@media (max-width: 1000px) {
+    .image-container {
+        width: 250px; /* Match the responsive image size */
+        /* height: 250px; Remove fixed height */
+        margin-bottom: 20px;
+    }
+
+    /* Container for the single image - responsive */
+    .image-container > div[key="single-image"] {
+        height: 250px; /* Match responsive single image height */
+    }
+
+    /* Individual stacked image responsive size */
+    .stacked-image-item {
+        width: 250px;
+        height: 250px;
+    }
+}
+
+/* REMOVE previous incorrect styles */
+/* .expanded-image-container { ... } */
+/* .expanded-image { ... } */
+/* @media (max-width: 1000px) { .expanded-image { ... } } */
+
+/* NEW: Styles for the right column holding image/stack and button */
+.content-right-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center image/stack horizontally */
+    /* No fixed height, let it be determined by content */
+}
+
+/* NEW: Styles for the animated button container */
+.button-container {
+    width: 100%; /* Take full width of the right column */
+    display: flex;
+    justify-content: center; /* Center the button within the container */
+    margin-top: 20px; /* Default space above button */
+}
+
+/* Wrapper for the animated button to handle layout */
+.button-motion-wrapper {
+    margin-top: auto; /* Push wrapper to bottom */
+    width: 100%; /* Allow button inside to align correctly */
+    display: flex; /* Needed for align-self on button */
+    justify-content: flex-start; /* Align button to start by default */
 }
