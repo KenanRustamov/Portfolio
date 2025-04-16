@@ -8,6 +8,7 @@ import partifyImg from "../images/partify.png"
 import SnackCheck from "../images/snack_check.png";
 import BentleyPhoto from "../images/Bentley.png";
 import bnymellon from "../images/bnymellon.png";
+import jpmc from "../images/jpmc.jpeg";
 import krLogo from "../images/krLogo.svg";
 
 
@@ -41,7 +42,7 @@ const DataBlocks = (props: any) => {
             link ={"https://www.linkedin.com/in/kenanrustamov/"} 
             instagram={"https://www.instagram.com/kenanrustamov1/"}
             resume={"/ComputerScienceResume.pdf"}
-            propInput ={{infoTitle:"Kenan Rustamov", infoSubtitle:"Full Stack Developer", infoText:"I currently major in Computer Science with a minor in Chemistry at the University of Pittsburgh. I am a co-founder of a club for minorities in computing and fundraising chair of Oakland Outreach, a volunteer club. Currently, I also TA for Discrete Structures.", infoImg: kenanPhoto, alt: "Professionalish looking photo at the beach"}}
+            propInput ={{infoTitle:"Kenan Rustamov", infoSubtitle:"Ex-Software Engineer and Current Graduate Student", infoText:"I currently study at Johns Hopkins University for a Masters in Computer Science, and conduct AI research at the Johns Hopkins Center for Language and Speech Processing under Professor Jason Eisner. I previously worked as a Software Engineer for 3 years, most recently at JP Morgan Chase on scalable cloud APIs.", infoImg: kenanPhoto, alt: "Professionalish looking photo at the beach"}}
         />
         <motion.div 
             id="work-experience-section"
@@ -57,6 +58,19 @@ const DataBlocks = (props: any) => {
                 link={"https://bnymellon.com"} 
                 propInput={{
                     title: "Work Experience",
+                    infoTitle:"JP Morgan Chase",
+                    infoSubtitle:"Software Engineer II",
+                    infoTextShort: "Worked on a project to allow internal users to communicate with Fircosoft to verify large transactions utilizing test-driven development in an agile environment. Specifically worked on creating CRUD operations for the project and database/project setup.",
+                    infoTextLong: bnyLongText,
+                    infoImg: jpmc,
+                    alt: "image of jpmc"
+                }}
+            />
+                        <DataBlock 
+                className="interior" 
+                id={"2"} 
+                link={"https://bnymellon.com"} 
+                propInput={{
                     infoTitle:"BNY Mellon",
                     infoSubtitle:"Full-Stack Software Engineering Intern",
                     infoTextShort: "Worked on a project to allow internal users to communicate with Fircosoft to verify large transactions utilizing test-driven development in an agile environment. Specifically worked on creating CRUD operations for the project and database/project setup.",
