@@ -6,6 +6,8 @@ $duration-slow: 0.8s;
 $ease-default: ease;
 $ease-in-out: ease-in-out;
 
+$info-text-min-height: 300px;
+
 .dataBlock {
     display:flex;
     width: 90%;
@@ -84,6 +86,12 @@ $ease-in-out: ease-in-out;
     flex-direction: column;
     flex: 1;
     min-width: 300px;
+    min-height: $info-text-min-height; // Ensures button alignment
+
+    // Reduce min-height on smaller screens for better responsiveness
+    @media (max-width: 600px) {
+        min-height: ($info-text-min-height * 0.7);
+    }
 }
 
 .introText {

@@ -19,27 +19,29 @@ import {
   STACK_IMAGE_EXIT_STAGGER,
 } from "../constants/animation";
 
+interface PropInput {
+  title?: string;
+  infoTitle?: string;
+  infoSubtitle?: string;
+  infoText?: string;
+  infoTextShort?: string;
+  infoTextLong?: string;
+  infoImg?: string;
+  alt?: string;
+  ignoreInfo?: boolean;
+  other?: React.ReactNode;
+}
+
 interface DataBlockProps {
-    className?: string;
-    id?: string;
-    github?: string;
-    link?: string;
-    instagram?: string;
-    resume?: string;
-    propInput: {
-        title?: string;
-        infoTitle?: string;
-        infoSubtitle?: string;
-        infoText?: string;
-        infoTextShort?: string;
-        infoTextLong?: string;
-        infoImg?: string;
-        alt?: string;
-        ignoreInfo?: boolean;
-        other?: React.ReactNode;
-    };
-    icon?: boolean;
-    textOnly?: boolean;
+  className?: string;
+  id?: string;
+  github?: string;
+  link?: string;
+  instagram?: string;
+  resume?: string;
+  propInput: PropInput;
+  icon?: boolean;
+  textOnly?: boolean;
 }
 
 const blockVariants = {
