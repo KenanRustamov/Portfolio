@@ -16,6 +16,7 @@ import {
   SUMMARY_IMAGE_FADE_IN_DELAY,
   COLLAPSE_RESET_DELAY_MS,
   STACK_IMAGE_EXIT_STAGGER,
+  SPRING_DEFAULT,
 } from "../constants/animation";
 
 // Text fade-in variants
@@ -94,7 +95,7 @@ const stackedImageVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: STACK_IMAGE_DURATION, ease: "easeOut" },
+    transition: { ...SPRING_DEFAULT },
   },
   exit: { opacity: 0, y: -15, transition: { duration: 0.3, ease: "easeIn" } },
 };
@@ -141,7 +142,7 @@ const ExpandButton: React.FC<ExpandButtonProps> = ({
         aria-label={isExpanded ? "Collapse block" : "Expand block"}
         variants={{}}
         animate={{ rotate: isExpanded ? 180 : 0 }}
-        transition={{ duration: 0.3, ease: "easeOut" }}
+        transition={SPRING_DEFAULT}
       >
         <svg
           className="chevron-icon"

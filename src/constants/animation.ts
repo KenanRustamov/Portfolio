@@ -18,3 +18,6 @@ export const COLLAPSE_RESET_DELAY_MS = 300; // matches BUTTON_FADE_OUT_DURATION 
 
 // Exit stagger for stacked images
 export const STACK_IMAGE_EXIT_STAGGER = 0.1; 
+
+// Spring animation defaults
+export const SPRING_DEFAULT = { type: "spring", stiffness: 260, damping: 22 } as const; 
