@@ -9,6 +9,11 @@ $ease-in-out: ease-in-out;
 $info-text-min-height: 300px;
 $block-padding-y: 35px; // previously 50px, ~30% tighter
 
+$font-title-clamp: clamp(1.5rem, 2.8vw, 2.2rem);
+$font-info-title-clamp: clamp(1.2rem, 2.2vw, 1.6rem);
+
+$line-height-body: 1.45;
+
 .dataBlock {
     display:flex;
     width: 90%;
@@ -162,7 +167,7 @@ $block-padding-y: 35px; // previously 50px, ~30% tighter
 .infoText {
     font-size: 0.35em;
     color: var(--data-block-text);
-    line-height: 1.6;
+    line-height: $line-height-body;
     margin-top: 15px;
 }
 
@@ -496,7 +501,7 @@ $block-padding-y: 35px; // previously 50px, ~30% tighter
 }
 
 .title-text {
-    font-size: 0.6em;
+    font-size: $font-title-clamp;
     color: var(--link-hover-color);
     font-weight: 600;
     white-space: normal;
@@ -542,7 +547,7 @@ $block-padding-y: 35px; // previously 50px, ~30% tighter
 
 /* Renaming .layout-standard .infoTitle to .standard-layout .infoTitle */
 .standard-layout .infoTitle {
-    font-size: 0.5em;
+    font-size: $font-info-title-clamp;
     margin-top: 0;
     color: var(--data-block-title);
 }
@@ -558,6 +563,7 @@ $block-padding-y: 35px; // previously 50px, ~30% tighter
     font-size: 0.3em;
     margin-top: 10px;
     color: var(--data-block-text);
+    line-height: $line-height-body;
 }
 
 /* Styles for Icons and Labels */
