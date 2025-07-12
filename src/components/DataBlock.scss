@@ -72,6 +72,12 @@ $block-padding-y: 35px; // previously 50px, ~30% tighter
     height: 350px;
     margin: 15px;
     object-fit: cover;
+    transition: transform $duration-fast $ease-default;
+    will-change: transform;
+
+    &:hover {
+        transform: scale(1.03) translateZ(0);
+    }
 }
 
 .line {
@@ -610,30 +616,35 @@ $block-padding-y: 35px; // previously 50px, ~30% tighter
   color: var(--text-color); /* Match text color */
 }
 
-/* Learn More Button Styles */
-.learn-more-button {
-    background-color: transparent;
+/* Icon toggle button (ghost style) */
+.icon-toggle-button {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
     border: 1px solid var(--link-hover-color);
+    background: transparent;
     color: var(--link-hover-color);
-    padding: 8px 16px;
-    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-    font-size: 0.25em;
-    font-weight: 500;
     transition: background-color $duration-fast $ease-default, color $duration-fast $ease-default;
-    align-self: flex-start; /* Default horizontal alignment */
+    font-size: 0.5em; // icon inherits font size
 
-    /* Remove auto margin - handled by wrapper */
-
-    &:hover:not(:disabled) {
+    &:hover {
         background-color: var(--link-hover-color);
-        color: var(--button-text-hover-color, #ffffff); /* Use variable or default white */
+        color: var(--button-text-hover-color, #ffffff);
     }
+    &:focus-visible {
+        outline: 2px solid var(--link-hover-color);
+        outline-offset: 2px;
+    }
+}
 
-    &:disabled {
-        cursor: not-allowed;
-        opacity: 0.6;
-    }
+.chevron-icon {
+    width: 16px;
+    height: 16px;
+    transition: inherit; // follow rotation
 }
 
 /* Responsive adjustments for standard layout */
@@ -746,6 +757,12 @@ $block-padding-y: 35px; // previously 50px, ~30% tighter
     border-radius: 10px; /* Match original image rounding */
     object-fit: cover;
     display: block; /* Prevents extra space below img */
+    transition: transform $duration-fast $ease-default;
+    will-change: transform;
+
+    &:hover {
+        transform: scale(1.03) translateZ(0);
+    }
 }
 
 

@@ -135,21 +135,29 @@ const ExpandButton: React.FC<ExpandButtonProps> = ({
       exit="exit"
       className="button-motion-wrapper"
     >
-      <button
-        className="learn-more-button"
+      <motion.button
+        className="icon-toggle-button"
         onClick={toggleExpand}
-        disabled={false}
+        aria-label={isExpanded ? "Collapse block" : "Expand block"}
+        variants={{}}
+        animate={{ rotate: isExpanded ? 180 : 0 }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
       >
-        {isExpanded || isCollapsing ? (
-          <>
-            Learn Less <span className="button-arrow">▲</span>
-          </>
-        ) : (
-          <>
-            Learn More <span className="button-arrow">▼</span>
-          </>
-        )}
-      </button>
+        <svg
+          className="chevron-icon"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
+        >
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </motion.button>
     </motion.div>
   </AnimatePresence>
 );
