@@ -6,7 +6,6 @@ import { ReactComponent as GitHubIcon } from "../images/gitHubLogo.svg";
 import { ReactComponent as LinkedInIcon } from "../images/linkedInLogo.svg";
 import { ReactComponent as InstagramIcon } from "../images/instagramLogo.svg";
 
-import { useTypewriter } from "../hooks/useTypewriter";
 import {
   BUTTON_FADE_IN_DELAY,
   BUTTON_FADE_IN_DURATION,
@@ -18,6 +17,12 @@ import {
   COLLAPSE_RESET_DELAY_MS,
   STACK_IMAGE_EXIT_STAGGER,
 } from "../constants/animation";
+
+// Text fade-in variants
+const textVariants = {
+  hidden: { opacity: 0, y: -10 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
+};
 
 interface PropInput {
   title?: string;
@@ -113,16 +118,12 @@ const buttonVariants = {
 interface ExpandButtonProps {
   isExpanded: boolean;
   isCollapsing: boolean;
-  isTyping: boolean;
-  completeTyping: () => void;
   toggleExpand: () => void;
 }
 
 const ExpandButton: React.FC<ExpandButtonProps> = ({
   isExpanded,
   isCollapsing,
-  isTyping,
-  completeTyping,
   toggleExpand,
 }) => (
   <AnimatePresence mode="wait">
@@ -136,17 +137,13 @@ const ExpandButton: React.FC<ExpandButtonProps> = ({
     >
       <button
         className="learn-more-button"
-        onClick={isTyping ? completeTyping : toggleExpand}
+        onClick={toggleExpand}
         disabled={false}
       >
         {isExpanded || isCollapsing ? (
-          isTyping ? (
-            "Complete"
-          ) : (
-            <>
-              Learn Less <span className="button-arrow">▲</span>
-            </>
-          )
+          <>
+            Learn Less <span className="button-arrow">▲</span>
+          </>
         ) : (
           <>
             Learn More <span className="button-arrow">▼</span>
@@ -223,11 +220,7 @@ const DataBlock = (props: DataBlockProps) => {
     const defaultShort = (infoTextShort ?? infoText ?? "") as string;
     const defaultLong = (infoTextLong ?? defaultShort) as string;
 
-    const { displayText, isTyping, showCursor, completeTyping } = useTypewriter({
-        textShort: defaultShort,
-        textLong: defaultLong,
-        expanded: isExpanded,
-    });
+    const displayText = isExpanded ? defaultLong : defaultShort;
 
     useEffect(() => {
         if (!isExpanded && isCollapsing) {
@@ -239,12 +232,10 @@ const DataBlock = (props: DataBlockProps) => {
     }, [isExpanded, isCollapsing]);
 
     const handleToggleExpand = () => {
-        if (!isTyping) {
-            if (isExpanded) {
-                setIsCollapsing(true);
-            }
-            setIsExpanded(!isExpanded);
+        if (isExpanded) {
+            setIsCollapsing(true); // about to collapse
         }
+        setIsExpanded(!isExpanded);
     };
 
     const renderStandardLayout = () => (
@@ -261,17 +252,23 @@ const DataBlock = (props: DataBlockProps) => {
                             {props.propInput.infoSubtitle && <div className="subtitle">{props.propInput.infoSubtitle}</div>}
                         </div>
                     )}
-                    <div className="infoText"> 
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={isExpanded ? "expanded-text" : "collapsed-text"}
+                        className="infoText"
+                        variants={textVariants}
+                        initial="hidden"
+                        animate="visible"
+                        exit="hidden"
+                      >
                          {displayText}
-                         {showCursor && <span className="typing-cursor">|</span>} 
-                    </div>
+                      </motion.div>
+                    </AnimatePresence>
                     {renderIcons()}
                     {hasExpandableText && (
                       <ExpandButton
                         isExpanded={isExpanded}
                         isCollapsing={isCollapsing}
-                        isTyping={isTyping}
-                        completeTyping={completeTyping}
                         toggleExpand={handleToggleExpand}
                       />
                     )}
