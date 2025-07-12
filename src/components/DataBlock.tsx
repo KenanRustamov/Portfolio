@@ -188,10 +188,10 @@ const ImageDisplay: React.FC<ImageDisplayProps> = ({ infoImg, alt, link, isExpan
           >
             {link ? (
               <a href={link} target="_blank" rel="noopener noreferrer" aria-label={alt || "Link related to image"}>
-                <img className="image clickable single-image-element" src={infoImg} alt={alt} />
+                <img loading="lazy" className="image clickable single-image-element" src={infoImg} alt={alt} />
               </a>
             ) : (
-              <img className="image single-image-element" src={infoImg} alt={alt} />
+              <img loading="lazy" className="image single-image-element" src={infoImg} alt={alt} />
             )}
           </motion.div>
         ) : (
@@ -205,6 +205,7 @@ const ImageDisplay: React.FC<ImageDisplayProps> = ({ infoImg, alt, link, isExpan
           >
             {[1, 2, 3].map((index) => (
               <motion.img
+                loading="lazy"
                 key={`stacked-img-${index}`}
                 className="image stacked-image-item"
                 src={infoImg}

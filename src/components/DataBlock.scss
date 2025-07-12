@@ -799,3 +799,15 @@ $line-height-body: 1.45;
     display: flex;
     justify-content: flex-start;
 }
+
+/* Accessibility: reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+  .image:hover,
+  .stacked-image-item:hover {
+    transform: none !important;
+  }
+}
