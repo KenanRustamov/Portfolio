@@ -15,6 +15,8 @@ import {
   STACK_IMAGE_STAGGER,
   SUMMARY_IMAGE_FADE_IN_DURATION,
   SUMMARY_IMAGE_FADE_IN_DELAY,
+  COLLAPSE_RESET_DELAY_MS,
+  STACK_IMAGE_EXIT_STAGGER,
 } from "../constants/animation";
 
 interface DataBlockProps {
@@ -74,7 +76,7 @@ const imageStackContainerVariants = {
     opacity: 0,
     transition: {
       when: "afterChildren",
-      staggerChildren: 0.1,
+      staggerChildren: STACK_IMAGE_EXIT_STAGGER,
       staggerDirection: -1,
     },
   },
@@ -122,7 +124,7 @@ const DataBlock = (props: DataBlockProps) => {
         if (!isExpanded && isAnimatingCollapse) {
             const timer = setTimeout(() => {
                 setIsAnimatingCollapse(false);
-            }, 300);
+            }, COLLAPSE_RESET_DELAY_MS);
             return () => clearTimeout(timer);
         }
     }, [isExpanded, isAnimatingCollapse]);
