@@ -104,6 +104,113 @@ const buttonVariants = {
   exit: { opacity: 0, transition: { duration: BUTTON_FADE_OUT_DURATION } },
 };
 
+// -----------------------------------------------------------------------------
+// Sub-components to keep DataBlock render small and readable (SRP / KISS)
+// -----------------------------------------------------------------------------
+
+interface ExpandButtonProps {
+  isExpanded: boolean;
+  isCollapsing: boolean;
+  isTyping: boolean;
+  completeTyping: () => void;
+  toggleExpand: () => void;
+}
+
+const ExpandButton: React.FC<ExpandButtonProps> = ({
+  isExpanded,
+  isCollapsing,
+  isTyping,
+  completeTyping,
+  toggleExpand,
+}) => (
+  <AnimatePresence mode="wait">
+    <motion.div
+      key={isExpanded ? "expanded-button" : "collapsed-button"}
+      variants={buttonVariants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      className="button-motion-wrapper"
+    >
+      <button
+        className="learn-more-button"
+        onClick={isTyping ? completeTyping : toggleExpand}
+        disabled={false}
+      >
+        {isExpanded || isCollapsing ? (
+          isTyping ? (
+            "Complete"
+          ) : (
+            <>
+              Learn Less <span className="button-arrow">▲</span>
+            </>
+          )
+        ) : (
+          <>
+            Learn More <span className="button-arrow">▼</span>
+          </>
+        )}
+      </button>
+    </motion.div>
+  </AnimatePresence>
+);
+
+interface ImageDisplayProps {
+  infoImg: string | undefined;
+  alt: string | undefined;
+  link?: string;
+  isExpanded: boolean;
+}
+
+const ImageDisplay: React.FC<ImageDisplayProps> = ({ infoImg, alt, link, isExpanded }) => {
+  if (!infoImg) return null;
+
+  const placeholderAlt = alt || "Placeholder image";
+
+  return (
+    <div className={`image-container ${isExpanded ? "expanded-stack-active" : ""}`}>
+      <AnimatePresence mode="wait">
+        {!isExpanded ? (
+          <motion.div
+            key="single-image"
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            variants={singleImageVariants}
+          >
+            {link ? (
+              <a href={link} target="_blank" rel="noopener noreferrer" aria-label={alt || "Link related to image"}>
+                <img className="image clickable single-image-element" src={infoImg} alt={alt} />
+              </a>
+            ) : (
+              <img className="image single-image-element" src={infoImg} alt={alt} />
+            )}
+          </motion.div>
+        ) : (
+          <motion.div
+            key="expanded-image-stack"
+            className="expanded-image-stack"
+            variants={imageStackContainerVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+          >
+            {[1, 2, 3].map((index) => (
+              <motion.img
+                key={`stacked-img-${index}`}
+                className="image stacked-image-item"
+                src={infoImg}
+                alt={`${placeholderAlt} ${index}`}
+                variants={stackedImageVariants}
+              />
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
 const DataBlock = (props: DataBlockProps) => {
     const { infoTextShort, infoTextLong, infoText } = props.propInput;
     const hasExpandableText = Boolean(infoTextShort && infoTextLong);
@@ -158,30 +265,22 @@ const DataBlock = (props: DataBlockProps) => {
                     </div>
                     {renderIcons()}
                     {hasExpandableText && (
-                        <AnimatePresence mode="wait">
-                            <motion.div
-                                key={isExpanded ? 'expanded-button' : 'collapsed-button'}
-                                variants={buttonVariants}
-                                initial="initial"
-                                animate="animate"
-                                exit="exit"
-                                className="button-motion-wrapper"
-                            >
-                                <button
-                                    className="learn-more-button"
-                                    onClick={isTyping ? completeTyping : handleToggleExpand}
-                                    disabled={false}
-                                >
-                                    {(isExpanded || isCollapsing)
-                                        ? (isTyping ? "Complete" : <>Learn Less <span className="button-arrow">▲</span></>)
-                                        : <>Learn More <span className="button-arrow">▼</span></>}
-                                </button>
-                            </motion.div>
-                        </AnimatePresence>
+                      <ExpandButton
+                        isExpanded={isExpanded}
+                        isCollapsing={isCollapsing}
+                        isTyping={isTyping}
+                        completeTyping={completeTyping}
+                        toggleExpand={handleToggleExpand}
+                      />
                     )}
                 </div>
-                {renderImage()}
-            </div>
+                <ImageDisplay
+                  infoImg={props.propInput.infoImg}
+                  alt={props.propInput.alt}
+                  link={props.link}
+                  isExpanded={isExpanded}
+                />
+                </div>
         </>
     );
 
@@ -214,57 +313,7 @@ const DataBlock = (props: DataBlockProps) => {
         </div>
     );
 
-     const renderImage = () => {
-         if (props.icon || !props.propInput.infoImg) {
-             return null;
-         }
-
-         const { infoImg, alt } = props.propInput;
-         const placeholderAlt = alt || "Placeholder image";
-
-         return (
-            <div className={`image-container ${isExpanded ? 'expanded-stack-active' : ''}`}>
-                <AnimatePresence mode="wait">
-                    {!isExpanded ? (
-                        <motion.div
-                            key="single-image"
-                            initial="initial"
-                            animate="animate"
-                            exit="exit"
-                            variants={singleImageVariants}
-                        >
-                             {props.link ? (
-                                 <a href={props.link} target={"_blank"} rel="noopener noreferrer" aria-label={alt || "Link related to image"}>
-                                     <img className="image clickable single-image-element" src={infoImg} alt={alt}/>
-                                 </a>
-                             ) : (
-                                 <img className="image single-image-element" src={infoImg} alt={alt}/>
-                             )}
-                         </motion.div>
-                     ) : (
-                         <motion.div
-                             key="expanded-image-stack"
-                             className="expanded-image-stack"
-                             variants={imageStackContainerVariants}
-                             initial="hidden"
-                             animate="visible"
-                             exit="exit"
-                         >
-                             {[1, 2, 3].map((index) => (
-                                 <motion.img
-                                     key={`stacked-img-${index}`}
-                                     className="image stacked-image-item"
-                                     src={infoImg}
-                                     alt={`${placeholderAlt} ${index}`}
-                                     variants={stackedImageVariants}
-                                 />
-                             ))}
-                         </motion.div>
-                     )}
-                 </AnimatePresence>
-             </div>
-         );
-     };
+    // renderImage function removed - replaced by ImageDisplay component above
 
     const content =
     <motion.div
