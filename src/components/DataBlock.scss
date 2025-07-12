@@ -7,6 +7,7 @@ $ease-default: ease;
 $ease-in-out: ease-in-out;
 
 $info-text-min-height: 300px;
+$block-padding-y: 35px; // previously 50px, ~30% tighter
 
 .dataBlock {
     display:flex;
@@ -16,8 +17,8 @@ $info-text-min-height: 300px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-top: $block-padding-y;
+    padding-bottom: $block-padding-y;
     box-sizing: border-box;
     position: relative;
 }
