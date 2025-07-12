@@ -50,18 +50,13 @@
     flex-shrink: 0;
 }
 
+// Base image style used for both summary and stacked images
 .image {
     border-radius: 10px;
     width: 350px;
     height: 350px;
     margin: 15px;
     object-fit: cover;
-    // transition: filter 0.4s ease-in-out;
-    // filter: grayscale(40%) brightness(90%);
-
-    // &:hover {
-    //     filter: none;
-    // }
 }
 
 .line {
@@ -753,31 +748,10 @@
     }
 }
 
-/* REMOVE previous incorrect styles */
-/* .expanded-image-container { ... } */
-/* .expanded-image { ... } */
-/* @media (max-width: 1000px) { .expanded-image { ... } } */
-
-/* NEW: Styles for the right column holding image/stack and button */
-.content-right-column {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center image/stack horizontally */
-    /* No fixed height, let it be determined by content */
-}
-
-/* NEW: Styles for the animated button container */
-.button-container {
-    width: 100%; /* Take full width of the right column */
-    display: flex;
-    justify-content: center; /* Center the button within the container */
-    margin-top: 20px; /* Default space above button */
-}
-
 /* Wrapper for the animated button to handle layout */
 .button-motion-wrapper {
-    margin-top: auto; /* Push wrapper to bottom */
-    width: 100%; /* Allow button inside to align correctly */
-    display: flex; /* Needed for align-self on button */
-    justify-content: flex-start; /* Align button to start by default */
+    margin-top: auto;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
 }

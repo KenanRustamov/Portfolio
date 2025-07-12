@@ -109,7 +109,7 @@ const DataBlock = (props: DataBlockProps) => {
     const hasExpandableText = Boolean(infoTextShort && infoTextLong);
 
     const [isExpanded, setIsExpanded] = useState(false);
-    const [isAnimatingCollapse, setIsAnimatingCollapse] = useState(false);
+    const [isCollapsing, setIsCollapsing] = useState(false);
 
     const defaultShort = (infoTextShort ?? infoText ?? "") as string;
     const defaultLong = (infoTextLong ?? defaultShort) as string;
@@ -121,18 +121,18 @@ const DataBlock = (props: DataBlockProps) => {
     });
 
     useEffect(() => {
-        if (!isExpanded && isAnimatingCollapse) {
+        if (!isExpanded && isCollapsing) {
             const timer = setTimeout(() => {
-                setIsAnimatingCollapse(false);
+                setIsCollapsing(false);
             }, COLLAPSE_RESET_DELAY_MS);
             return () => clearTimeout(timer);
         }
-    }, [isExpanded, isAnimatingCollapse]);
+    }, [isExpanded, isCollapsing]);
 
     const handleToggleExpand = () => {
         if (!isTyping) {
             if (isExpanded) {
-                setIsAnimatingCollapse(true);
+                setIsCollapsing(true);
             }
             setIsExpanded(!isExpanded);
         }
@@ -172,7 +172,7 @@ const DataBlock = (props: DataBlockProps) => {
                                     onClick={isTyping ? completeTyping : handleToggleExpand}
                                     disabled={false}
                                 >
-                                    {(isExpanded || isAnimatingCollapse)
+                                    {(isExpanded || isCollapsing)
                                         ? (isTyping ? "Complete" : <>Learn Less <span className="button-arrow">▲</span></>)
                                         : <>Learn More <span className="button-arrow">▼</span></>}
                                 </button>
