@@ -30,29 +30,27 @@ const GlassButton: React.FC<GlassButtonProps> = ({
 }) => {
   const baseClasses = `
     inline-flex items-center justify-center font-medium transition-all duration-300 ease-out
-    backdrop-blur-glass-md backdrop-saturate-glass border
-    focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-opacity-50
+    glass-button
+    focus:outline-none focus:ring-2 focus:ring-sky-300 focus:ring-opacity-50
     disabled:opacity-50 disabled:cursor-not-allowed
   `;
   
   const variantClasses = {
     primary: `
-      bg-glass-light border-border-glass-light-lg text-accent-primary
-      hover:bg-accent-primary hover:text-white hover:shadow-glass-hover
-      hover:backdrop-blur-glass-lg hover:backdrop-saturate-glass-lg
+      text-sky-300
+      hover:bg-sky-300 hover:text-white hover:shadow-lg
     `,
     secondary: `
-      bg-glass-light-sm border-border-glass-light-md text-current
-      hover:bg-glass-light-md hover:text-accent-primary hover:shadow-glass
-      hover:backdrop-blur-glass-lg hover:backdrop-saturate-glass-lg
+      text-current
+      hover:bg-gray-100 hover:text-sky-300 hover:shadow-md
     `,
     ghost: `
       bg-transparent border-transparent text-current
-      hover:bg-glass-light hover:border-border-glass-light-md hover:shadow-glass-sm
+      hover:bg-white hover:bg-opacity-10 hover:border-white hover:border-opacity-20 hover:shadow-sm
     `,
     accent: `
-      bg-accent-primary border-accent-primary text-white
-      hover:bg-opacity-90 hover:shadow-glass-hover hover:scale-105
+      bg-sky-300 border-sky-300 text-white
+      hover:bg-opacity-90 hover:shadow-lg hover:scale-105
     `
   };
   
@@ -71,10 +69,7 @@ const GlassButton: React.FC<GlassButtonProps> = ({
 
   const commonProps = {
     className: combinedClasses,
-    style: {
-      WebkitBackdropFilter: 'blur(32px) saturate(160%)',
-      ...style
-    },
+    style,
     disabled,
     onClick,
   };

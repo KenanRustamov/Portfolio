@@ -12,57 +12,62 @@ interface IntroDataBlockProps {
     profileImage: string;
     subtitle: string;
     description: string;
-    icons: Array<{
-        src: string;
-        alt: string;
-        href: string;
-        isExternal?: boolean;
-    }>;
 }
 
 const IntroDataBlock = (props: IntroDataBlockProps) => {
-    // State for intro text animation
-    const introTextTarget = "Hello, my name is";
-    const [introTypedText, setIntroTypedText] = useState("");
+    const [introTypedText, setIntroTypedText] = useState('');
     const [showIntroCursor, setShowIntroCursor] = useState(true);
-    const introTypingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-    const introCursorTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+    const [isIntroTypingComplete, setIsIntroTypingComplete] = useState(false);
 
-    // Effect for intro text typewriter
+    const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
     useEffect(() => {
-        let currentText = "";
-        let typingDelay = 80;
-        let cursorBlinkDuration = 3000;
-
+        let index = 0;
+        const fullText = props.introText.toUpperCase();
+        
         const typeIntro = () => {
-            if (currentText.length < introTextTarget.length) {
-                currentText = introTextTarget.substring(0, currentText.length + 1);
-                setIntroTypedText(currentText);
-                introTypingTimeoutRef.current = setTimeout(typeIntro, typingDelay);
+            if (index < fullText.length) {
+                setIntroTypedText(fullText.substring(0, index + 1));
+                index++;
             } else {
-                introTypingTimeoutRef.current = null;
-                introCursorTimeoutRef.current = setTimeout(() => {
-                    setShowIntroCursor(false);
-                    introCursorTimeoutRef.current = null;
-                }, cursorBlinkDuration);
+                setIsIntroTypingComplete(true);
+                if (intervalRef.current) {
+                    clearInterval(intervalRef.current);
+                }
             }
         };
 
-        introTypingTimeoutRef.current = setTimeout(typeIntro, 500);
+        intervalRef.current = setInterval(typeIntro, 50);
 
         return () => {
-            if (introTypingTimeoutRef.current) clearTimeout(introTypingTimeoutRef.current);
-            if (introCursorTimeoutRef.current) clearTimeout(introCursorTimeoutRef.current);
+            if (intervalRef.current) {
+                clearInterval(intervalRef.current);
+            }
         };
+    }, [props.introText]);
+
+    useEffect(() => {
+        const cursorInterval = setInterval(() => {
+            setShowIntroCursor(prev => !prev);
+        }, 500);
+
+        return () => clearInterval(cursorInterval);
     }, []);
 
-    // Framer Motion animation variants
     const blockVariants = {
-        hidden: { y: 30 },
+        hidden: { y: 50 },
+        visible: { y: 0, transition: { duration: 0.8 } },
+    };
+
+    const containerVariants = {
+        hidden: { opacity: 0 },
         visible: {
-            y: 0,
-            transition: { duration: 0.8, ease: "easeOut" }
-        }
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1,
+                delayChildren: 0.3,
+            },
+        },
     };
 
     const iconVariants = {
@@ -71,11 +76,10 @@ const IntroDataBlock = (props: IntroDataBlockProps) => {
             opacity: 1,
             scale: 1,
             transition: {
-                delay: i * 0.1 + 0.5,
-                duration: 0.4,
-                ease: "easeOut"
-            }
-        })
+                delay: i * 0.1,
+                duration: 0.3,
+            },
+        }),
     };
 
     return (
@@ -83,8 +87,8 @@ const IntroDataBlock = (props: IntroDataBlockProps) => {
             className="
                 flex flex-col items-center justify-center min-h-screen w-full max-w-6xl
                 px-[5%] py-16 mx-auto box-border relative mb-0
+                text-gray-800 dark:text-gray-100
             "
-            style={{ color: 'var(--text-color)' }}
             variants={blockVariants}
             initial="hidden"
             animate="visible"
@@ -104,8 +108,8 @@ const IntroDataBlock = (props: IntroDataBlockProps) => {
                         className="
                             mb-2 font-semibold lg:text-left text-center
                             text-sm uppercase tracking-wider opacity-90
+                            text-sky-300
                         "
-                        style={{ color: 'var(--link-hover-color)' }}
                     >
                         {introTypedText}
                         {showIntroCursor && (
@@ -118,9 +122,8 @@ const IntroDataBlock = (props: IntroDataBlockProps) => {
                         className="
                             font-bold flex flex-col mb-5 w-full
                             text-4xl sm:text-5xl lg:text-6xl lg:text-left text-center
-                            leading-tight tracking-tight
+                            text-gray-900 dark:text-white
                         "
-                        style={{ color: 'var(--text-color)' }}
                     >
                         {props.title}
                     </h1>
@@ -128,10 +131,10 @@ const IntroDataBlock = (props: IntroDataBlockProps) => {
                     {/* Subtitle */}
                     <h2 
                         className="
-                            text-lg sm:text-xl lg:text-2xl mt-2
-                            font-normal lg:text-left text-center opacity-80
+                            font-semibold mb-6 lg:text-left text-center
+                            text-xl sm:text-2xl lg:text-3xl
+                            text-gray-700 dark:text-gray-200
                         "
-                        style={{ color: 'var(--text-color)' }}
                     >
                         {props.subtitle}
                     </h2>
@@ -139,18 +142,21 @@ const IntroDataBlock = (props: IntroDataBlockProps) => {
                     {/* Description */}
                     <p 
                         className="
-                            text-base leading-relaxed mt-4
-                            lg:text-left text-center max-w-2xl
+                            mb-8 leading-relaxed lg:text-left text-center max-w-2xl
+                            text-base sm:text-lg
+                            text-gray-600 dark:text-gray-300
                         "
-                        style={{ color: 'var(--data-block-text)' }}
                     >
                         {props.description}
                     </p>
 
-                    {/* Social Icons */}
-                    <div className="
-                        flex justify-center lg:justify-start items-center gap-3 mt-8
-                    ">
+                    {/* Icons */}
+                    <motion.div 
+                        className="flex gap-6 justify-center lg:justify-start"
+                        variants={containerVariants}
+                        initial="hidden"
+                        animate="visible"
+                    >
                         {[
                             { src: emailLogo, alt: "Email", href: "mailto:kenanrustamov@gmail.com", label: "Email" },
                             { src: gitHubLogo, alt: "GitHub", href: "https://github.com/kenanr", label: "GitHub", isExternal: true },
@@ -158,77 +164,107 @@ const IntroDataBlock = (props: IntroDataBlockProps) => {
                             { src: pdf, alt: "Resume", href: "/ComputerScienceResume.pdf", label: "Resume", isExternal: true }
                         ].map((icon, index) => (
                             <motion.div
-                                key={icon.alt}
-                                custom={index}
+                                key={icon.label}
                                 variants={iconVariants}
-                                initial="hidden"
-                                animate="visible"
+                                custom={index}
+                                className="
+                                    group relative w-12 h-12 
+                                    flex items-center justify-center
+                                    backdrop-blur-md bg-white/10 dark:bg-white/5
+                                    border border-white/20 dark:border-white/10
+                                    rounded-xl shadow-lg shadow-blue-500/10
+                                    hover:shadow-xl hover:shadow-blue-500/20
+                                    hover:bg-white/20 dark:hover:bg-white/10
+                                    hover:border-white/30 dark:hover:border-white/20
+                                    hover:scale-105 hover:-translate-y-1
+                                    transition-all duration-300 ease-out
+                                    cursor-pointer
+                                "
+                                onClick={() => window.open(icon.href, icon.isExternal ? '_blank' : '_self')}
                             >
-                                <GlassButton
-                                    variant="ghost"
-                                    size="sm"
-                                    href={icon.href}
-                                    target={icon.isExternal ? "_blank" : undefined}
-                                    className="
-                                        p-2 group transition-all duration-300 ease-out
-                                    "
-                                    style={{ 
-                                        color: 'var(--svg-fill)',
-                                        borderColor: 'var(--border-color)'
-                                    }}
-                                    animate
-                                >
-                                    <img
-                                        src={icon.src}
-                                        alt={icon.alt}
-                                        className="w-4 h-4 transition-all duration-300 group-hover:scale-110"
-                                        style={{ filter: 'brightness(0) saturate(100%) invert(50%)' }}
-                                    />
-                                    <span className="text-xs font-normal ml-2 hidden sm:inline">
-                                        {icon.label}
-                                    </span>
-                                </GlassButton>
+                                <img 
+                                    src={icon.src} 
+                                    alt={icon.alt}
+                                    className="w-6 h-6 opacity-80 group-hover:opacity-100 transition-all duration-300 filter brightness-0 dark:brightness-100 dark:invert-0 group-hover:brightness-110"
+                                />
+                                <div className="
+                                    absolute -top-12 left-1/2 transform -translate-x-1/2
+                                    backdrop-blur-md bg-gray-900/90 dark:bg-gray-800/90 text-white text-xs
+                                    px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100
+                                    border border-white/10 shadow-lg
+                                    transition-all duration-300 pointer-events-none
+                                    whitespace-nowrap z-10
+                                ">
+                                    {icon.label}
+                                </div>
                             </motion.div>
                         ))}
-                    </div>
+                    </motion.div>
                 </div>
 
                 {/* Profile Image */}
-                <div className="
-                    flex-shrink-0 order-1 lg:order-2
-                ">
-                    <motion.div
-                        className="relative group"
-                        whileHover={{ scale: 1.02 }}
-                        transition={{ duration: 0.3 }}
-                    >
-                        <img
-                            src={props.profileImage}
+                <motion.div 
+                    className="
+                        relative order-1 lg:order-2 flex-shrink-0
+                        w-80 h-80 lg:w-96 lg:h-96
+                    "
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                >
+                    <div className="
+                        w-full h-full rounded-3xl overflow-hidden
+                        backdrop-blur-sm bg-white/10 dark:bg-white/5
+                        border border-white/20 dark:border-white/10
+                        shadow-2xl shadow-blue-500/10 dark:shadow-blue-400/20
+                        hover:shadow-3xl hover:shadow-blue-500/20 dark:hover:shadow-blue-400/30
+                        hover:border-white/30 dark:hover:border-white/20
+                        transition-all duration-500 ease-out
+                        group
+                    ">
+                        <img 
+                            src={props.profileImage} 
                             alt="Profile"
                             className="
-                                w-80 h-80 lg:w-96 lg:h-96 object-cover rounded-2xl
-                                transition-all duration-500 ease-out
-                                border-2 shadow-lg group-hover:shadow-xl
+                                w-full h-full object-cover object-center
+                                group-hover:scale-105 transition-transform duration-500 ease-out
                             "
-                            style={{ 
-                                borderColor: 'var(--border-color)',
-                                boxShadow: '0 8px 32px rgba(0, 0, 0, 0.12)'
-                            }}
                         />
-                        {/* Glass overlay effect on hover */}
-                        <div 
-                            className="
-                                absolute inset-0 rounded-2xl opacity-0
-                                group-hover:opacity-20 transition-opacity duration-500
-                                pointer-events-none
-                            "
-                            style={{ 
-                                background: 'var(--card-bg)'
-                            }}
-                        />
-                    </motion.div>
-                </div>
+                    </div>
+                </motion.div>
             </div>
+
+            {/* Scroll Indicator */}
+            <motion.div
+                className="
+                    absolute bottom-8 left-1/2 transform -translate-x-1/2
+                    text-gray-700 dark:text-gray-300
+                "
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 1 }}
+            >
+                <div className="flex flex-col items-center">
+                    <span className="text-sm font-medium mb-3 text-blue-600 dark:text-blue-400">Scroll Down</span>
+                    <div className="
+                        w-6 h-10 
+                        backdrop-blur-md bg-white/20 dark:bg-white/10
+                        border border-white/30 dark:border-white/20
+                        rounded-full flex justify-center
+                        shadow-lg shadow-blue-500/20 dark:shadow-blue-400/30
+                        hover:shadow-xl hover:shadow-blue-500/30 dark:hover:shadow-blue-400/40
+                        transition-all duration-300
+                    ">
+                        <div className="
+                            w-1.5 h-3 
+                            bg-gradient-to-b from-blue-500 to-purple-500 
+                            dark:from-blue-400 dark:to-purple-400
+                            rounded-full mt-2 animate-bounce
+                            shadow-sm
+                        "></div>
+                    </div>
+                </div>
+            </motion.div>
         </motion.div>
     );
 };

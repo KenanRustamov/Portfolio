@@ -16,28 +16,28 @@ const GlassNavigation: React.FC<GlassNavigationProps> = ({
   variant = 'header',
   blur = 'lg'
 }) => {
-  const baseClasses = 'backdrop-saturate-glass-lg transition-all duration-300 ease-out';
+  const baseClasses = 'transition-all duration-300 ease-out';
   
   const variantClasses = {
     header: `
-      bg-glass-light-sm border-b border-border-glass-light-md
-      shadow-glass-md backdrop-blur-glass-lg
+      glass-nav
+      shadow-md
     `,
     'mobile-menu': `
-      bg-glass-light-sm border-t border-border-glass-light-lg
-      shadow-glass-lg backdrop-blur-glass-xl
+      glass-nav border-t border-white border-opacity-15
+      shadow-lg
     `,
     sidebar: `
-      bg-glass-light border-r border-border-glass-light-md
-      shadow-glass-md backdrop-blur-glass-lg
+      glass-nav border-r border-white border-opacity-12
+      shadow-md
     `
   };
   
   const blurClasses = {
-    sm: 'backdrop-blur-glass-sm',
-    md: 'backdrop-blur-glass',
-    lg: 'backdrop-blur-glass-lg',
-    xl: 'backdrop-blur-glass-xl'
+    sm: 'glass-base',
+    md: 'glass-base',
+    lg: 'glass-strong',
+    xl: 'glass-strong'
   };
   
   const positionClasses = fixed ? 'fixed top-0 left-0 right-0 z-50' : 'relative';
@@ -50,18 +50,9 @@ const GlassNavigation: React.FC<GlassNavigationProps> = ({
     ${className}
   `.trim().replace(/\s+/g, ' ');
 
-  const backdropFilterValue = {
-    header: 'blur(40px) saturate(180%)',
-    'mobile-menu': 'blur(50px) saturate(200%)',
-    sidebar: 'blur(40px) saturate(170%)'
-  };
-
   return (
     <motion.nav
       className={combinedClasses}
-      style={{
-        WebkitBackdropFilter: backdropFilterValue[variant]
-      }}
       initial={{ opacity: 0, y: variant === 'header' ? -20 : 0 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3, ease: 'easeOut' }}

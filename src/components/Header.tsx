@@ -83,7 +83,7 @@ const Header: React.FC<HeaderProps> = ({ links }) => {
           h-20 px-[5%] flex items-center justify-between z-50 
           transition-all duration-300 ease-out
           ${shouldHideHeader ? '-translate-y-full' : 'translate-y-0'}
-          ${isHeaderBig ? 'shadow-glass-sm' : 'shadow-glass-md'}
+          ${isHeaderBig ? 'shadow-sm' : 'shadow-md'}
         `}
       >
         {/* Logo Container */}
@@ -91,7 +91,7 @@ const Header: React.FC<HeaderProps> = ({ links }) => {
           <motion.img
             src={krLogo}
             alt="KR Logo"
-            className="h-12 w-auto fill-current text-accent-primary"
+            className="h-12 w-auto fill-current text-sky-300"
             whileHover={{ scale: 1.05, rotate: 5 }}
             transition={{ duration: 0.2 }}
           />
@@ -111,7 +111,7 @@ const Header: React.FC<HeaderProps> = ({ links }) => {
                 size="sm"
                 href={link.href}
                 target={link.isExternal ? "_blank" : undefined}
-                className="mx-1 text-current hover:text-accent-primary"
+                className="mx-1 text-current hover:text-sky-300"
                 animate
               >
                 {link.name}

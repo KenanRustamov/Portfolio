@@ -25,11 +25,11 @@ const GlassCard: React.FC<GlassCardProps> = ({
   const baseClasses = 'transition-all duration-300 ease-out';
   
   const variantClasses = {
-    default: 'bg-glass-light border border-border-glass-light-md backdrop-blur-glass-lg backdrop-saturate-glass-md',
-    nav: 'bg-glass-light-sm border-b border-border-glass-light-md backdrop-blur-glass-lg backdrop-saturate-glass-lg',
-    button: 'bg-glass-light border border-border-glass-light-lg backdrop-blur-glass-md backdrop-saturate-glass',
-    strong: 'bg-glass-light-md border border-border-glass-light-lg backdrop-blur-glass-xl backdrop-saturate-glass-xl',
-    subtle: 'bg-glass-light-sm border border-border-glass-light backdrop-blur-glass backdrop-saturate-glass'
+    default: 'glass-card',
+    nav: 'glass-nav',
+    button: 'glass-button',
+    strong: 'glass-strong',
+    subtle: 'glass-base'
   };
   
   const roundedClasses = {
@@ -42,13 +42,13 @@ const GlassCard: React.FC<GlassCardProps> = ({
   };
   
   const shadowClasses = {
-    sm: 'shadow-glass-sm',
-    md: 'shadow-glass-md',
-    lg: 'shadow-glass-lg',
-    xl: 'shadow-glass-xl'
+    sm: 'shadow-sm',
+    md: 'shadow-md',
+    lg: 'shadow-lg',
+    xl: 'shadow-xl'
   };
   
-  const hoverClasses = hover ? 'hover:shadow-glass-hover hover:-translate-y-1 hover:scale-[1.02] hover:backdrop-blur-glass-xl hover:backdrop-saturate-glass-xl' : '';
+  const hoverClasses = hover ? 'hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02]' : '';
   
   const combinedClasses = `
     ${baseClasses}
@@ -61,10 +61,7 @@ const GlassCard: React.FC<GlassCardProps> = ({
 
   const commonProps = {
     className: combinedClasses,
-    onClick,
-    style: {
-      WebkitBackdropFilter: `blur(${variant === 'nav' ? '40px' : variant === 'strong' ? '50px' : '32px'}) saturate(${variant === 'strong' ? '200%' : '170%'})`
-    }
+    onClick
   };
 
   if (animate) {
