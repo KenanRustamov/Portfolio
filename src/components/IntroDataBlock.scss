@@ -132,16 +132,26 @@
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             padding: 8px 12px;
             border-radius: 12px;
-            background: var(--card-bg, rgba(255, 255, 255, 0.05));
-            border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
-            backdrop-filter: blur(12px);
+            background: var(--card-bg, rgba(255, 255, 255, 0.03));
+            border: 1px solid var(--border-color, rgba(255, 255, 255, 0.12));
+            backdrop-filter: blur(32px) saturate(160%);
+            -webkit-backdrop-filter: blur(32px) saturate(160%);
+            box-shadow: 
+                0 1px 0 rgba(255, 255, 255, 0.06) inset,
+                0 2px 8px rgba(0, 0, 0, 0.06),
+                0 4px 16px rgba(0, 0, 0, 0.04);
 
             &:hover {
                 color: var(--link-hover-color); /* Use theme variable */
                 background: var(--link-hover-color);
                 border-color: var(--link-hover-color);
                 transform: translateY(-2px);
-                box-shadow: 0 6px 16px rgba(var(--link-hover-color-rgb, 144, 205, 244), 0.4);
+                box-shadow: 
+                    0 1px 0 rgba(255, 255, 255, 0.1) inset,
+                    0 6px 20px rgba(var(--link-hover-color-rgb, 144, 205, 244), 0.4),
+                    0 12px 40px rgba(var(--link-hover-color-rgb, 144, 205, 244), 0.2);
+                backdrop-filter: blur(40px) saturate(180%);
+                -webkit-backdrop-filter: blur(40px) saturate(180%);
                 
                 .dynamicLogo path { /* Ensure SVG path color changes on hover */
                      fill: var(--bg-color, #ffffff); /* Use background color for contrast */
