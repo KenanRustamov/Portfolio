@@ -31,6 +31,9 @@ body {
   --data-block-text: #cbd5e0; /* Specific text color for data blocks */
   --data-block-title: #ffffff; /* White for main titles */
   --data-block-subtitle: #a0aec0; /* Gray for subtitles */
+  --card-bg: rgba(255, 255, 255, 0.05); /* Card backgrounds for dark mode */
+  --border-color: rgba(255, 255, 255, 0.08); /* Border colors for dark mode */
+  --bg-color: #002539; /* Main background color for dark mode */
 }
 
 body[data-theme='light'] {
@@ -52,6 +55,9 @@ body[data-theme='light'] {
   --data-block-text: #4a5568; /* Darker gray for data block text */
   --data-block-title: #1a202c; /* Very dark gray for titles */
   --data-block-subtitle: #718096; /* Medium gray for subtitles */
+  --card-bg: rgba(0, 0, 0, 0.03); /* Card backgrounds for light mode */
+  --border-color: rgba(0, 0, 0, 0.08); /* Border colors for light mode */
+  --bg-color: #ffffff; /* Main background color for light mode */
 
   /* Remove potential incorrect icon override */
   /* .navContainer .theme-icon { 
