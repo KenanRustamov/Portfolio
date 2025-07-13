@@ -67,14 +67,16 @@
     top: 0;
     left: 0;
     z-index: 1000; // Ensure header stays on top
-    background-color: var(--header-background); // Use variable
+    background: var(--card-bg, rgba(255, 255, 255, 0.05)); // Enhanced glassmorphism
+    backdrop-filter: blur(24px);
+    border-bottom: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
     color: var(--text-color); // Use variable
     align-items: center;
     justify-content: space-between; // Space out logo and links
     padding: 0 5%; // Add some horizontal padding
     box-sizing: border-box;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1); // Optional: subtle shadow
-    transition: background-color 0.3s ease, color 0.3s ease;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08); // Enhanced shadow
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .navLogoContainer {
@@ -107,9 +109,9 @@
 .theme-switch {
     position: relative;
     display: inline-block;
-    width: 50px;
-    height: 26px;
-    margin: 0 10px;
+    width: 54px;
+    height: 30px;
+    margin: 0 12px;
 }
 
 .theme-switch input {
@@ -125,37 +127,45 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ccc;
-    transition: .4s;
-    border-radius: 26px;
+    background: var(--card-bg, rgba(255, 255, 255, 0.1));
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border-color, rgba(255, 255, 255, 0.15));
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .slider:before {
     position: absolute;
     content: "";
-    height: 18px;
-    width: 18px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    transition: .4s;
+    height: 22px;
+    width: 22px;
+    left: 3px;
+    bottom: 3px;
+    background: linear-gradient(135deg, #ffffff, #f1f5f9);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: 50%;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
 input:checked + .slider {
-    background-color: var(--primary-color);
+    background: var(--link-hover-color);
+    border-color: var(--link-hover-color);
+    box-shadow: 0 0 0 2px rgba(var(--link-hover-color-rgb, 144, 205, 244), 0.2);
 }
 
 body[data-theme='light'] .theme-switch input:checked + .slider {
-    background-color: #4a4a4a;
+    background: var(--link-hover-color);
+    border-color: var(--link-hover-color);
 }
 
 input:focus + .slider {
-    box-shadow: 0 0 1px var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(var(--link-hover-color-rgb, 144, 205, 244), 0.3);
 }
 
 input:checked + .slider:before {
     transform: translateX(24px);
+    background: linear-gradient(135deg, #ffffff, #e2e8f0);
 }
 
 // .theme-icon {
@@ -213,17 +223,19 @@ input:checked + .slider:before {
     flex-direction: column;
     align-items: center;
     position: fixed;
-    top: 60px; /* Start below the default header height */
+    top: 80px; /* Start below the enhanced header height */
     left: 0;
     width: 100%;
-    height: calc(100vh - 60px); /* Fill remaining viewport height */
-    background-color: var(--header-background);
-    padding: 30px 20px; /* Adjust padding as needed, top padding less critical now */
+    height: calc(100vh - 80px); /* Fill remaining viewport height */
+    background: var(--card-bg, rgba(255, 255, 255, 0.05));
+    backdrop-filter: blur(24px);
+    border-top: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+    padding: 40px 20px; /* Enhanced padding */
     box-sizing: border-box;
     transform: translateX(-100%);
     opacity: 0;
     pointer-events: none; 
-    transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 999; /* Ensure it's below the header (z-index: 1000) */
     overflow-y: auto; // Allow scrolling within the menu if content overflows
 

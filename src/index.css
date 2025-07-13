@@ -22,6 +22,7 @@ body {
   --footer-background: #002539;
   --link-color: var(--text-color);
   --link-hover-color: #90cdf4; /* Lighter Sky Blue on hover */
+  --link-hover-color-rgb: 144, 205, 244; /* RGB values for effects */
   --block-background: #002539;
   --svg-fill: #a0aec0; /* Slightly lighter gray for icons */
   --scrollbar-track: #4a5568;
@@ -46,6 +47,7 @@ body[data-theme='light'] {
   --footer-background: #edf2f7; /* Light Gray footer */
   --link-color: #2b6cb0; /* Darker Blue links */
   --link-hover-color: #2c5282; /* Even Darker Blue hover */
+  --link-hover-color-rgb: 44, 82, 130; /* RGB values for effects */
   --block-background: #ffffff; /* White blocks */
   --svg-fill: #4a5568; /* Dark Gray for icons (incl. moon) */
   --scrollbar-track: #edf2f7;

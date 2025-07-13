@@ -34,7 +34,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
   gap: 40px;
-  align-items: start;
+  align-items: stretch; // Make cards equal height
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
@@ -49,16 +49,19 @@
 .project-card {
   background: var(--card-bg, rgba(255, 255, 255, 0.05));
   border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
-  border-radius: 16px;
+  border-radius: 20px;
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  backdrop-filter: blur(20px);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(24px);
+  box-shadow: 0 6px 28px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  height: 100%; // Ensure full height is used
 
   &:hover {
     transform: translateY(-8px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-    border-color: var(--link-hover-color);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+    border-color: rgba(var(--link-hover-color-rgb, 144, 205, 244), 0.4);
   }
 }
 
@@ -127,11 +130,15 @@
 }
 
 .project-card-content {
-  padding: 28px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1; // Take up remaining space
+  gap: 14px;
 }
 
 .project-header {
-  margin-bottom: 16px;
+  flex-shrink: 0; // Don't shrink
 }
 
 .project-title {
@@ -159,92 +166,98 @@
   color: var(--text-color);
   line-height: 1.6;
   font-size: 0.9rem;
-  margin: 0 0 20px 0;
+  margin: 0;
   opacity: 0.9;
+  flex: 1; // Grow to fill available space
 }
 
 .project-skills {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 24px;
+  flex-shrink: 0; // Don't shrink
 }
 
 .skill-tag {
-  background: var(--card-bg, rgba(255, 255, 255, 0.1));
+  background: var(--card-bg, rgba(255, 255, 255, 0.06));
   color: var(--text-color);
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 500;
-  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.15));
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 400;
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+  cursor: default;
+  letter-spacing: 0.1px;
+  opacity: 0.8;
   
-  &:hover {
-    background: var(--link-hover-color);
-    color: var(--bg-color, #ffffff);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
+  // No hover effects - completely flat and non-interactive
 
   @media (max-width: 480px) {
-    font-size: 0.7rem;
-    padding: 5px 10px;
+    font-size: 0.65rem;
+    padding: 4px 8px;
   }
 }
 
 .project-actions {
   display: flex;
-  gap: 12px;
+  gap: 10px;
+  flex-shrink: 0; // Don't shrink, stay at bottom
+  margin-top: auto; // Push to bottom
   
   @media (max-width: 480px) {
-    flex-direction: column;
     gap: 8px;
   }
 }
 
 .action-button {
-  padding: 12px 20px;
-  border-radius: 8px;
+  padding: 10px 18px;
+  border-radius: 12px;
   text-decoration: none;
-  font-weight: 600;
-  font-size: 0.85rem;
+  font-weight: 500;
+  font-size: 0.8rem;
   text-align: center;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   flex: 1;
+  letter-spacing: 0.3px;
+  position: relative;
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
 
   &.primary {
-    background: var(--link-hover-color);
-    color: var(--bg-color, #ffffff);
-    border: 2px solid var(--link-hover-color);
-
-    &:hover {
-      background: transparent;
-      color: var(--link-hover-color);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-    }
-  }
-
-  &.secondary {
-    background: transparent;
+    background: var(--card-bg, rgba(255, 255, 255, 0.08));
     color: var(--link-hover-color);
-    border: 2px solid var(--link-hover-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 
     &:hover {
       background: var(--link-hover-color);
       color: var(--bg-color, #ffffff);
       transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 6px 20px rgba(var(--link-hover-color-rgb, 144, 205, 244), 0.25);
+      border-color: var(--link-hover-color);
+    }
+  }
+
+  &.secondary {
+    background: var(--card-bg, rgba(255, 255, 255, 0.04));
+    color: var(--text-color);
+    border-color: var(--border-color, rgba(255, 255, 255, 0.12));
+
+    &:hover {
+      background: var(--card-bg, rgba(255, 255, 255, 0.08));
+      color: var(--link-hover-color);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      border-color: rgba(var(--link-hover-color-rgb, 144, 205, 244), 0.3);
     }
   }
 
   @media (max-width: 480px) {
-    padding: 10px 16px;
-    font-size: 0.8rem;
+    padding: 9px 16px;
+    font-size: 0.75rem;
   }
 }
 

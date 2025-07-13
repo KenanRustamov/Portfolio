@@ -67,13 +67,12 @@ const IntroDataBlock = (props: IntroDataBlockProps) => {
         };
     }, []); // Empty dependency array means run only once on mount
 
-    // Framer Motion animation variants (can be kept or moved to parent)
+    // Framer Motion animation variants - removed opacity fade to prevent image darkening
     const blockVariants = {
-        hidden: { opacity: 0, y: 20 },
+        hidden: { y: 30 },
         visible: {
-            opacity: 1,
             y: 0,
-            transition: { duration: 0.6, ease: "easeOut" }
+            transition: { duration: 0.8, ease: "easeOut" }
         }
     };
 

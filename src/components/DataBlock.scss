@@ -30,10 +30,25 @@ $line-height-body: 1.45;
 
 .title {
     color: var(--link-hover-color); 
-    font-weight: bold;
+    font-weight: 700;
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: 12px;
+    position: relative;
+    letter-spacing: -0.5px;
+    
+    &::after {
+        content: '';
+        position: absolute;
+        width: 50%;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, var(--link-hover-color), transparent);
+        bottom: -8px;
+        left: 25%;
+        border-radius: 2px;
+    }
 }
 
 .bottomBorder {
@@ -70,18 +85,22 @@ $line-height-body: 1.45;
     flex-shrink: 0;
 }
 
-// Base image style used for both summary and stacked images
+// Enhanced image style with modern glassmorphism
 .image {
-    border-radius: 10px;
+    border-radius: 16px;
     width: 350px;
     height: 350px;
-    margin: 15px;
+    margin: 20px;
     object-fit: cover;
-    transition: transform $duration-fast $ease-default;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     will-change: transform;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    border: 2px solid var(--border-color, rgba(255, 255, 255, 0.08));
 
     &:hover {
-        transform: scale(1.03) translateZ(0);
+        transform: translateY(-6px) scale(1.05);
+        box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+        border-color: rgba(var(--link-hover-color-rgb, 144, 205, 244), 0.3);
     }
 }
 
@@ -136,31 +155,41 @@ $line-height-body: 1.45;
 }
 
 .emailButton {
-    border-radius: 3px;
-    padding: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
-    color: var(--link-hover-color);
+    border-radius: 12px;
+    padding: 12px 20px;
+    color: var(--text-color);
     font-size: .75em;
-    display:flex;
+    font-weight: 600;
+    display: flex;
     height: fit-content;
     justify-content: center;
     align-items: center;
-    align-self:center;
+    align-self: center;
     justify-self: center;
-    background: #8e8e8e;
-    transition: background $duration-medium $ease-default;
+    background: var(--card-bg, rgba(255, 255, 255, 0.1));
+    backdrop-filter: blur(12px);
+    border: 2px solid var(--link-hover-color);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     text-decoration: none;
+    gap: 8px;
+    
     & svg {
-        width: 50px;
+        width: 20px;
         height: auto;
-        fill:#282c34;
+        fill: currentColor;
+        transition: fill 0.3s ease;
     }
+    
     &:hover {
-        transition: background $duration-medium $ease-default;
         background: var(--link-hover-color);
-        color: #282c34;
+        color: var(--bg-color, #ffffff);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(var(--link-hover-color-rgb, 144, 205, 244), 0.4);
         cursor: pointer;
+        
+        & svg {
+            fill: var(--bg-color, #ffffff);
+        }
     }
 }
 
