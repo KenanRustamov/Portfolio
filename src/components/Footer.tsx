@@ -1,10 +1,11 @@
-import React from 'react';
+import React from "react";
+import { motion } from "framer-motion";
+import { ReactComponent as GitHubIcon } from "../images/gitHubLogo.svg?react";
+import { ReactComponent as LinkedInIcon } from "../images/linkedInLogo.svg?react";
+import { ReactComponent as InstagramIcon } from "../images/instagramLogo.svg?react";
+import { ReactComponent as PdfIcon } from "../images/pdf.svg?react";
 import "./Footer.scss";
 import ThemeSwitch from './ThemeSwitch';
-import { ReactComponent as GitHubIcon } from "../images/gitHubLogo.svg";
-import { ReactComponent as LinkedInIcon } from "../images/linkedInLogo.svg";
-import { ReactComponent as InstagramIcon } from "../images/instagramLogo.svg";
-import { ReactComponent as PdfIcon } from "../images/pdf.svg";
 
 const Footer = (props: any) => {
   let content = 

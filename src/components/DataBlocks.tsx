@@ -1,30 +1,15 @@
-import React from 'react'
-import { motion } from 'framer-motion'
+import React from "react";
 import "./DataBlocks.scss";
-import DataBlock from "./DataBlock";
 import IntroDataBlock from "./IntroDataBlock";
 import Timeline from "./Timeline";
 import ProjectShowcase from "./ProjectShowcase";
+
 import kenanPhoto from "../images/kenanRustamov.jpg";
 import partifyImg from "../images/partify.png"
 import SnackCheck from "../images/snack_check.png";
-import krLogo from "../images/krLogo.svg";
 
 
 const DataBlocks = (props: any) => {
-    // Define variants for the container groups
-    const groupVariants = {
-        hidden: { opacity: 0 }, // Simple fade-in for the group
-        visible: { 
-            opacity: 1, 
-            transition: { 
-                duration: 0.5, 
-                delay: 0.1, // Add a slight delay 
-                when: "beforeChildren", // Ensure parent fades in before children (if children had animations)
-                staggerChildren: 0.2 // Stagger children if they were animated
-            }
-        }
-    };
 
 
 
@@ -83,13 +68,12 @@ const DataBlocks = (props: any) => {
     let content = 
     <div className={"data"}>
         <IntroDataBlock 
-            className="card"
-            id ={"1"} 
-            github={"https://github.com/KenanRustamov"} 
-            link ={"https://www.linkedin.com/in/kenanrustamov/"} 
-            instagram={"https://www.instagram.com/kenanrustamov1/"}
-            resume={"/ComputerScienceResume.pdf"}
-            propInput ={{infoTitle:"Kenan Rustamov", infoSubtitle:"Ex-Software Engineer and Current Graduate Student", infoText:"I currently study at Johns Hopkins University for a Masters in Computer Science, and conduct AI research at the Johns Hopkins Center for Language and Speech Processing under Professor Jason Eisner. I previously worked as a Software Engineer for 3 years, most recently at JP Morgan Chase on scalable cloud APIs.", infoImg: kenanPhoto, alt: "Professionalish looking photo at the beach"}}
+            title="Kenan Rustamov"
+            introText="Hello, my name is"
+            subtitle="Ex-Software Engineer and Current Graduate Student"
+            description="I currently study at Johns Hopkins University for a Masters in Computer Science, and conduct AI research at the Johns Hopkins Center for Language and Speech Processing under Professor Jason Eisner. I previously worked as a Software Engineer for 3 years, most recently at JP Morgan Chase on scalable cloud APIs."
+            profileImage={kenanPhoto}
+            icons={[]}
         />
         <div id="work-experience-section">
             <Timeline 

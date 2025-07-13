@@ -1,45 +1,38 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
-import "./IntroDataBlock.scss"; // Import specific styles
-import { ReactComponent as PdfIcon } from "../images/pdf.svg"; // Import SVG as component
-import { ReactComponent as GitHubIcon } from "../images/gitHubLogo.svg";
-import { ReactComponent as LinkedInIcon } from "../images/linkedInLogo.svg";
-import { ReactComponent as InstagramIcon } from "../images/instagramLogo.svg";
+import React, { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
+import GlassButton from "./Glass/GlassButton";
+import emailLogo from "../images/emailLogo.svg";
+import gitHubLogo from "../images/gitHubLogo.svg";
+import linkedInLogo from "../images/linkedInLogo.svg";
+import pdf from "../images/pdf.svg";
 
-// Define Props interface specifically for IntroDataBlock
 interface IntroDataBlockProps {
-    className?: string;
-    id?: string;
-    github?: string;
-    link?: string;
-    instagram?: string;
-    resume?: string;
-    propInput: {
-        title?: string; // Title is optional here, often not used in intro
-        infoTitle: string; // Required for Intro
-        infoSubtitle: string; // Required for Intro
-        infoText: string; // Required for Intro
-        infoImg: string; // Required for Intro
-        alt?: string;
-        ignoreInfo?: boolean;
-        other?: React.ReactNode;
-    };
+    title: string;
+    introText: string;
+    profileImage: string;
+    subtitle: string;
+    description: string;
+    icons: Array<{
+        src: string;
+        alt: string;
+        href: string;
+        isExternal?: boolean;
+    }>;
 }
 
 const IntroDataBlock = (props: IntroDataBlockProps) => {
-
     // State for intro text animation
     const introTextTarget = "Hello, my name is";
     const [introTypedText, setIntroTypedText] = useState("");
-    const [showIntroCursor, setShowIntroCursor] = useState(true); // Start visible
+    const [showIntroCursor, setShowIntroCursor] = useState(true);
     const introTypingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
     const introCursorTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
     // Effect for intro text typewriter
     useEffect(() => {
         let currentText = "";
-        let typingDelay = 80; // Slower typing for intro
-        let cursorBlinkDuration = 3000; // 3 seconds
+        let typingDelay = 80;
+        let cursorBlinkDuration = 3000;
 
         const typeIntro = () => {
             if (currentText.length < introTextTarget.length) {
@@ -47,9 +40,7 @@ const IntroDataBlock = (props: IntroDataBlockProps) => {
                 setIntroTypedText(currentText);
                 introTypingTimeoutRef.current = setTimeout(typeIntro, typingDelay);
             } else {
-                // Finished typing intro
                 introTypingTimeoutRef.current = null;
-                // Keep cursor blinking for a bit, then hide
                 introCursorTimeoutRef.current = setTimeout(() => {
                     setShowIntroCursor(false);
                     introCursorTimeoutRef.current = null;
@@ -57,17 +48,15 @@ const IntroDataBlock = (props: IntroDataBlockProps) => {
             }
         };
 
-        // Start typing after a short delay
-        introTypingTimeoutRef.current = setTimeout(typeIntro, 500); // Delay before intro typing starts
+        introTypingTimeoutRef.current = setTimeout(typeIntro, 500);
 
-        // Cleanup
         return () => {
             if (introTypingTimeoutRef.current) clearTimeout(introTypingTimeoutRef.current);
             if (introCursorTimeoutRef.current) clearTimeout(introCursorTimeoutRef.current);
         };
-    }, []); // Empty dependency array means run only once on mount
+    }, []);
 
-    // Framer Motion animation variants - removed opacity fade to prevent image darkening
+    // Framer Motion animation variants
     const blockVariants = {
         hidden: { y: 30 },
         visible: {
@@ -76,107 +65,172 @@ const IntroDataBlock = (props: IntroDataBlockProps) => {
         }
     };
 
-    // Helper function to render social/link icons
-    const renderIcons = () => (
-        <div className="dataBlock-icons">
-            {props.github && (
-                <a href={props.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
-                    <GitHubIcon className="dynamicLogo" />
-                    <span className="icon-label">GitHub</span>
-                </a>
-            )}
-             {props.link && (
-                 <a href={props.link} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
-                    <LinkedInIcon className="dynamicLogo" />
-                    <span className="icon-label">LinkedIn</span>
-                 </a>
-             )}
-            {props.instagram && (
-                <a href={props.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram Profile">
-                    <InstagramIcon className="dynamicLogo" />
-                    <span className="icon-label">Instagram</span>
-                </a>
-            )}
-            {props.resume && (
-                <a href={props.resume} target="_blank" rel="noopener noreferrer" aria-label="Resume">
-                     <PdfIcon className="dynamicLogo" />
-                    <span className="icon-label">Resume</span>
-                </a>
-            )}
-        </div>
-    );
-
-    // Helper function to render the image
-    const renderImage = () => (
-        props.propInput.infoImg ?
-            (props.link ? // If a link is provided for the image (e.g., profile pic links to LinkedIn)
-                <a href={props.link} target="_blank" rel="noopener noreferrer" aria-label={props.propInput.alt || "Link related to image"}>
-                    <img className="image clickable" src={props.propInput.infoImg} alt={props.propInput.alt}/>
-                </a>
-                :
-                <img className="image" src={props.propInput.infoImg} alt={props.propInput.alt}/>
-            )
-        : null
-    );
-
-    // Scroll handler function
-    const handleScrollDown = () => {
-        const nextSection = document.getElementById('work-experience-section');
-        if (nextSection) {
-            nextSection.scrollIntoView({ behavior: 'smooth' });
-        }
+    const iconVariants = {
+        hidden: { opacity: 0, scale: 0.8 },
+        visible: (i: number) => ({
+            opacity: 1,
+            scale: 1,
+            transition: {
+                delay: i * 0.1 + 0.5,
+                duration: 0.4,
+                ease: "easeOut"
+            }
+        })
     };
 
-    // The main structure of the IntroDataBlock
-    const content = (
+    return (
         <motion.div
-            className={`introDataBlock ${props.className || ""}`}
-            id={props.id}
+            className="
+                flex flex-col items-center justify-center min-h-screen w-full max-w-6xl
+                px-[5%] py-16 mx-auto box-border relative mb-0
+            "
+            style={{ color: 'var(--text-color)' }}
             variants={blockVariants}
             initial="hidden"
-            animate="visible" // Always animate intro block on load
-            viewport={{ once: true, amount: 0.1 }} // Keep viewport settings if desired
-            style={{ position: 'relative' }} // Ensure parent is positioned for absolute child
+            animate="visible"
         >
-            {/* Optional title rendering (usually not needed for intro) */}
-            {props.propInput.title &&
-                 <div className="title intro-title">
-                     <div className="text">{props.propInput.title}</div>
-                 </div>}
-
-            {!props.propInput.ignoreInfo && (
-                <div className="info">
-                    <div className="infoTextContainer">
-                        {/* Specific intro text with typewriter */}
-                        <div className="introText">
-                             {introTypedText}
-                             {showIntroCursor && <span className="typing-cursor">|</span>} 
-                        </div>
-                        {/* Main titles and text */} 
-                        <div className="infoTitle">{props.propInput.infoTitle}
-                            <div className ="subtitle">{props.propInput.infoSubtitle}</div>
-                        </div>
-                        <div className="infoText">{props.propInput.infoText}</div>
-                        {/* Icons */}
-                        {renderIcons()}
+            {/* Main Content */}
+            <div className="
+                w-full flex flex-col lg:flex-row items-center justify-center
+                gap-10 lg:gap-16 mb-10
+            ">
+                {/* Text Container */}
+                <div className="
+                    flex flex-col flex-1 min-w-[300px] lg:items-start items-center
+                    order-2 lg:order-1
+                ">
+                    {/* Intro Text with Typewriter */}
+                    <div 
+                        className="
+                            mb-2 font-semibold lg:text-left text-center
+                            text-sm uppercase tracking-wider opacity-90
+                        "
+                        style={{ color: 'var(--link-hover-color)' }}
+                    >
+                        {introTypedText}
+                        {showIntroCursor && (
+                            <span className="inline-block ml-1 animate-pulse">|</span>
+                        )}
                     </div>
-                    {/* Image */}
-                    {renderImage()}
-                    {/* Any other content passed via props.propInput.other */} 
-                    {props.propInput.other}
-                </div>
-            )}
 
-            {/* Scroll Down Icon Container */}
-            <div className="scroll-down-icon-container" onClick={handleScrollDown}>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="scroll-down-icon">
-                    <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/>
-                </svg>
+                    {/* Main Title */}
+                    <h1 
+                        className="
+                            font-bold flex flex-col mb-5 w-full
+                            text-4xl sm:text-5xl lg:text-6xl lg:text-left text-center
+                            leading-tight tracking-tight
+                        "
+                        style={{ color: 'var(--text-color)' }}
+                    >
+                        {props.title}
+                    </h1>
+
+                    {/* Subtitle */}
+                    <h2 
+                        className="
+                            text-lg sm:text-xl lg:text-2xl mt-2
+                            font-normal lg:text-left text-center opacity-80
+                        "
+                        style={{ color: 'var(--text-color)' }}
+                    >
+                        {props.subtitle}
+                    </h2>
+
+                    {/* Description */}
+                    <p 
+                        className="
+                            text-base leading-relaxed mt-4
+                            lg:text-left text-center max-w-2xl
+                        "
+                        style={{ color: 'var(--data-block-text)' }}
+                    >
+                        {props.description}
+                    </p>
+
+                    {/* Social Icons */}
+                    <div className="
+                        flex justify-center lg:justify-start items-center gap-3 mt-8
+                    ">
+                        {[
+                            { src: emailLogo, alt: "Email", href: "mailto:kenanrustamov@gmail.com", label: "Email" },
+                            { src: gitHubLogo, alt: "GitHub", href: "https://github.com/kenanr", label: "GitHub", isExternal: true },
+                            { src: linkedInLogo, alt: "LinkedIn", href: "https://linkedin.com/in/kenanrustamov", label: "LinkedIn", isExternal: true },
+                            { src: pdf, alt: "Resume", href: "/ComputerScienceResume.pdf", label: "Resume", isExternal: true }
+                        ].map((icon, index) => (
+                            <motion.div
+                                key={icon.alt}
+                                custom={index}
+                                variants={iconVariants}
+                                initial="hidden"
+                                animate="visible"
+                            >
+                                <GlassButton
+                                    variant="ghost"
+                                    size="sm"
+                                    href={icon.href}
+                                    target={icon.isExternal ? "_blank" : undefined}
+                                    className="
+                                        p-2 group transition-all duration-300 ease-out
+                                    "
+                                    style={{ 
+                                        color: 'var(--svg-fill)',
+                                        borderColor: 'var(--border-color)'
+                                    }}
+                                    animate
+                                >
+                                    <img
+                                        src={icon.src}
+                                        alt={icon.alt}
+                                        className="w-4 h-4 transition-all duration-300 group-hover:scale-110"
+                                        style={{ filter: 'brightness(0) saturate(100%) invert(50%)' }}
+                                    />
+                                    <span className="text-xs font-normal ml-2 hidden sm:inline">
+                                        {icon.label}
+                                    </span>
+                                </GlassButton>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Profile Image */}
+                <div className="
+                    flex-shrink-0 order-1 lg:order-2
+                ">
+                    <motion.div
+                        className="relative group"
+                        whileHover={{ scale: 1.02 }}
+                        transition={{ duration: 0.3 }}
+                    >
+                        <img
+                            src={props.profileImage}
+                            alt="Profile"
+                            className="
+                                w-80 h-80 lg:w-96 lg:h-96 object-cover rounded-2xl
+                                transition-all duration-500 ease-out
+                                border-2 shadow-lg group-hover:shadow-xl
+                            "
+                            style={{ 
+                                borderColor: 'var(--border-color)',
+                                boxShadow: '0 8px 32px rgba(0, 0, 0, 0.12)'
+                            }}
+                        />
+                        {/* Glass overlay effect on hover */}
+                        <div 
+                            className="
+                                absolute inset-0 rounded-2xl opacity-0
+                                group-hover:opacity-20 transition-opacity duration-500
+                                pointer-events-none
+                            "
+                            style={{ 
+                                background: 'var(--card-bg)'
+                            }}
+                        />
+                    </motion.div>
+                </div>
             </div>
         </motion.div>
     );
-
-    return content;
 };
 
 export default IntroDataBlock;

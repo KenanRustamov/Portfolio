@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,115 +7,108 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--background-color);
-  color: var(--text-color);
-  /* Add smooth transition for all themeable properties */
-  transition: background-color 0.5s ease, color 0.5s ease;
-}
-
-/* Define CSS Variables for colors */
-:root {
-  /* Dark Mode Defaults */
-  --background-color: #002539;
-  --text-color: #e2e8f0;
-  --primary-color: #63b3ed; /* Sky Blue */
-  --secondary-color: #4a5568; /* Cool Gray */
-  --header-background: #002539;
-  --footer-background: #002539;
-  --link-color: var(--text-color);
-  --link-hover-color: #90cdf4; /* Lighter Sky Blue on hover */
-  --link-hover-color-rgb: 144, 205, 244; /* RGB values for effects */
-  --block-background: #002539;
-  --svg-fill: #a0aec0; /* Slightly lighter gray for icons */
-  --scrollbar-track: #4a5568;
-  --scrollbar-thumb: #718096;
-  --scrollbar-background: rgba(0, 37, 57, 0.5);
-  --underline-color: var(--primary-color);
-  --data-block-text: #cbd5e0; /* Specific text color for data blocks */
-  --data-block-title: #ffffff; /* White for main titles */
-  --data-block-subtitle: #a0aec0; /* Gray for subtitles */
-  --card-bg: rgba(255, 255, 255, 0.05); /* Card backgrounds for dark mode */
-  --border-color: rgba(255, 255, 255, 0.08); /* Border colors for dark mode */
-  --bg-color: #002539; /* Main background color for dark mode */
-}
-
-body[data-theme='light'] {
-  /* Light Mode Overrides - Brighter Palette */
-  --background-color: White; /* Very Light Gray background */
-  --text-color: #2d3748; /* Dark Gray text */
-  --primary-color: #3182ce; /* Standard Blue */
-  --secondary-color: #a0aec0; /* Medium Gray */
-  --header-background: #ffffff; /* White header */
-  --footer-background: #edf2f7; /* Light Gray footer */
-  --link-color: #2b6cb0; /* Darker Blue links */
-  --link-hover-color: #2c5282; /* Even Darker Blue hover */
-  --link-hover-color-rgb: 44, 82, 130; /* RGB values for effects */
-  --block-background: #ffffff; /* White blocks */
-  --svg-fill: #4a5568; /* Dark Gray for icons (incl. moon) */
-  --scrollbar-track: #edf2f7;
-  --scrollbar-thumb: #cbd5e0;
-  --scrollbar-background: rgba(237, 242, 247, 0.8);
-  --underline-color: var(--primary-color);
-  --data-block-text: #4a5568; /* Darker gray for data block text */
-  --data-block-title: #1a202c; /* Very dark gray for titles */
-  --data-block-subtitle: #718096; /* Medium gray for subtitles */
-  --card-bg: rgba(0, 0, 0, 0.03); /* Card backgrounds for light mode */
-  --border-color: rgba(0, 0, 0, 0.08); /* Border colors for light mode */
-  --bg-color: #ffffff; /* Main background color for light mode */
-
-  /* Remove potential incorrect icon override */
-  /* .navContainer .theme-icon { 
-    fill: var(--svg-fill); /* This was potentially redundant or incorrect */
-  /* } */
-
-  /* Keep other specific light-theme overrides if needed */
-  .navContainer {
-    background-color: var(--header-background) !important;
-    color: var(--text-color) !important;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.06);
-  }
-  /* Styles for slider remain */
-  .navContainer .slider {
-    background-color: #cbd5e0;
-  }
-  .navContainer input:checked + .slider {
-    background-color: #4a5568;
-  }
-  .navContainer .hamburgerMenu div {
-    background-color: var(--text-color);
-  }
-
-  .skillsBlock li {
-    background-color: #edf2f7;
-    color: var(--text-color);
-    box-shadow: none;
-  }
-  .skillsBlock li:hover {
-    background-color: var(--primary-color);
-    color: #ffffff;
-  }
-
-  .footerContainer {
-     background-color: var(--footer-background);
-     color: var(--text-color);
-     border-top: 1px solid #e2e8f0;
-  }
-  .footerLinks .linkItem a {
-    color: #4a5568;
-  }
-  .footerText {
-    color: #718096;
-  }
-  .socialLinks a {
-    color: #4a5568;
-  }
-  .footerLinks .linkItem a:hover,
-  .socialLinks a:hover {
-    color: var(--link-hover-color);
-  }
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* Root CSS Variables for Theme System */
+:root {
+  /* Light theme colors */
+  --text-color: #333333;
+  --text-secondary: #666666;
+  --bg-color: #ffffff;
+  --card-bg: rgba(255, 255, 255, 0.04);
+  --header-background: rgba(255, 255, 255, 0.95);
+  --border-color: rgba(255, 255, 255, 0.12);
+  --link-hover-color: rgb(144, 205, 244);
+  --link-hover-color-rgb: 144, 205, 244;
+  --svg-fill: currentColor;
+  --data-block-title: #333333;
+  --data-block-subtitle: #666666;
+  --data-block-text: #555555;
+  --block-background: rgba(255, 255, 255, 0.06);
+  --primary-color: rgb(144, 205, 244);
+}
+
+/* Dark theme colors */
+[data-theme="dark"] {
+  --text-color: #ffffff;
+  --text-secondary: #cccccc;
+  --bg-color: #1a1a1a;
+  --card-bg: rgba(255, 255, 255, 0.04);
+  --header-background: rgba(26, 26, 26, 0.95);
+  --border-color: rgba(255, 255, 255, 0.12);
+  --link-hover-color: rgb(144, 205, 244);
+  --link-hover-color-rgb: 144, 205, 244;
+  --svg-fill: currentColor;
+  --data-block-title: #ffffff;
+  --data-block-subtitle: #cccccc;
+  --data-block-text: #e0e0e0;
+  --block-background: rgba(255, 255, 255, 0.06);
+  --primary-color: rgb(144, 205, 244);
+}
+
+/* Global background with enhanced glass effect */
+body {
+  background: linear-gradient(135deg, 
+    rgba(144, 205, 244, 0.1) 0%, 
+    rgba(144, 205, 244, 0.05) 50%, 
+    rgba(144, 205, 244, 0.02) 100%
+  );
+  min-height: 100vh;
+  color: var(--text-color);
+  transition: all 0.3s ease;
+}
+
+/* Optimized backdrop filter support */
+@supports (backdrop-filter: blur(1px)) {
+  .glass-supported {
+    backdrop-filter: blur(var(--glass-blur, 24px)) saturate(var(--glass-saturate, 160%));
+  }
+}
+
+/* Fallback for browsers without backdrop-filter */
+@supports not (backdrop-filter: blur(1px)) {
+  .glass-fallback {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+  }
+}
+
+/* Enhanced scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(144, 205, 244, 0.5);
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(144, 205, 244, 0.8);
+}
+
+/* Selection styling */
+::selection {
+  background: rgba(144, 205, 244, 0.3);
+  color: var(--text-color);
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

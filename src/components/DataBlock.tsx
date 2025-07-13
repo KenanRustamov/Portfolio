@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import "./DataBlock.scss";
-import { ReactComponent as PdfIcon } from "../images/pdf.svg"; // Import SVG as component
-import { ReactComponent as GitHubIcon } from "../images/gitHubLogo.svg";
-import { ReactComponent as LinkedInIcon } from "../images/linkedInLogo.svg";
-import { ReactComponent as InstagramIcon } from "../images/instagramLogo.svg";
+import { ReactComponent as PdfIcon } from "../images/pdf.svg?react"; // Import SVG as component
+import { ReactComponent as GitHubIcon } from "../images/gitHubLogo.svg?react";
+import { ReactComponent as LinkedInIcon } from "../images/linkedInLogo.svg?react";
+import { ReactComponent as InstagramIcon } from "../images/instagramLogo.svg?react";
 
 import {
   BUTTON_FADE_IN_DELAY,
@@ -22,7 +22,7 @@ import {
 // Text fade-in variants
 const textVariants = {
   hidden: { opacity: 0, y: -10 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
 };
 
 interface PropInput {
@@ -97,7 +97,7 @@ const stackedImageVariants = {
     y: 0,
     transition: { ...SPRING_DEFAULT },
   },
-  exit: { opacity: 0, y: -15, transition: { duration: 0.3, ease: "easeIn" } },
+  exit: { opacity: 0, y: -15, transition: { duration: 0.3 } },
 };
 
 const buttonVariants = {

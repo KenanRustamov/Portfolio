@@ -4,7 +4,7 @@ import './App.css';
 import DataBlocks from "./components/DataBlocks"
 import Footer from "./components/Footer"
 
-// Define the LinkData interface
+// Define the LinkData interface for legacy components
 interface LinkData {
   text: string;
   href: string;
@@ -50,7 +50,7 @@ function App() {
     <div className="App">
       <main>
         <React.Fragment>
-          {/* <Header links={links}/> */}
+          {/* <Header links={headerLinks}/> */}
           <DataBlocks />
           <Footer links={links}/>
         </React.Fragment>
