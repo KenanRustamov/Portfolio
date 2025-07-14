@@ -1,8 +1,43 @@
 @import "tailwindcss";
 
+/* TailwindCSS v4 Dark Mode Configuration */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* TailwindCSS v4 Theme Configuration */
 @theme {
-  --color-accent-primary: rgb(144, 205, 244);
+  /* Color Palette */
+  --color-blue-50: #eff6ff;
+  --color-blue-100: #dbeafe;
+  --color-blue-400: #60a5fa;
+  --color-blue-500: #3b82f6;
+  --color-blue-600: #2563eb;
+  --color-blue-900: #1e3a8a;
+  
+  --color-indigo-50: #eef2ff;
+  --color-indigo-100: #e0e7ff;
+  
+  --color-purple-50: #faf5ff;
+  --color-purple-100: #f3e8ff;
+  --color-purple-400: #a855f7;
+  --color-purple-600: #9333ea;
+  --color-purple-900: #581c87;
+  
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
+  
+  --color-orange-400: #fb923c;
+  --color-orange-500: #f97316;
+  --color-yellow-400: #facc15;
+  
+  /* Glass Effect Variables */
   --color-glass-light: rgba(255, 255, 255, 0.04);
   --color-glass-light-sm: rgba(255, 255, 255, 0.02);
   --color-glass-light-md: rgba(255, 255, 255, 0.06);
@@ -26,6 +61,14 @@
   --backdrop-saturate-glass-md: 170%;
   --backdrop-saturate-glass-lg: 180%;
   --backdrop-saturate-glass-xl: 200%;
+  
+  /* Additional backdrop blur utilities */
+  --backdrop-blur-3xl: 64px;
+}
+
+html {
+  /* Ensure html element supports dark mode */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body {
@@ -35,6 +78,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  /* Ensure body respects Tailwind dark mode */
+  min-height: 100vh;
 }
 
 code {
@@ -45,20 +91,25 @@ code {
 /* Root CSS Variables for Theme System (Legacy support) */
 :root {
   /* Light theme colors */
-  --text-color: #1f2937;
-  --text-secondary: #6b7280;
+  --text-color: #111827;
+  --text-secondary: #4b5563;
   --bg-color: #f9fafb;
-  --card-bg: rgba(255, 255, 255, 0.15);
+  --card-bg: rgba(255, 255, 255, 0.8);
   --header-background: rgba(255, 255, 255, 0.95);
-  --border-color: rgba(255, 255, 255, 0.25);
+  --border-color: rgba(0, 0, 0, 0.1);
   --link-hover-color: rgb(59, 130, 246);
   --link-hover-color-rgb: 59, 130, 246;
   --svg-fill: currentColor;
-  --data-block-title: #1f2937;
-  --data-block-subtitle: #6b7280;
-  --data-block-text: #374151;
-  --block-background: rgba(255, 255, 255, 0.12);
+  --data-block-title: #111827;
+  --data-block-subtitle: #4b5563;
+  --data-block-text: #1f2937;
+  --block-background: rgba(255, 255, 255, 0.9);
   --primary-color: rgb(59, 130, 246);
+  
+  /* Scrollbar colors for light theme */
+  --scrollbar-track: #f1f5f9;
+  --scrollbar-background: #e2e8f0;
+  --scrollbar-thumb: #cbd5e1;
 }
 
 /* Dark theme colors */
@@ -77,6 +128,11 @@ code {
   --data-block-text: #e5e7eb;
   --block-background: rgba(255, 255, 255, 0.08);
   --primary-color: rgb(96, 165, 250);
+  
+  /* Scrollbar colors for dark theme */
+  --scrollbar-track: #1f2937;
+  --scrollbar-background: #111827;
+  --scrollbar-thumb: #374151;
 }
 
 /* Dark mode class support for TailwindCSS */
@@ -95,11 +151,16 @@ code {
   --data-block-text: #e5e7eb;
   --block-background: rgba(255, 255, 255, 0.08);
   --primary-color: rgb(96, 165, 250);
+  
+  /* Scrollbar colors for dark theme */
+  --scrollbar-track: #1f2937;
+  --scrollbar-background: #111827;
+  --scrollbar-thumb: #374151;
 }
 
 /* Enhanced scrollbar styling */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {

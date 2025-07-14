@@ -54,6 +54,17 @@ const IntroDataBlock = (props: IntroDataBlockProps) => {
         return () => clearInterval(cursorInterval);
     }, []);
 
+    // Stop cursor blinking after 3 seconds when typing is complete
+    useEffect(() => {
+        if (isIntroTypingComplete) {
+            const stopCursorTimer = setTimeout(() => {
+                setShowIntroCursor(false);
+            }, 3000); // Stop blinking after 3 seconds
+
+            return () => clearTimeout(stopCursorTimer);
+        }
+    }, [isIntroTypingComplete]);
+
     const blockVariants = {
         hidden: { y: 50 },
         visible: { y: 0, transition: { duration: 0.8 } },
@@ -122,7 +133,7 @@ const IntroDataBlock = (props: IntroDataBlockProps) => {
                         className="
                             font-bold flex flex-col mb-5 w-full
                             text-4xl sm:text-5xl lg:text-6xl lg:text-left text-center
-                            text-gray-900 dark:text-white
+                            text-gray-800 dark:text-white
                         "
                     >
                         {props.title}
@@ -133,7 +144,7 @@ const IntroDataBlock = (props: IntroDataBlockProps) => {
                         className="
                             font-semibold mb-6 lg:text-left text-center
                             text-xl sm:text-2xl lg:text-3xl
-                            text-gray-700 dark:text-gray-200
+                            text-gray-600 dark:text-gray-200
                         "
                     >
                         {props.subtitle}
@@ -187,16 +198,6 @@ const IntroDataBlock = (props: IntroDataBlockProps) => {
                                     alt={icon.alt}
                                     className="w-6 h-6 opacity-80 group-hover:opacity-100 transition-all duration-300 filter brightness-0 dark:brightness-100 dark:invert-0 group-hover:brightness-110"
                                 />
-                                <div className="
-                                    absolute -top-12 left-1/2 transform -translate-x-1/2
-                                    backdrop-blur-md bg-gray-900/90 dark:bg-gray-800/90 text-white text-xs
-                                    px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100
-                                    border border-white/10 shadow-lg
-                                    transition-all duration-300 pointer-events-none
-                                    whitespace-nowrap z-10
-                                ">
-                                    {icon.label}
-                                </div>
                             </motion.div>
                         ))}
                     </motion.div>
@@ -241,11 +242,17 @@ const IntroDataBlock = (props: IntroDataBlockProps) => {
             <motion.div
                 className="
                     absolute bottom-8 left-1/2 transform -translate-x-1/2
-                    text-gray-700 dark:text-gray-300
+                    text-gray-700 dark:text-gray-300 cursor-pointer
                 "
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 1 }}
+                onClick={() => {
+                    const workExperienceSection = document.getElementById('work-experience-section');
+                    if (workExperienceSection) {
+                        workExperienceSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }}
             >
                 <div className="flex flex-col items-center">
                     <span className="text-sm font-medium mb-3 text-blue-600 dark:text-blue-400">Scroll Down</span>
@@ -256,6 +263,7 @@ const IntroDataBlock = (props: IntroDataBlockProps) => {
                         rounded-full flex justify-center
                         shadow-lg shadow-blue-500/20 dark:shadow-blue-400/30
                         hover:shadow-xl hover:shadow-blue-500/30 dark:hover:shadow-blue-400/40
+                        hover:scale-105 hover:bg-white/30 dark:hover:bg-white/20
                         transition-all duration-300
                     ">
                         <div className="

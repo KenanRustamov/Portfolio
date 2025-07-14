@@ -1,37 +1,73 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { useTheme } from '../contexts/ThemeContext';
 import { ReactComponent as SunSvg } from '../images/sun.svg?react';
 import { ReactComponent as MoonSvg } from '../images/moon.svg?react';
-import './ThemeSwitch.scss';
-
-// Icon Components
-const SunIcon = () => (
-    <SunSvg className="theme-icon" />
-);
-
-const MoonIcon = () => (
-    <MoonSvg className="theme-icon" />
-);
 
 const ThemeSwitch: React.FC = () => {
     const { theme, toggleTheme } = useTheme();
+    const isDark = theme === 'dark';
 
     return (
-        <button
+        <motion.button
             onClick={toggleTheme}
-            className="theme-switch"
-            aria-label="Toggle theme"
+            className="
+                relative w-14 h-7 
+                flex items-center justify-between
+                px-1 rounded-full
+                backdrop-blur-md bg-white/20 dark:bg-white/10
+                border border-white/30 dark:border-white/20
+                shadow-lg shadow-blue-500/10 dark:shadow-blue-400/20
+                hover:shadow-xl hover:shadow-blue-500/20 dark:hover:shadow-blue-400/30
+                hover:bg-white/30 dark:hover:bg-white/15
+                hover:border-white/40 dark:hover:border-white/30
+                transition-all duration-300 ease-out
+                focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:ring-offset-2 
+                focus:ring-offset-transparent
+                group
+            "
+            aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
+            whileTap={{ scale: 0.95 }}
         >
-            <div className="theme-switch-slider">
-                <div className="theme-switch-icons">
-                    <SunIcon />
-                    <MoonIcon />
+            {/* Background Track - Clean gradient without icons */}
+            <div className={`
+                absolute inset-0 rounded-full transition-all duration-300
+                ${isDark 
+                    ? 'bg-gradient-to-r from-blue-600/30 to-purple-600/30' 
+                    : 'bg-gradient-to-r from-orange-400/30 to-yellow-400/30'
+                }
+            `}></div>
+            
+            {/* Sliding Thumb - Only icon here */}
+            <motion.div
+                className="
+                    absolute w-5 h-5
+                    bg-gradient-to-br from-white to-gray-100
+                    dark:from-gray-100 dark:to-white
+                    rounded-full shadow-lg
+                    border border-white/50 dark:border-gray-200/50
+                    backdrop-blur-sm
+                    flex items-center justify-center
+                "
+                animate={{
+                    x: isDark ? 26 : 2,
+                }}
+                transition={{
+                    type: "spring",
+                    stiffness: 500,
+                    damping: 30
+                }}
+            >
+                {/* Active Icon in Thumb */}
+                <div className="w-3 h-3 flex items-center justify-center">
+                    {isDark ? (
+                        <MoonSvg className="w-2.5 h-2.5 text-blue-600" />
+                    ) : (
+                        <SunSvg className="w-2.5 h-2.5 text-orange-500" />
+                    )}
                 </div>
-                <div className={`theme-switch-thumb ${theme === 'dark' ? 'dark' : ''}`}>
-                    {theme === 'dark' ? <MoonIcon /> : <SunIcon />}
-                </div>
-            </div>
-        </button>
+            </motion.div>
+        </motion.button>
     );
 };
 

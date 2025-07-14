@@ -3,6 +3,5 @@ module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
-  // In TailwindCSS v4, most customization is done in CSS files
-  // rather than in the config file
+  // Dark mode is configured in CSS for v4, not here
 } 

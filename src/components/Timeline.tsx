@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import './Timeline.scss';
+
 
 interface WorkExperience {
   company: string;
@@ -40,44 +40,110 @@ const Timeline: React.FC<TimelineProps> = ({ title, experiences }) => {
 
   return (
     <motion.div
-      className="timeline-container"
+      className="
+        w-full max-w-5xl mx-auto text-gray-900 dark:text-gray-100
+      "
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.1 }}
     >
-      <div className="timeline-title">
-        <h2>{title}</h2>
+      <div className="text-center mb-20">
+        <h2 className="
+          text-blue-600 dark:text-blue-400 text-2xl sm:text-3xl font-bold mb-3
+          relative inline-block tracking-tight drop-shadow-lg
+        ">
+          {title}
+        </h2>
       </div>
       
-      <div className="timeline">
+      <div className="
+        relative max-w-4xl w-11/12 mx-auto 
+        pl-36 pr-5 pb-10
+        md:pl-20 md:pr-4 md:pb-8
+        sm:pl-16 sm:pr-3 sm:pb-5
+        before:content-[''] before:absolute before:w-0.5 
+        before:bg-gradient-to-b before:from-blue-600 before:to-blue-600/30
+        before:top-2 before:bottom-0 before:left-[7.5rem] before:rounded-sm
+        before:shadow-md before:shadow-blue-600/30
+        md:before:left-[3.8rem] sm:before:left-[2.6rem]
+      ">
         {experiences.map((experience, index) => (
           <motion.div
             key={`${experience.company}-${index}`}
-            className="timeline-item"
+            className="
+              relative py-6 flex items-start gap-8
+              before:content-[''] before:absolute before:w-3.5 before:h-3.5
+              before:bg-blue-600 before:border-2 before:border-white/90
+              before:rounded-full before:top-8 before:-left-7 before:z-10
+              before:shadow-lg before:shadow-blue-600/20
+              hover:before:scale-125 hover:before:shadow-xl hover:before:shadow-blue-600/30
+              before:transition-all before:duration-300
+              md:gap-5 md:before:-left-6 sm:gap-4 sm:before:-left-6
+              first:pt-0 first:before:top-2
+            "
             variants={itemVariants}
           >
-            <div className="timeline-dates">
+            <div className="
+              text-blue-600 dark:text-blue-400 text-xs font-bold
+              uppercase tracking-wide opacity-100 w-24 text-left
+              pr-5 mt-3 flex-shrink-0 pointer-events-none
+              drop-shadow-md
+              md:w-20 md:text-xs md:pr-4
+              sm:w-16 sm:text-xs sm:pr-2
+            ">
               {experience.dates}
             </div>
-            <div className="timeline-content">
+            <div className="
+              bg-white/15 dark:bg-white/5 p-6 border border-white/25 dark:border-white/10
+              shadow-lg shadow-black/10 dark:shadow-black/20
+              backdrop-blur-md saturate-150 rounded-2xl flex-1
+              transition-all duration-300 hover:-translate-y-1.5
+              hover:shadow-xl hover:shadow-black/15 dark:hover:shadow-black/25
+              hover:border-blue-600/40 hover:backdrop-blur-lg hover:saturate-200
+              hover:bg-white/20 dark:hover:bg-white/10
+              md:p-5 sm:p-4
+            ">
               <a
                 href={experience.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="timeline-company-link"
-              >
+                className="
+                  text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400
+                  text-xl sm:text-2xl font-bold mb-2 inline-block
+                  transition-all duration-300 relative leading-tight tracking-tight
+                  hover:translate-x-1
+                  after:content-[''] after:absolute after:w-full after:h-0.5
+                  after:bottom-0 after:left-0 after:bg-gradient-to-r after:from-blue-600 after:to-transparent
+                  after:scale-x-0 after:origin-left after:transition-transform after:duration-300
+                  after:rounded-sm hover:after:scale-x-100
+                                 "
+               >
                 {experience.company}
               </a>
-              <div className="timeline-position">
+              <div className="
+                text-blue-600 dark:text-blue-400 text-sm font-semibold mb-3.5
+                normal-case leading-snug opacity-90
+                uppercase tracking-wide
+              ">
                 {experience.position}
               </div>
-              <p className="timeline-description">
+              <p className="
+                text-gray-800 dark:text-gray-200 leading-relaxed text-sm
+                m-0 opacity-95 font-normal
+              ">
                 {experience.description}
               </p>
-              <div className="timeline-skills">
+              <div className="flex flex-wrap gap-2 mt-4">
                 {experience.skills.map((skill, skillIndex) => (
-                  <span key={skillIndex} className="skill-tag">
+                                      <span key={skillIndex} className="
+                      bg-white/30 dark:bg-white/10 text-gray-800 dark:text-gray-200 
+                      border border-white/20 dark:border-white/20 px-3 py-1.5 rounded-xl
+                      text-xs font-medium cursor-default tracking-wide opacity-90
+                      backdrop-blur-sm transition-all duration-200
+                      hover:bg-white/50 dark:hover:bg-white/20 hover:border-blue-600/30
+                      hover:opacity-100 hover:-translate-y-0.5
+                    ">
                     {skill}
                   </span>
                 ))}
