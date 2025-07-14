@@ -223,8 +223,11 @@ const IntroDataBlock = (props: IntroDataBlockProps) => {
                         group
                     ">
                         <img 
-                            src={props.profileImage} 
+                            srcSet="/kenanRustamov-300.webp 300w, /kenanRustamov.webp 1160w"
+                            sizes="(max-width: 768px) 300px, (max-width: 1024px) 400px, 480px"
+                            src={props.profileImage}
                             alt="Profile"
+                            loading="eager"
                             className="
                                 w-full h-full object-cover object-center
                                 group-hover:scale-105 transition-transform duration-500 ease-out

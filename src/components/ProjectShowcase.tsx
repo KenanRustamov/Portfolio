@@ -37,7 +37,6 @@ const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ title, projects }) =>
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeOut" }
     }
   };
 
@@ -68,6 +67,8 @@ const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ title, projects }) =>
                 className="project-image-link"
               >
                 <img 
+                  srcSet={`${project.image.replace('.webp', '-250.webp')} 250w, ${project.image} 554w`}
+                  sizes="(max-width: 768px) 250px, (max-width: 1024px) 350px, 450px"
                   src={project.image} 
                   alt={project.alt}
                   className="project-card-image"

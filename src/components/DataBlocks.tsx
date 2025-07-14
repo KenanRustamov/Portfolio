@@ -3,9 +3,10 @@ import IntroDataBlock from "./IntroDataBlock";
 import Timeline from "./Timeline";
 import ProjectShowcase from "./ProjectShowcase";
 
-import kenanPhoto from "../images/kenanRustamov.jpg";
-import partifyImg from "../images/partify.png"
-import SnackCheck from "../images/snack_check.png";
+// Use public folder for responsive image loading
+const kenanPhoto = "/kenanRustamov.webp";
+const partifyImg = "/partify.webp";
+const SnackCheck = "/snack_check.webp";
 
 
 const DataBlocks = (props: any) => {
