@@ -1,0 +1,84 @@
+{
+  "socialLinks": {
+    "intro": [
+      {
+        "id": "email",
+        "label": "Email",
+        "href": "mailto:kenanrustamov@gmail.com",
+        "icon": "emailLogo.svg",
+        "alt": "Email",
+        "isExternal": false,
+        "order": 1
+      },
+      {
+        "id": "github_intro",
+        "label": "GitHub",
+        "href": "https://github.com/kenanr",
+        "icon": "gitHubLogo.svg",
+        "alt": "GitHub",
+        "isExternal": true,
+        "order": 2
+      },
+      {
+        "id": "linkedin_intro",
+        "label": "LinkedIn",
+        "href": "https://linkedin.com/in/kenanrustamov",
+        "icon": "linkedInLogo.svg",
+        "alt": "LinkedIn",
+        "isExternal": true,
+        "order": 3
+      },
+      {
+        "id": "resume_intro",
+        "label": "Resume",
+        "href": "/ComputerScienceResume.pdf",
+        "icon": "pdf.svg",
+        "alt": "Resume",
+        "isExternal": true,
+        "order": 4
+      }
+    ],
+    "footer": [
+      {
+        "id": "github_footer",
+        "label": "GitHub Profile",
+        "href": "https://github.com/KenanRustamov",
+        "icon": "gitHubLogo.svg",
+        "alt": "GitHub",
+        "isExternal": true,
+        "order": 1
+      },
+      {
+        "id": "linkedin_footer",
+        "label": "LinkedIn Profile",
+        "href": "https://www.linkedin.com/in/kenanrustamov/",
+        "icon": "linkedInLogo.svg",
+        "alt": "LinkedIn",
+        "isExternal": true,
+        "order": 2
+      },
+      {
+        "id": "instagram_footer",
+        "label": "Instagram Profile",
+        "href": "https://www.instagram.com/kenanrustamov1/",
+        "icon": "instagramLogo.svg",
+        "alt": "Instagram",
+        "isExternal": true,
+        "order": 3
+      },
+      {
+        "id": "resume_footer",
+        "label": "Resume",
+        "href": "/ComputerScienceResume.pdf",
+        "icon": "pdf.svg",
+        "alt": "Resume",
+        "isExternal": true,
+        "order": 4
+      }
+    ]
+  },
+  "metadata": {
+    "iconPath": "/src/images/",
+    "defaultExternal": true
+  }
+} 

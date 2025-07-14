@@ -1,5 +1,5 @@
 export const TYPING_LETTER_DELAY_MS = 15;
-export const CURSOR_BLINK_DURATION_MS = 3000;
+export const CURSOR_BLINK_DURATION_MS = 1000;
 
 // Button animation timings
 export const BUTTON_FADE_IN_DELAY = 0.9; // seconds

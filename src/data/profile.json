@@ -1,0 +1,25 @@
+{
+  "profile": {
+    "title": "Kenan Rustamov",
+    "introText": "Hello, my name is",
+    "subtitle": "Ex-Software Engineer and Current Graduate Student",
+    "description": "I currently study at Johns Hopkins University for a Masters in Computer Science, and conduct AI research at the Johns Hopkins Center for Language and Speech Processing under Professor Jason Eisner. I previously worked as a Software Engineer for 3 years, most recently at JP Morgan Chase on scalable cloud APIs.",
+    "profileImage": "/kenanRustamov.webp",
+    "profileImageSrcSet": "/kenanRustamov-300.webp 300w, /kenanRustamov.webp 1160w",
+    "profileImageSizes": "(max-width: 768px) 300px, (max-width: 1024px) 400px, 480px",
+    "profileImageAlt": "Profile picture of Kenan Rustamov"
+  },
+  "contact": {
+    "email": "kenanrustamov@gmail.com",
+    "github": "https://github.com/kenanr",
+    "linkedin": "https://linkedin.com/in/kenanrustamov",
+    "resume": "/ComputerScienceResume.pdf"
+  },
+  "metadata": {
+    "footerText": "Created By Kenan Rustamov",
+    "sectionTitles": {
+      "workExperience": "Work Experience",
+      "projects": "Projects"
+    }
+  }
+} 

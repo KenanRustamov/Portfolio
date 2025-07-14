@@ -1,14 +1,14 @@
 import React from "react";
 import { motion } from "framer-motion";
 import IconButton from "./IconButton";
-import gitHubLogo from "../images/gitHubLogo.svg";
-import linkedInLogo from "../images/linkedInLogo.svg";
-import instagramLogo from "../images/instagramLogo.svg";
-import pdf from "../images/pdf.svg";
-
+import { getSocialLinksForFooter, getIconPath, getProfileData } from "../data/dataLoader";
 import ThemeSwitch from './ThemeSwitch';
 
 const Footer = (props: any) => {
+  // Load data from JSON
+  const socialLinks = getSocialLinksForFooter();
+  const profileData = getProfileData();
+
   let content = 
   <footer className="
     relative flex flex-col justify-center w-full
@@ -29,19 +29,15 @@ const Footer = (props: any) => {
           initial="hidden"
           animate="visible"
         >
-          {[
-            { src: gitHubLogo, alt: "GitHub", href: "https://github.com/KenanRustamov", label: "GitHub Profile" },
-            { src: linkedInLogo, alt: "LinkedIn", href: "https://www.linkedin.com/in/kenanrustamov/", label: "LinkedIn Profile" },
-            { src: instagramLogo, alt: "Instagram", href: "https://www.instagram.com/kenanrustamov1/", label: "Instagram Profile" },
-            { src: pdf, alt: "Resume", href: "/ComputerScienceResume.pdf", label: "Resume" }
-          ].map((item, index) => (
+          
+          {socialLinks.map((link, index) => (
             <IconButton
-              key={item.label}
-              src={item.src}
-              alt={item.alt}
-              href={item.href}
-              label={item.label}
-              isExternal={true}
+              key={link.id}
+              src={getIconPath(link.icon)}
+              alt={link.alt}
+              href={link.href}
+              label={link.label}
+              isExternal={link.isExternal}
               variants={{
                 hidden: { opacity: 0, scale: 0.8 },
                 visible: (i: number) => ({
@@ -60,7 +56,9 @@ const Footer = (props: any) => {
         <div className="flex justify-center items-center mt-4 w-full">
           <ThemeSwitch />
         </div>
-        <div className="flex text-xs justify-center mb-2.5 mt-4 text-gray-500">Created By Kenan Rustamov</div>
+        <div className="flex text-xs justify-center mb-2.5 mt-4 text-gray-500">
+          {profileData.metadata.footerText}
+        </div>
   </footer>
     return content;
 };

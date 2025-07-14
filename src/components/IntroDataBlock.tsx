@@ -2,10 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import GlassButton from "./Glass/GlassButton";
 import IconButton from "./IconButton";
-import emailLogo from "../images/emailLogo.svg";
-import gitHubLogo from "../images/gitHubLogo.svg";
-import linkedInLogo from "../images/linkedInLogo.svg";
-import pdf from "../images/pdf.svg";
+import { getSocialLinksForIntro, getIconPath, getProfileData } from "../data/dataLoader";
 
 interface IntroDataBlockProps {
     title: string;
@@ -21,6 +18,10 @@ const IntroDataBlock = (props: IntroDataBlockProps) => {
     const [isIntroTypingComplete, setIsIntroTypingComplete] = useState(false);
 
     const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+    // Load social links and profile data
+    const socialLinks = getSocialLinksForIntro();
+    const profileData = getProfileData();
 
     useEffect(() => {
         let index = 0;
@@ -55,12 +56,12 @@ const IntroDataBlock = (props: IntroDataBlockProps) => {
         return () => clearInterval(cursorInterval);
     }, []);
 
-    // Stop cursor blinking after 3 seconds when typing is complete
+    // Stop cursor blinking after 1 second when typing is complete
     useEffect(() => {
         if (isIntroTypingComplete) {
             const stopCursorTimer = setTimeout(() => {
                 setShowIntroCursor(false);
-            }, 3000); // Stop blinking after 3 seconds
+            }, 1000); // Stop blinking after 1 second
 
             return () => clearTimeout(stopCursorTimer);
         }
@@ -169,19 +170,14 @@ const IntroDataBlock = (props: IntroDataBlockProps) => {
                         initial="hidden"
                         animate="visible"
                     >
-                        {[
-                            { src: emailLogo, alt: "Email", href: "mailto:kenanrustamov@gmail.com", label: "Email", isExternal: false },
-                            { src: gitHubLogo, alt: "GitHub", href: "https://github.com/kenanr", label: "GitHub", isExternal: true },
-                            { src: linkedInLogo, alt: "LinkedIn", href: "https://linkedin.com/in/kenanrustamov", label: "LinkedIn", isExternal: true },
-                            { src: pdf, alt: "Resume", href: "/ComputerScienceResume.pdf", label: "Resume", isExternal: true }
-                        ].map((icon, index) => (
+                        {socialLinks.map((link, index) => (
                             <IconButton
-                                key={icon.label}
-                                src={icon.src}
-                                alt={icon.alt}
-                                href={icon.href}
-                                label={icon.label}
-                                isExternal={icon.isExternal}
+                                key={link.id}
+                                src={getIconPath(link.icon)}
+                                alt={link.alt}
+                                href={link.href}
+                                label={link.label}
+                                isExternal={link.isExternal}
                                 variants={iconVariants}
                                 custom={index}
                             />
@@ -201,10 +197,10 @@ const IntroDataBlock = (props: IntroDataBlockProps) => {
                 >
                     <div className="profile-image-container group">
                         <img 
-                            srcSet="/kenanRustamov-300.webp 300w, /kenanRustamov.webp 1160w"
-                            sizes="(max-width: 768px) 300px, (max-width: 1024px) 400px, 480px"
+                            srcSet={profileData.profile.profileImageSrcSet}
+                            sizes={profileData.profile.profileImageSizes}
                             src={props.profileImage} 
-                            alt="Profile"
+                            alt={profileData.profile.profileImageAlt}
                             loading="eager"
                             className="
                                 w-full h-full object-cover object-center
@@ -216,33 +212,40 @@ const IntroDataBlock = (props: IntroDataBlockProps) => {
             </div>
 
             {/* Scroll Indicator */}
-            <motion.div
+            <motion.div 
                 className="
                     absolute bottom-8 left-1/2 transform -translate-x-1/2
-                    text-gray-700 dark:text-gray-300 cursor-pointer
+                    flex flex-col items-center cursor-pointer
                 "
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 1 }}
+                transition={{ duration: 0.6, delay: 1 }}
                 onClick={() => {
-                    const workExperienceSection = document.getElementById('work-experience-section');
-                    if (workExperienceSection) {
-                        workExperienceSection.scrollIntoView({ behavior: 'smooth' });
+                    const target = document.getElementById('work-experience-section');
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
                     }
                 }}
             >
-                <div className="flex flex-col items-center">
-                    <span className="text-sm font-medium mb-3 text-blue-600 dark:text-blue-400">Scroll Down</span>
-                    <div className="scroll-indicator">
-                        <div className="
-                            w-1.5 h-3 
-                            bg-gradient-to-b from-blue-500 to-purple-500 
-                            dark:from-blue-400 dark:to-purple-400
-                            rounded-full mt-2 animate-bounce
-                            shadow-sm
-                        "></div>
-                    </div>
+                <div className="scroll-indicator">
+                    <motion.div 
+                        className="
+                            w-1 h-3 bg-blue-600 dark:bg-blue-400 rounded-full mt-2
+                        "
+                        animate={{ y: [0, 8, 0] }}
+                        transition={{ 
+                            duration: 1.5, 
+                            repeat: Infinity, 
+                            ease: "easeInOut" 
+                        }}
+                    />
                 </div>
+                <p className="
+                    text-gray-500 dark:text-gray-400 text-xs mt-3 uppercase 
+                    tracking-wide font-medium opacity-70
+                ">
+                    Scroll Down
+                </p>
             </motion.div>
         </motion.div>
     );

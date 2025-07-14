@@ -1,0 +1,40 @@
+{
+  "experiences": [
+    {
+      "id": "jpmorgan",
+      "company": "JP Morgan Chase",
+      "position": "Software Engineer II",
+      "description": "Developed scalable cloud APIs and worked on internal tools to enhance transaction processing systems. Focused on building robust backend services using Java Spring Boot and implementing comprehensive testing strategies in an Agile environment.",
+      "url": "https://www.jpmorganchase.com",
+      "dates": "2022 - 2024",
+      "skills": ["Java", "Spring Boot", "AWS", "Microservices"],
+      "featured": true,
+      "order": 1
+    },
+    {
+      "id": "bnymellon",
+      "company": "BNY Mellon",
+      "position": "Full-Stack Software Engineering Intern",
+      "description": "Contributed to a critical internal tool designed for transaction verification via the Fircosoft platform. Implemented comprehensive CRUD operations for core data models, set up initial database schema using Liquibase for version control, and configured Java Spring Boot project structure within an Agile framework emphasizing Test-Driven Development.",
+      "url": "https://www.bnymellon.com",
+      "dates": "2021 - 2022",
+      "skills": ["Java", "Spring Boot", "React", "SQL", "Liquibase"],
+      "featured": true,
+      "order": 2
+    },
+    {
+      "id": "bentley",
+      "company": "Bentley Systems",
+      "position": "Software Engineering Intern",
+      "description": "Developed efficient data processing pipelines for real-time infrastructure monitoring systems. Worked with large-scale data analytics and visualization tools to help engineering teams make data-driven decisions about critical infrastructure projects.",
+      "url": "https://www.bentley.com",
+      "dates": "2020 - 2021",
+      "skills": ["Python", "Data Analytics", "SQL", "Visualization"],
+      "featured": true,
+      "order": 3
+    }
+  ],
+  "metadata": {
+    "title": "Work Experience"
+  }
+} 

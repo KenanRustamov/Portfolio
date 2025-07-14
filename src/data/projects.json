@@ -1,0 +1,40 @@
+{
+  "projects": [
+    {
+      "id": "partify",
+      "title": "Partify",
+      "subtitle": "React TypeScript Node.js",
+      "description": "A collaborative music platform that allows multiple users to contribute to shared playlists in real-time. Features Spotify integration, real-time synchronization, and social voting mechanisms.",
+      "url": "https://github.com/KenanRustamov/Partify",
+      "githubUrl": "https://github.com/KenanRustamov/Partify",
+      "skills": ["React", "Node.js", "Socket.io", "Express"],
+      "image": "/partify.webp",
+      "imageSrcSet": "/partify-250.webp 250w, /partify.webp 554w",
+      "imageSizes": "(max-width: 768px) 250px, (max-width: 1024px) 350px, 450px",
+      "alt": "Image of my partify application",
+      "featured": true,
+      "order": 1
+    },
+    {
+      "id": "snackcheck",
+      "title": "SnackCheck",
+      "subtitle": "React Native JavaScript Expo",
+      "description": "A mobile application that helps users track nutritional information and discover healthier food alternatives through barcode scanning and nutritional analysis.",
+      "url": "https://github.com/KenanRustamov/SnackCheck",
+      "githubUrl": "https://github.com/KenanRustamov/SnackCheck",
+      "skills": ["React Native", "JavaScript", "Expo", "REST APIs"],
+      "image": "/snack_check.webp",
+      "imageSrcSet": "/snack_check-250.webp 250w, /snack_check.webp 554w",
+      "imageSizes": "(max-width: 768px) 250px, (max-width: 1024px) 350px, 450px",
+      "alt": "Image of my snackcheck application",
+      "featured": true,
+      "order": 2
+    }
+  ],
+  "metadata": {
+    "title": "Projects",
+    "primaryButtonText": "View Demo",
+    "secondaryButtonText": "View Code",
+    "imageOverlayText": "View Project"
+  }
+} 

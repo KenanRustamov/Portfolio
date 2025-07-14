@@ -401,8 +401,6 @@
     cursor: pointer;
     will-change: transform;
     transform: translateZ(0); /* Force hardware acceleration */
-    /* TEMP TEST: Should make icon buttons slightly orange */
-    border-top: 2px solid orange;
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
                 background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
                 border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
