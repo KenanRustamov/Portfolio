@@ -1,13 +1,21 @@
-import React from "react";
+import React, { Suspense } from "react";
 import IntroDataBlock from "./IntroDataBlock";
-import Timeline from "./Timeline";
-import ProjectShowcase from "./ProjectShowcase";
+
+// Lazy load heavy components
+const Timeline = React.lazy(() => import("./Timeline"));
+const ProjectShowcase = React.lazy(() => import("./ProjectShowcase"));
 
 // Use public folder for responsive image loading
 const kenanPhoto = "/kenanRustamov.webp";
 const partifyImg = "/partify.webp";
 const SnackCheck = "/snack_check.webp";
 
+// Loading component
+const ComponentLoader = () => (
+    <div className="flex items-center justify-center py-16">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-sky-300"></div>
+    </div>
+);
 
 const DataBlocks = (props: any) => {
 
@@ -76,16 +84,20 @@ const DataBlocks = (props: any) => {
                 profileImage={kenanPhoto}
             />
             <div id="work-experience-section" className="w-full">
+                <Suspense fallback={<ComponentLoader />}>
                 <Timeline 
                     title="Work Experience"
                     experiences={workExperiences}
                 />
+                </Suspense>
             </div>
             <div id="projects-section" className="w-full">
+                <Suspense fallback={<ComponentLoader />}>
                 <ProjectShowcase 
                     title="Projects"
                     projects={projects}
                 />
+                </Suspense>
             </div>
         </div>
     );

@@ -49,6 +49,7 @@
     "@vitejs/plugin-react": "^4.6.0",
     "autoprefixer": "^10.4.21",
     "gh-pages": "^6.3.0",
+    "terser": "^5.43.1",
     "vite": "^7.0.4",
     "vite-plugin-svgr": "^4.3.0",
     "vitest": "^3.2.4"

@@ -225,7 +225,7 @@ const IntroDataBlock = (props: IntroDataBlockProps) => {
                         <img 
                             srcSet="/kenanRustamov-300.webp 300w, /kenanRustamov.webp 1160w"
                             sizes="(max-width: 768px) 300px, (max-width: 1024px) 400px, 480px"
-                            src={props.profileImage}
+                            src={props.profileImage} 
                             alt="Profile"
                             loading="eager"
                             className="
