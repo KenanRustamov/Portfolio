@@ -64,7 +64,7 @@ const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ title, projects }) =>
             key={`${project.title}-${index}`}
             className="
               bg-white/15 dark:bg-white/5 border border-white/25 dark:border-white/10
-              rounded-2xl overflow-hidden transition-all duration-300
+              rounded-2xl overflow-hidden transition-all duration-300 ease-out
               backdrop-blur-md saturate-180 flex flex-col h-full
               shadow-lg shadow-black/10 dark:shadow-black/20
               hover:-translate-y-2 hover:shadow-xl hover:shadow-black/15 dark:hover:shadow-black/25
@@ -88,19 +88,19 @@ const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ title, projects }) =>
                   src={project.image} 
                   alt={project.alt}
                   className="
-                    w-full h-full object-cover transition-all duration-300
+                    w-full h-full object-cover transition-all duration-300 ease-out
                     group-hover:scale-105
                   "
                   loading="lazy"
                 />
                 <div className="
                   absolute inset-0 bg-black/70 flex items-center justify-center
-                  opacity-0 transition-all duration-300 backdrop-blur-sm
+                  opacity-0 transition-all duration-300 ease-out backdrop-blur-sm
                   group-hover:opacity-100
                 ">
                   <span className="
                     text-white text-lg font-semibold uppercase tracking-wide
-                    py-3 px-6 border-2 border-white rounded-lg transition-all duration-300
+                    py-3 px-6 border-2 border-white rounded-lg transition-all duration-300 ease-out
                     hover:bg-blue-600 hover:border-blue-600 hover:-translate-y-0.5
                   ">View Project</span>
                 </div>
@@ -152,7 +152,7 @@ const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ title, projects }) =>
                   rel="noopener noreferrer"
                   className="
                     py-2.5 px-4 rounded-xl no-underline font-medium text-sm
-                    text-center transition-all duration-300 cursor-pointer
+                    text-center transition-all duration-300 ease-out cursor-pointer
                     inline-flex items-center justify-center flex-1 tracking-wide
                     relative backdrop-blur-md saturate-150
                     border border-white/15 dark:border-white/10
@@ -173,7 +173,7 @@ const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ title, projects }) =>
                     rel="noopener noreferrer"
                     className="
                       py-2.5 px-4 rounded-xl no-underline font-medium text-sm
-                      text-center transition-all duration-300 cursor-pointer
+                      text-center transition-all duration-300 ease-out cursor-pointer
                       inline-flex items-center justify-center flex-1 tracking-wide
                       relative backdrop-blur-md saturate-150
                       border border-white/20 dark:border-white/15

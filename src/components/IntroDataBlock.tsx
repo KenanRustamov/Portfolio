@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import GlassButton from "./Glass/GlassButton";
+import IconButton from "./IconButton";
 import emailLogo from "../images/emailLogo.svg";
 import gitHubLogo from "../images/gitHubLogo.svg";
 import linkedInLogo from "../images/linkedInLogo.svg";
@@ -169,36 +170,21 @@ const IntroDataBlock = (props: IntroDataBlockProps) => {
                         animate="visible"
                     >
                         {[
-                            { src: emailLogo, alt: "Email", href: "mailto:kenanrustamov@gmail.com", label: "Email" },
+                            { src: emailLogo, alt: "Email", href: "mailto:kenanrustamov@gmail.com", label: "Email", isExternal: false },
                             { src: gitHubLogo, alt: "GitHub", href: "https://github.com/kenanr", label: "GitHub", isExternal: true },
                             { src: linkedInLogo, alt: "LinkedIn", href: "https://linkedin.com/in/kenanrustamov", label: "LinkedIn", isExternal: true },
                             { src: pdf, alt: "Resume", href: "/ComputerScienceResume.pdf", label: "Resume", isExternal: true }
                         ].map((icon, index) => (
-                            <motion.div
+                            <IconButton
                                 key={icon.label}
+                                src={icon.src}
+                                alt={icon.alt}
+                                href={icon.href}
+                                label={icon.label}
+                                isExternal={icon.isExternal}
                                 variants={iconVariants}
                                 custom={index}
-                                className="
-                                    group relative w-12 h-12 
-                                    flex items-center justify-center
-                                    backdrop-blur-md bg-white/10 dark:bg-white/5
-                                    border border-white/20 dark:border-white/10
-                                    rounded-xl shadow-lg shadow-blue-500/10
-                                    hover:shadow-xl hover:shadow-blue-500/20
-                                    hover:bg-white/20 dark:hover:bg-white/10
-                                    hover:border-white/30 dark:hover:border-white/20
-                                    hover:scale-105 hover:-translate-y-1
-                                    transition-all duration-300 ease-out
-                                    cursor-pointer
-                                "
-                                onClick={() => window.open(icon.href, icon.isExternal ? '_blank' : '_self')}
-                            >
-                                <img 
-                                    src={icon.src} 
-                                    alt={icon.alt}
-                                    className="w-6 h-6 opacity-80 group-hover:opacity-100 transition-all duration-300 filter brightness-0 dark:brightness-100 dark:invert-0 group-hover:brightness-110"
-                                />
-                            </motion.div>
+                            />
                         ))}
                     </motion.div>
                 </div>

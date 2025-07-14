@@ -37,30 +37,7 @@
   --color-orange-500: #f97316;
   --color-yellow-400: #facc15;
   
-  /* Glass Effect Variables */
-  --color-glass-light: rgba(255, 255, 255, 0.04);
-  --color-glass-light-sm: rgba(255, 255, 255, 0.02);
-  --color-glass-light-md: rgba(255, 255, 255, 0.06);
-  --color-glass-light-lg: rgba(255, 255, 255, 0.08);
-  --color-glass-dark: rgba(0, 0, 0, 0.04);
-  --color-glass-dark-sm: rgba(0, 0, 0, 0.02);
-  --color-glass-dark-md: rgba(0, 0, 0, 0.06);
-  --color-glass-dark-lg: rgba(0, 0, 0, 0.08);
-  --color-border-glass-light: rgba(255, 255, 255, 0.08);
-  --color-border-glass-light-md: rgba(255, 255, 255, 0.12);
-  --color-border-glass-light-lg: rgba(255, 255, 255, 0.15);
-  --color-border-glass-light-xl: rgba(255, 255, 255, 0.2);
-  
-  --backdrop-blur-glass: 24px;
-  --backdrop-blur-glass-sm: 16px;
-  --backdrop-blur-glass-md: 32px;
-  --backdrop-blur-glass-lg: 40px;
-  --backdrop-blur-glass-xl: 50px;
-  
-  --backdrop-saturate-glass: 160%;
-  --backdrop-saturate-glass-md: 170%;
-  --backdrop-saturate-glass-lg: 180%;
-  --backdrop-saturate-glass-xl: 200%;
+
   
   /* Additional backdrop blur utilities */
   --backdrop-blur-3xl: 64px;
@@ -88,70 +65,16 @@ code {
     monospace;
 }
 
-/* Root CSS Variables for Theme System (Legacy support) */
+/* Essential CSS Variables for Scrollbar System */
 :root {
-  /* Light theme colors */
-  --text-color: #111827;
-  --text-secondary: #4b5563;
-  --bg-color: #f9fafb;
-  --card-bg: rgba(255, 255, 255, 0.8);
-  --header-background: rgba(255, 255, 255, 0.95);
-  --border-color: rgba(0, 0, 0, 0.1);
-  --link-hover-color: rgb(59, 130, 246);
-  --link-hover-color-rgb: 59, 130, 246;
-  --svg-fill: currentColor;
-  --data-block-title: #111827;
-  --data-block-subtitle: #4b5563;
-  --data-block-text: #1f2937;
-  --block-background: rgba(255, 255, 255, 0.9);
-  --primary-color: rgb(59, 130, 246);
-  
   /* Scrollbar colors for light theme */
   --scrollbar-track: #f1f5f9;
   --scrollbar-background: #e2e8f0;
   --scrollbar-thumb: #cbd5e1;
 }
 
-/* Dark theme colors */
-[data-theme="dark"] {
-  --text-color: #f9fafb;
-  --text-secondary: #d1d5db;
-  --bg-color: #111827;
-  --card-bg: rgba(255, 255, 255, 0.08);
-  --header-background: rgba(17, 24, 39, 0.95);
-  --border-color: rgba(255, 255, 255, 0.15);
-  --link-hover-color: rgb(96, 165, 250);
-  --link-hover-color-rgb: 96, 165, 250;
-  --svg-fill: currentColor;
-  --data-block-title: #f9fafb;
-  --data-block-subtitle: #d1d5db;
-  --data-block-text: #e5e7eb;
-  --block-background: rgba(255, 255, 255, 0.08);
-  --primary-color: rgb(96, 165, 250);
-  
-  /* Scrollbar colors for dark theme */
-  --scrollbar-track: #1f2937;
-  --scrollbar-background: #111827;
-  --scrollbar-thumb: #374151;
-}
-
-/* Dark mode class support for TailwindCSS */
+/* Dark theme scrollbar colors */
 .dark {
-  --text-color: #f9fafb;
-  --text-secondary: #d1d5db;
-  --bg-color: #111827;
-  --card-bg: rgba(255, 255, 255, 0.08);
-  --header-background: rgba(17, 24, 39, 0.95);
-  --border-color: rgba(255, 255, 255, 0.15);
-  --link-hover-color: rgb(96, 165, 250);
-  --link-hover-color-rgb: 96, 165, 250;
-  --svg-fill: currentColor;
-  --data-block-title: #f9fafb;
-  --data-block-subtitle: #d1d5db;
-  --data-block-text: #e5e7eb;
-  --block-background: rgba(255, 255, 255, 0.08);
-  --primary-color: rgb(96, 165, 250);
-  
   /* Scrollbar colors for dark theme */
   --scrollbar-track: #1f2937;
   --scrollbar-background: #111827;
@@ -269,6 +192,52 @@ code {
 .dark .glass-nav {
   background: rgba(255, 255, 255, 0.02);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Icon filtering for proper dark mode support */
+.icon-filter {
+  filter: brightness(0) saturate(100%) invert(31%) sepia(11%) saturate(200%) hue-rotate(176deg) brightness(102%) contrast(85%);
+  transition: filter 0.3s ease;
+}
+
+.dark .icon-filter {
+  filter: brightness(0) saturate(100%) invert(83%) sepia(8%) saturate(196%) hue-rotate(169deg) brightness(95%) contrast(93%);
+}
+
+.icon-filter:hover,
+.group:hover .icon-filter {
+  filter: brightness(0) saturate(100%) invert(42%) sepia(93%) saturate(1352%) hue-rotate(204deg) brightness(97%) contrast(97%);
+}
+
+.dark .icon-filter:hover,
+.dark .group:hover .icon-filter {
+  filter: brightness(0) saturate(100%) invert(42%) sepia(93%) saturate(1352%) hue-rotate(204deg) brightness(97%) contrast(97%);
+}
+
+/* Ensure SVG icons inherit color properly */
+svg {
+  fill: currentColor;
+  color: inherit;
+}
+
+/* Override for Framer Motion elements */
+[data-framer-motion],
+[data-framer-motion] * {
+  /* Let Framer Motion handle its own animations */
+}
+
+/* Ensure all Tailwind transition classes work smoothly in dark mode */
+.dark .transition-all,
+.dark .transition,
+.dark .transition-transform,
+.dark .transition-colors,
+.dark .transition-opacity {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Ensure hover transforms work smoothly in dark mode */
+.dark [class*="hover:"]:hover {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
 /* Reduced motion for accessibility */
