@@ -49,17 +49,18 @@ function App() {
   return (
     <div className="
       App min-h-screen
-      bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50
-      dark:from-gray-900 dark:via-blue-900 dark:to-purple-900
+      bg-gradient-to-br from-blue-100 via-gray-100 to-blue-100
+      dark:from-blue-800 dark:via-gray-800 dark:to-blue-800
       text-gray-900 dark:text-gray-100
       transition-colors duration-300
       relative overflow-hidden
     ">
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-400/20 to-purple-400/20 dark:from-blue-600/30 dark:to-purple-600/30 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-indigo-400/20 to-pink-400/20 dark:from-indigo-600/30 dark:to-pink-600/30 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-cyan-400/10 to-blue-400/10 dark:from-cyan-600/20 dark:to-blue-600/20 rounded-full blur-3xl"></div>
+        {/* Enhanced color blobs for light mode */}
+        <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-blue-300/30 via-purple-200/30 to-pink-200/30 rounded-full blur-3xl"></div>
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-br from-indigo-200/30 via-blue-200/30 to-cyan-200/30 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[38rem] h-[38rem] bg-gradient-radial from-blue-200/40 via-white/0 to-transparent rounded-full blur-[120px] pointer-events-none z-0 light-bg-radial"></div>
       </div>
       
       <main className="relative z-10">

@@ -70,9 +70,6 @@ const DataBlocks = () => {
                 profileImage={profileData.profile.profileImage}
             />
             
-            {/* Section Divider */}
-            <div className="section-divider max-w-4xl mx-auto"></div>
-            
             <div id="work-experience-section" className="w-full">
                 <Suspense fallback={<ComponentLoader />}>
                 <Timeline 
@@ -81,9 +78,6 @@ const DataBlocks = () => {
                 />
                 </Suspense>
             </div>
-            
-            {/* Section Divider */}
-            <div className="section-divider max-w-4xl mx-auto"></div>
             
             <div id="projects-section" className="w-full">
                 <Suspense fallback={<ComponentLoader />}>

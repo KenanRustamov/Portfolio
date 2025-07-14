@@ -130,7 +130,7 @@
   }
 
   .dark ::-webkit-scrollbar-track {
-    background: color-mix(in srgb, white 5%, transparent);
+    background: color-mix(in srgb, black 20%, transparent);
   }
 
   ::-webkit-scrollbar-thumb {
@@ -155,18 +155,18 @@
 
   .dark ::-webkit-scrollbar-thumb {
     background: linear-gradient(135deg, 
-      color-mix(in oklch, oklch(64.6% 0.166 234.5) 40%, transparent), 
-      color-mix(in oklch, oklch(59.9% 0.292 308.4) 40%, transparent)
+      color-mix(in oklch, oklch(64.6% 0.166 234.5) 60%, transparent), 
+      color-mix(in oklch, oklch(59.9% 0.292 308.4) 60%, transparent)
     );
-    border: 2px solid color-mix(in srgb, white 5%, transparent);
+    border: 2px solid color-mix(in srgb, white 15%, transparent);
   }
 
   .dark ::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(135deg, 
-      color-mix(in oklch, oklch(64.6% 0.166 234.5) 60%, transparent), 
-      color-mix(in oklch, oklch(59.9% 0.292 308.4) 60%, transparent)
+      color-mix(in oklch, oklch(64.6% 0.166 234.5) 80%, transparent), 
+      color-mix(in oklch, oklch(59.9% 0.292 308.4) 80%, transparent)
     );
-    border-color: color-mix(in srgb, white 10%, transparent);
+    border-color: color-mix(in srgb, white 25%, transparent);
   }
 
   /* Text selection styling */
@@ -662,77 +662,24 @@
     filter: var(--icon-filter-hover);
   }
 
-  /* Company link underline animation */
-  .timeline-company-link::after {
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Company link styling - minimal without underlines */
+  .timeline-company-link {
+    transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  /* Enhanced section dividers with glassmorphism */
+  /* Minimal section spacing - no decorative dividers */
   .section-divider {
     width: 100%;
     height: 1px;
-    background: linear-gradient(90deg, 
-      transparent, 
-      color-mix(in srgb, white 20%, transparent) 20%, 
-      color-mix(in srgb, blue 30%, transparent) 50%, 
-      color-mix(in srgb, white 20%, transparent) 80%, 
-      transparent
-    );
-    margin: 4rem 0;
+    background: transparent;
+    margin: 3rem 0;
     position: relative;
   }
 
-  .dark .section-divider {
-    background: linear-gradient(90deg, 
-      transparent, 
-      color-mix(in srgb, white 10%, transparent) 20%, 
-      color-mix(in srgb, blue 20%, transparent) 50%, 
-      color-mix(in srgb, white 10%, transparent) 80%, 
-      transparent
-    );
-  }
-
-  .section-divider::before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 8px;
-    height: 8px;
-    background: radial-gradient(circle, 
-      oklch(64.6% 0.166 234.5), 
-      oklch(59.9% 0.292 308.4)
-    );
-    border-radius: 50%;
-    box-shadow: 0 0 16px color-mix(in oklch, oklch(64.6% 0.166 234.5) 40%, transparent);
-  }
-
-  /* Enhanced typography hierarchy */
+  /* Enhanced typography hierarchy - minimal without underlines */
   .section-title {
     position: relative;
     display: inline-block;
-  }
-
-  .section-title::before {
-    content: '';
-    position: absolute;
-    bottom: -8px;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: linear-gradient(90deg, 
-      oklch(64.6% 0.166 234.5), 
-      oklch(59.9% 0.292 308.4)
-    );
-    border-radius: 2px;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .section-title.in-view::before {
-    transform: scaleX(1);
   }
 
   /* Floating action button for scroll to top */
@@ -798,6 +745,14 @@
   [data-framer-motion],
   [data-framer-motion] * {
     /* Let Framer Motion handle its own animations */
+  }
+
+  /* Subtle radial gradient overlay for light mode only */
+  .light-bg-radial {
+    display: block;
+  }
+  .dark .light-bg-radial {
+    display: none;
   }
 }
 

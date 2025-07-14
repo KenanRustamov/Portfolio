@@ -106,9 +106,6 @@ const Timeline: React.FC<TimelineProps> = ({ title, experiences }) => {
                   text-xl sm:text-2xl font-bold mb-2 inline-block
                   relative leading-tight tracking-tight
                   hover:translate-x-1
-                  after:content-[''] after:absolute after:w-full after:h-0.5
-                  after:bottom-0 after:left-0 after:bg-gradient-to-r after:from-blue-600 after:to-transparent
-                  after:scale-x-0 after:origin-left after:rounded-sm hover:after:scale-x-100
                 "
                 style={{
                   transition: 'color 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
