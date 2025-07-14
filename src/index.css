@@ -256,6 +256,105 @@
     position: relative;
   }
 
+  /* Swiper Carousel Custom Styling */
+  .glass-carousel-swiper {
+    padding: 2rem 0 4rem 0 !important;
+    overflow: visible !important;
+  }
+
+  .glass-carousel-swiper .swiper-slide {
+    transition: transform 0.4s ease-out, filter 0.4s ease-out, opacity 0.4s ease-out;
+    transform: scale(0.8);
+    filter: blur(4px);
+    opacity: 0.5;
+  }
+
+  .glass-carousel-swiper .swiper-slide-active {
+    transform: scale(1);
+    filter: blur(0px);
+    opacity: 1;
+  }
+
+  .swiper-pagination-custom {
+    bottom: 1rem !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    position: absolute !important;
+    width: auto !important;
+    z-index: 20 !important;
+  }
+
+  .swiper-pagination-custom .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    background-color: rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease-out;
+    margin: 0 4px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .swiper-pagination-custom .swiper-pagination-bullet-active {
+    background-color: #fff;
+    transform: scale(1.25);
+  }
+
+  .dark .swiper-pagination-custom .swiper-pagination-bullet {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .dark .swiper-pagination-custom .swiper-pagination-bullet-active {
+    background-color: #0a84ff;
+  }
+
+  .swiper-button-next-custom,
+  .swiper-button-prev-custom {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease-out;
+  }
+
+  .swiper-button-prev-custom {
+    left: 20px;
+  }
+
+  .swiper-button-next-custom {
+    right: 20px;
+  }
+
+  .swiper-button-next-custom:hover,
+  .swiper-button-prev-custom:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+  }
+
+  .swiper-button-next-custom svg,
+  .swiper-button-prev-custom svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .glass-card:hover {
+    box-shadow: 0 0 25px rgba(0, 122, 255, 0.3), 0 8px 32px color-mix(in srgb, black 8%, transparent);
+    border-color: rgba(0, 122, 255, 0.5);
+  }
+
   /* Dark theme adjustments with enhanced depth */
   .dark .glass-base {
     background: linear-gradient(135deg, 

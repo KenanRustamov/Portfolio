@@ -5,8 +5,10 @@ import {
   getProjectsForShowcase, 
   getExperiencesForTimeline,
   getProjectsData,
-  getTimelineData
+  getTimelineData,
+  getExtracurricularsData
 } from "../data/dataLoader";
+import { GlassCarousel } from "./Glass";
 
 // Lazy load heavy components
 const Timeline = React.lazy(() => import("./Timeline"));
@@ -52,10 +54,13 @@ const DataBlocks = () => {
     const profileData = getProfileData();
     const projectsData = getProjectsData();
     const timelineData = getTimelineData();
+    const extracurricularsData = getExtracurricularsData();
     
     // Get formatted data for components
     const workExperiences = getExperiencesForTimeline();
     const projects = getProjectsForShowcase();
+    const activities = extracurricularsData.activities;
+    const beyondWorkTitle = extracurricularsData.metadata.title;
 
     return (
         <div className="
@@ -86,6 +91,11 @@ const DataBlocks = () => {
                     projects={projects}
                 />
                 </Suspense>
+            </div>
+
+            {/* Beyond Work Glass Carousel Section */}
+            <div id="beyond-work-glass-carousel" className="w-full">
+                <GlassCarousel activities={activities} sectionTitle={beyondWorkTitle} />
             </div>
         </div>
     );

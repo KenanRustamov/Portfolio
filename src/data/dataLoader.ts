@@ -3,6 +3,7 @@ import profileData from './profile.json';
 import projectsData from './projects.json';
 import timelineData from './timeline.json';
 import socialData from './social.json';
+import extracurricularsData from './extracurriculars.json';
 
 // Import icons
 import emailLogo from '../images/emailLogo.svg';
@@ -104,6 +105,21 @@ export interface SocialData {
   };
 }
 
+export interface ExtracurricularActivity {
+  id: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  icon: string;
+}
+
+export interface ExtracurricularsData {
+  activities: ExtracurricularActivity[];
+  metadata: {
+    title: string;
+  };
+}
+
 // Data loading functions
 export const getProfileData = (): ProfileData => profileData as ProfileData;
 
@@ -128,6 +144,10 @@ export const getSocialData = (): SocialData => {
   data.socialLinks.footer.sort((a, b) => a.order - b.order);
   return data;
 };
+
+export function getExtracurricularsData(): ExtracurricularsData {
+  return extracurricularsData as ExtracurricularsData;
+}
 
 // Helper functions for legacy component interfaces
 export const getProjectsForShowcase = () => {

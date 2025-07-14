@@ -1,0 +1,28 @@
+{
+  "activities": [
+    {
+      "id": "guitar",
+      "title": "Guitarist",
+      "subtitle": "Music & Performance",
+      "description": "Playing acoustic and electric guitar for 8 years. Performed at local events and open mics.",
+      "icon": "/guitar-icon.svg"
+    },
+    {
+      "id": "volunteer-teacher",
+      "title": "Volunteer Teacher",
+      "subtitle": "STEM Outreach",
+      "description": "Taught coding basics to middle school students through Code.org.",
+      "icon": "/teaching-icon.svg"
+    },
+    {
+      "id": "chess",
+      "title": "Chess Club President",
+      "subtitle": "Strategy & Leadership",
+      "description": "Organized weekly chess tournaments and taught strategy to new members.",
+      "icon": "/chess-icon.svg"
+    }
+  ],
+  "metadata": {
+    "title": "Beyond Work"
+  }
+} 
