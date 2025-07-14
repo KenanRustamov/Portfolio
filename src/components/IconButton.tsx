@@ -29,13 +29,13 @@ const IconButton: React.FC<IconButtonProps> = ({
       key={label}
       variants={variants}
       custom={custom ?? index}
-      className={`icon-button-base group ${className}`}
+      className={`icon-button-base ${className}`}
       onClick={() => window.open(href, isExternal ? '_blank' : '_self')}
     >
       <img 
         src={src} 
         alt={alt}
-        className="w-6 h-6 opacity-80 group-hover:opacity-100 icon-filter"
+        className="w-6 h-6 icon-filter"
         style={{
           transition: 'opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), filter 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
         }}

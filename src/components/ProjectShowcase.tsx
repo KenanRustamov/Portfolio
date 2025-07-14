@@ -50,6 +50,7 @@ const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ title, projects }) =>
     >
       <div className="text-center mb-15">
         <h2 className="
+          section-title in-view
           text-blue-600 dark:text-blue-400 text-2xl sm:text-3xl font-bold mb-3
           relative inline-block tracking-tight drop-shadow-lg
         ">{title}</h2>

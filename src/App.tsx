@@ -2,6 +2,7 @@ import React from 'react';
 // import Header from "./components/Header"
 import DataBlocks from "./components/DataBlocks"
 import Footer from "./components/Footer"
+import ScrollToTop from "./components/ScrollToTop"
 
 // Define the LinkData interface for legacy components
 interface LinkData {
@@ -68,6 +69,9 @@ function App() {
           <Footer links={links}/>
         </React.Fragment>
       </main>
+      
+      {/* Scroll to top button */}
+      <ScrollToTop />
     </div>
   );
 }
