@@ -62,14 +62,7 @@ const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ title, projects }) =>
         {projects.map((project, index) => (
           <motion.div
             key={`${project.title}-${index}`}
-            className="
-              bg-white/15 dark:bg-white/5 border border-white/25 dark:border-white/10
-              rounded-2xl overflow-hidden transition-all duration-300 ease-out
-              backdrop-blur-md saturate-180 flex flex-col h-full
-              shadow-lg shadow-black/10 dark:shadow-black/20
-              hover:-translate-y-2 hover:shadow-xl hover:shadow-black/15 dark:hover:shadow-black/25
-              hover:border-blue-600/40 hover:backdrop-blur-3xl hover:saturate-200
-            "
+            className="project-card"
             variants={cardVariants}
           >
             <div className="
@@ -150,19 +143,7 @@ const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ title, projects }) =>
                   href={project.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="
-                    py-2.5 px-4 rounded-xl no-underline font-medium text-sm
-                    text-center transition-all duration-300 ease-out cursor-pointer
-                    inline-flex items-center justify-center flex-1 tracking-wide
-                    relative backdrop-blur-md saturate-150
-                    border border-white/15 dark:border-white/10
-                    bg-white/10 dark:bg-white/5 text-blue-600 dark:text-blue-400
-                    shadow-md shadow-black/5 dark:shadow-black/10
-                    hover:bg-blue-600 hover:text-white hover:-translate-y-0.5
-                    hover:shadow-lg hover:shadow-blue-600/25 hover:border-blue-600
-                    hover:backdrop-blur-lg hover:saturate-180
-                    sm:py-2 sm:px-3 sm:text-xs
-                  "
+                  className="project-button-primary"
                 >
                   View Demo
                 </a>
@@ -171,19 +152,7 @@ const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ title, projects }) =>
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="
-                      py-2.5 px-4 rounded-xl no-underline font-medium text-sm
-                      text-center transition-all duration-300 ease-out cursor-pointer
-                      inline-flex items-center justify-center flex-1 tracking-wide
-                      relative backdrop-blur-md saturate-150
-                      border border-white/20 dark:border-white/15
-                      bg-white/5 dark:bg-white/2 text-gray-800 dark:text-gray-200
-                      shadow-md shadow-black/5 dark:shadow-black/10
-                      hover:bg-white/15 dark:hover:bg-white/10 hover:text-blue-600 dark:hover:text-blue-400
-                      hover:-translate-y-0.5 hover:shadow-lg hover:shadow-black/20
-                      hover:border-blue-600/30 hover:backdrop-blur-lg hover:saturate-180
-                      sm:py-2 sm:px-3 sm:text-xs
-                    "
+                    className="project-button-secondary"
                   >
                     View Code
                   </a>

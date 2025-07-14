@@ -94,30 +94,24 @@ const Timeline: React.FC<TimelineProps> = ({ title, experiences }) => {
             ">
               {experience.dates}
             </div>
-            <div className="
-              bg-white/15 dark:bg-white/5 p-6 border border-white/25 dark:border-white/10
-              shadow-lg shadow-black/10 dark:shadow-black/20
-              backdrop-blur-md saturate-150 rounded-2xl flex-1
-              transition-all duration-300 ease-out hover:-translate-y-1.5
-              hover:shadow-xl hover:shadow-black/15 dark:hover:shadow-black/25
-              hover:border-blue-600/40 hover:backdrop-blur-lg hover:saturate-200
-              hover:bg-white/20 dark:hover:bg-white/10
-              md:p-5 sm:p-4
-            ">
+            <div className="timeline-card">
               <a
                 href={experience.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="
+                  timeline-company-link
                   text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400
                   text-xl sm:text-2xl font-bold mb-2 inline-block
-                  transition-all duration-300 ease-out relative leading-tight tracking-tight
+                  relative leading-tight tracking-tight
                   hover:translate-x-1
                   after:content-[''] after:absolute after:w-full after:h-0.5
                   after:bottom-0 after:left-0 after:bg-gradient-to-r after:from-blue-600 after:to-transparent
-                  after:scale-x-0 after:origin-left after:transition-transform after:duration-300 after:ease-out
-                  after:rounded-sm hover:after:scale-x-100
-                                 "
+                  after:scale-x-0 after:origin-left after:rounded-sm hover:after:scale-x-100
+                "
+                style={{
+                  transition: 'color 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+                }}
                >
                 {experience.company}
               </a>
@@ -136,14 +130,17 @@ const Timeline: React.FC<TimelineProps> = ({ title, experiences }) => {
               </p>
               <div className="flex flex-wrap gap-2 mt-4">
                 {experience.skills.map((skill, skillIndex) => (
-                                      <span key={skillIndex} className="
+                  <span key={skillIndex} className="
                       bg-white/30 dark:bg-white/10 text-gray-800 dark:text-gray-200 
                       border border-white/20 dark:border-white/20 px-3 py-1.5 rounded-xl
                       text-xs font-medium cursor-default tracking-wide opacity-90
-                      backdrop-blur-sm transition-all duration-300 ease-out
+                      backdrop-blur-sm
                       hover:bg-white/50 dark:hover:bg-white/20 hover:border-blue-600/30
                       hover:opacity-100 hover:-translate-y-0.5
-                    ">
+                    "
+                    style={{
+                      transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+                    }}>
                     {skill}
                   </span>
                 ))}

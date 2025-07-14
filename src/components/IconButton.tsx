@@ -29,26 +29,16 @@ const IconButton: React.FC<IconButtonProps> = ({
       key={label}
       variants={variants}
       custom={custom ?? index}
-      className={`
-        group relative w-12 h-12 
-        flex items-center justify-center
-        backdrop-blur-md bg-white/10 dark:bg-white/5
-        border border-white/20 dark:border-white/10
-        rounded-xl shadow-lg shadow-blue-500/10
-        hover:shadow-xl hover:shadow-blue-500/20
-        hover:bg-white/20 dark:hover:bg-white/10
-        hover:border-white/30 dark:hover:border-white/20
-        hover:scale-105 hover:-translate-y-1
-        transition-all duration-300 ease-out
-        cursor-pointer
-        ${className}
-      `}
+      className={`icon-button-base group ${className}`}
       onClick={() => window.open(href, isExternal ? '_blank' : '_self')}
     >
       <img 
         src={src} 
         alt={alt}
-        className="w-6 h-6 opacity-80 group-hover:opacity-100 transition-all duration-300 icon-filter"
+        className="w-6 h-6 opacity-80 group-hover:opacity-100 icon-filter"
+        style={{
+          transition: 'opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), filter 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+        }}
       />
     </motion.div>
   );

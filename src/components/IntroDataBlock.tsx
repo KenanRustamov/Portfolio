@@ -199,16 +199,7 @@ const IntroDataBlock = (props: IntroDataBlockProps) => {
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
                 >
-                    <div className="
-                        w-full h-full rounded-3xl overflow-hidden
-                        backdrop-blur-sm bg-white/10 dark:bg-white/5
-                        border border-white/20 dark:border-white/10
-                        shadow-2xl shadow-blue-500/10 dark:shadow-blue-400/20
-                        hover:shadow-3xl hover:shadow-blue-500/20 dark:hover:shadow-blue-400/30
-                        hover:border-white/30 dark:hover:border-white/20
-                        transition-all duration-500 ease-out
-                        group
-                    ">
+                    <div className="profile-image-container group">
                         <img 
                             srcSet="/kenanRustamov-300.webp 300w, /kenanRustamov.webp 1160w"
                             sizes="(max-width: 768px) 300px, (max-width: 1024px) 400px, 480px"
@@ -242,16 +233,7 @@ const IntroDataBlock = (props: IntroDataBlockProps) => {
             >
                 <div className="flex flex-col items-center">
                     <span className="text-sm font-medium mb-3 text-blue-600 dark:text-blue-400">Scroll Down</span>
-                    <div className="
-                        w-6 h-10 
-                        backdrop-blur-md bg-white/20 dark:bg-white/10
-                        border border-white/30 dark:border-white/20
-                        rounded-full flex justify-center
-                        shadow-lg shadow-blue-500/20 dark:shadow-blue-400/30
-                        hover:shadow-xl hover:shadow-blue-500/30 dark:hover:shadow-blue-400/40
-                        hover:scale-105 hover:bg-white/30 dark:hover:bg-white/20
-                        transition-all duration-300
-                    ">
+                    <div className="scroll-indicator">
                         <div className="
                             w-1.5 h-3 
                             bg-gradient-to-b from-blue-500 to-purple-500 

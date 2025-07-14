@@ -11,21 +11,7 @@ const ThemeSwitch: React.FC = () => {
     return (
         <motion.button
             onClick={toggleTheme}
-            className="
-                relative w-14 h-7 
-                flex items-center justify-between
-                px-1 rounded-full
-                backdrop-blur-md bg-white/20 dark:bg-white/10
-                border border-white/30 dark:border-white/20
-                shadow-lg shadow-blue-500/10 dark:shadow-blue-400/20
-                hover:shadow-xl hover:shadow-blue-500/20 dark:hover:shadow-blue-400/30
-                hover:bg-white/30 dark:hover:bg-white/15
-                hover:border-white/40 dark:hover:border-white/30
-                transition-all duration-300 ease-out
-                focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:ring-offset-2 
-                focus:ring-offset-transparent
-                group
-            "
+            className="theme-switch-base group"
             aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
             whileTap={{ scale: 0.95 }}
         >
@@ -43,7 +29,7 @@ const ThemeSwitch: React.FC = () => {
                 className="
                     absolute w-5 h-5
                     bg-gradient-to-br from-white to-gray-100
-                    dark:from-gray-100 dark:to-white
+                    dark:from-gray-600 dark:to-gray-700
                     rounded-full shadow-lg
                     border border-white/50 dark:border-gray-200/50
                     backdrop-blur-sm
