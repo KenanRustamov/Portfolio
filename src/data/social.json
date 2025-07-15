@@ -42,7 +42,7 @@
       {
         "id": "github_footer",
         "label": "GitHub Profile",
-        "href": "https://github.com/KenanRustamov",
+        "href": "https://github.com/kenanr",
         "icon": "gitHubLogo.svg",
         "alt": "GitHub",
         "isExternal": true,
@@ -51,7 +51,7 @@
       {
         "id": "linkedin_footer",
         "label": "LinkedIn Profile",
-        "href": "https://www.linkedin.com/in/kenanrustamov/",
+        "href": "https://linkedin.com/in/kenanrustamov",
         "icon": "linkedInLogo.svg",
         "alt": "LinkedIn",
         "isExternal": true,
@@ -81,4 +81,4 @@
     "iconPath": "/src/images/",
     "defaultExternal": true
   }
-} 
+}

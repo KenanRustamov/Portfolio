@@ -15,6 +15,22 @@
     "linkedin": "https://linkedin.com/in/kenanrustamov",
     "resume": "/ComputerScienceResume.pdf"
   },
+  "education": [
+    {
+      "university": "Johns Hopkins University",
+      "degree": "Master of Science in Computer Science (Thesis)",
+      "dates": "Aug 2024 - Present",
+      "location": "Baltimore, MD",
+      "description": "Leading first-author AI research for a publication under Jason Eisner by designing, building, and evaluating a novel reactive RAG system, dataset, and framework that enables LLM answers to dynamically update as source documents evolve"
+    },
+    {
+      "university": "University of Pittsburgh",
+      "degree": "Bachelor of Science in Computer Science",
+      "dates": "Aug 2017 - Aug 2021",
+      "location": "Pittsburgh, PA",
+      "description": "Summa Cum Laude (Highest Honor) | Dietrich Scholar | Ran 2 Clubs | Top 5 in Pitt Challenge Hackathon"
+    }
+  ],
   "metadata": {
     "footerText": "Created By Kenan Rustamov",
     "sectionTitles": {
@@ -22,4 +38,4 @@
       "projects": "Projects"
     }
   }
-} 
+}
