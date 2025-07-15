@@ -32,11 +32,11 @@ const GlassCarousel: React.FC<GlassCarouselProps> = ({ activities, sectionTitle 
           centeredSlides={true}
           slidesPerView={'auto'}
           initialSlide={Math.floor(activities.length / 2)}
-          spaceBetween={30}
+          spaceBetween={50}
           coverflowEffect={{
             rotate: 0,
-            stretch: 40,
-            depth: 150,
+            stretch: 20,
+            depth: 250,
             modifier: 1,
             slideShadows: false,
           }}
@@ -54,24 +54,26 @@ const GlassCarousel: React.FC<GlassCarouselProps> = ({ activities, sectionTitle 
         >
           {activities.map((activity) => (
             <SwiperSlide key={activity.id} className="!w-auto self-center">
-              <div className="glass-card p-8 flex flex-col items-center justify-center min-h-[300px] max-w-[340px] w-full mx-auto group">
-                <div className="w-20 h-20 mb-6 rounded-2xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-white/20 dark:border-white/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+              <div className="glass-card p-6 flex flex-col items-center justify-start min-h-[480px] max-w-[320px] w-full mx-auto group">
+                <div className="w-full h-48 bg-gray-500/20 rounded-lg mb-6 overflow-hidden">
                   <img
-                    src={activity.icon}
+                    src={activity.icon} // This will be the placeholder image
                     alt={activity.title}
-                    className="w-12 h-12 opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                     draggable={false}
                   />
                 </div>
-                <h3 className="text-gray-900 dark:text-gray-100 text-xl font-bold mb-2 text-center leading-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
-                  {activity.title}
-                </h3>
-                <p className="text-blue-600 dark:text-blue-400 text-sm font-semibold mb-4 text-center uppercase tracking-wide">
-                  {activity.subtitle}
-                </p>
-                <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed text-center opacity-90">
-                  {activity.description}
-                </p>
+                <div className="text-center">
+                  <h3 className="text-gray-900 dark:text-gray-100 text-2xl font-bold mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                    {activity.title}
+                  </h3>
+                  <p className="text-blue-600 dark:text-blue-400 text-sm font-semibold mb-4 uppercase tracking-wide">
+                    {activity.subtitle}
+                  </p>
+                  <p className="text-gray-700 dark:text-gray-300 text-base leading-relaxed opacity-90">
+                    {activity.description}
+                  </p>
+                </div>
               </div>
             </SwiperSlide>
           ))}
