@@ -72,6 +72,7 @@ export interface WorkExperience {
   description: string;
   url: string;
   dates: string;
+  location: string;
   skills: string[];
   featured: boolean;
   order: number;
@@ -172,6 +173,7 @@ export const getExperiencesForTimeline = () => {
     description: experience.description,
     url: experience.url,
     dates: experience.dates,
+    location: experience.location,
     skills: experience.skills
   }));
 };

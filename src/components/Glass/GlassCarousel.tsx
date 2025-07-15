@@ -54,7 +54,7 @@ const GlassCarousel: React.FC<GlassCarouselProps> = ({ activities, sectionTitle 
         >
           {activities.map((activity) => (
             <SwiperSlide key={activity.id} className="!w-auto self-center">
-              <div className="glass-card p-6 flex flex-col items-center justify-start min-h-[480px] max-w-[320px] w-full mx-auto group">
+              <div className="glass-card p-6 flex flex-col items-center justify-start min-h-[480px] max-w-sm w-full mx-auto group">
                 <div className="w-full h-48 bg-gray-500/20 rounded-lg mb-6 overflow-hidden">
                   <img
                     src={activity.icon} // This will be the placeholder image

@@ -8,6 +8,7 @@ interface WorkExperience {
   description: string;
   url: string;
   dates: string;
+  location: string;
   skills: string[];
 }
 
@@ -65,9 +66,9 @@ const Timeline: React.FC<TimelineProps> = ({ title, experiences }) => {
         sm:pl-16 sm:pr-3 sm:pb-5
         before:content-[''] before:absolute before:w-0.5 
         before:bg-gradient-to-b before:from-blue-600 before:to-blue-600/30
-        before:top-2 before:bottom-0 before:left-[7.5rem] before:rounded-sm
+        before:top-2 before:bottom-0 before:left-[4rem] before:rounded-sm
         before:shadow-md before:shadow-blue-600/30
-        md:before:left-[3.8rem] sm:before:left-[2.6rem]
+        md:before:left-[4rem] sm:before:left-[4rem]
       ">
         {experiences.map((experience, index) => (
           <motion.div
@@ -76,11 +77,11 @@ const Timeline: React.FC<TimelineProps> = ({ title, experiences }) => {
               relative py-6 flex items-start gap-8
               before:content-[''] before:absolute before:w-3.5 before:h-3.5
               before:bg-blue-600 before:border-2 before:border-white/90
-              before:rounded-full before:top-8 before:-left-8 before:z-10
+              before:rounded-full before:top-8 before:-left-[5.4rem] before:z-10
               before:shadow-lg before:shadow-blue-600/20
               hover:before:scale-125 hover:before:shadow-xl hover:before:shadow-blue-600/30
               before:transition-all before:duration-300
-              md:gap-5 md:before:-left-[26px] sm:gap-4 sm:before:-left-7
+              md:gap-5 md:before:-left-[1.4rem] sm:gap-4 sm:before:-left-[0.4375rem]
               first:pt-0 first:before:top-2
             "
             variants={itemVariants}
@@ -88,10 +89,10 @@ const Timeline: React.FC<TimelineProps> = ({ title, experiences }) => {
             <div className="
               text-blue-600 dark:text-blue-400 text-xs font-bold
               uppercase tracking-wide opacity-100 w-24 text-left
-              pr-5 mt-3 flex-shrink-0 pointer-events-none
+              pr-0 mt-3 flex-shrink-0 pointer-events-none
               drop-shadow-md
-              md:w-20 md:text-xs md:pr-4
-              sm:w-16 sm:text-xs sm:pr-2
+              md:w-16 md:text-xs md:pr-4
+              sm:w-12 sm:text-xs sm:pr-2
             ">
               {experience.dates}
             </div>
@@ -114,11 +115,17 @@ const Timeline: React.FC<TimelineProps> = ({ title, experiences }) => {
                 {experience.company}
               </a>
               <div className="
-                text-blue-600 dark:text-blue-400 text-sm font-semibold mb-3.5
+                text-blue-600 dark:text-blue-400 text-sm font-semibold mb-1
                 normal-case leading-snug opacity-90
                 uppercase tracking-wide
               ">
                 {experience.position}
+              </div>
+              <div className="
+                text-gray-500 dark:text-gray-400 text-xs font-medium mb-3.5
+                normal-case leading-snug opacity-80
+              ">
+                {experience.location}
               </div>
               <p className="
                 text-gray-800 dark:text-gray-200 leading-relaxed text-sm

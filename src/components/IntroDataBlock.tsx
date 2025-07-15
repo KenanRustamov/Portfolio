@@ -232,7 +232,7 @@ const IntroDataBlock = (props: IntroDataBlockProps) => {
                         className="
                             w-1 h-3 bg-blue-600 dark:bg-blue-400 rounded-full mt-2
                         "
-                        animate={{ y: [0, 8, 0] }}
+                        animate={{ y: [0, 3, 0] }}
                         transition={{ 
                             duration: 1.5, 
                             repeat: Infinity, 
