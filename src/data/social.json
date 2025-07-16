@@ -31,7 +31,7 @@
       {
         "id": "resume_intro",
         "label": "Resume",
-        "href": "/ComputerScienceResume.pdf",
+        "href": "/resume-public.pdf",
         "icon": "pdf.svg",
         "alt": "Resume",
         "isExternal": true,
@@ -69,7 +69,7 @@
       {
         "id": "resume_footer",
         "label": "Resume",
-        "href": "/ComputerScienceResume.pdf",
+        "href": "/resume-public.pdf",
         "icon": "pdf.svg",
         "alt": "Resume",
         "isExternal": true,
