@@ -6,11 +6,11 @@ import socialData from './social.json';
 import extracurricularsData from './extracurriculars.json';
 
 // Import icons
-import emailLogo from '../images/emailLogo.svg';
-import gitHubLogo from '../images/gitHubLogo.svg';
-import linkedInLogo from '../images/linkedInLogo.svg';
-import instagramLogo from '../images/instagramLogo.svg';
-import pdf from '../images/pdf.svg';
+const emailLogo = '/images/emailLogo.svg';
+const gitHubLogo = '/images/gitHubLogo.svg';
+const linkedInLogo = '/images/linkedInLogo.svg';
+const instagramLogo = '/images/instagramLogo.svg';
+const pdf = '/images/pdf.svg';
 
 // Type definitions
 export interface ProfileData {

@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useTheme } from '../contexts/ThemeContext';
-import { ReactComponent as SunSvg } from '../images/sun.svg?react';
-import { ReactComponent as MoonSvg } from '../images/moon.svg?react';
+import { ReactComponent as SunSvg } from "../images/sun.svg?react";
+import { ReactComponent as MoonSvg } from "../images/moon.svg?react";
 
 const ThemeSwitch: React.FC = () => {
     const { theme, toggleTheme } = useTheme();
