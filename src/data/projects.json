@@ -22,7 +22,7 @@
       "description": "Engineered AI agent (TensorFlow, OpenAI Gym) using Deep Q-Networks (DQN); achieved 90% win rate vs. heuristic model via hyperparameter tuning and curriculum learning (scaling opponent difficulty).",
       "githubUrl": "https://github.com/KenanRustamov/ICY-Deep-Reinforcement-Learning-Pokemon-Battler",
       "skills": ["TensorFlow", "OpenAI Gym", "DQN", "Reinforcement Learning", "AI"],
-      "image": "/images/icy-gif.gif",
+      "image": "/images/icy.webp",
       "imageSrcSet": "/pokemon-battler-250.webp 250w, /pokemon-battler.webp 554w",
       "imageSizes": "(max-width: 768px) 250px, (max-width: 1024px) 350px, 450px",
       "alt": "Image of Pokémon Battler project",
