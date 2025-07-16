@@ -69,7 +69,7 @@ const GlassCarousel: React.FC<GlassCarouselProps> = ({ activities, sectionTitle 
                       href={activity.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group inline-flex items-center justify-center gap-2 mb-2"
+                      className="group inline-flex items-center justify-center gap-1 mb-2"
                     >
                       <h3 className="text-gray-900 dark:text-gray-100 text-2xl font-bold group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300 relative">
                         {activity.title}
@@ -81,18 +81,18 @@ const GlassCarousel: React.FC<GlassCarouselProps> = ({ activities, sectionTitle 
                           group-hover:w-full
                         "></span>
                       </h3>
-                      <svg 
-                        className="w-5 h-5 text-blue-600 dark:text-blue-400 transition-transform duration-300 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5 flex-shrink-0 -translate-y-0.5" 
-                        fill="none" 
-                        stroke="currentColor" 
-                        viewBox="0 0 24 24"
+                      {/* Minimalist modern external link icon */}
+                      <svg
+                        className="w-5 h-5 text-blue-600 dark:text-blue-400 align-bottom transition-transform duration-300 ease-out group-hover:translate-x-1 group-hover:-translate-y-1 flex-shrink-0"
+                        width="1em"
+                        height="1em"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        aria-hidden="true"
                       >
-                        <path 
-                          strokeLinecap="round" 
-                          strokeLinejoin="round" 
-                          strokeWidth={2} 
-                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" 
-                        />
+                        <path d="M5 15L15 5M9 5h6v6" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
                     </a>
                   ) : (
