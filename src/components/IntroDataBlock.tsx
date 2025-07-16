@@ -49,22 +49,19 @@ const IntroDataBlock = (props: IntroDataBlockProps) => {
     }, [props.introText]);
 
     useEffect(() => {
-        const cursorInterval = setInterval(() => {
-            setShowIntroCursor(prev => !prev);
-        }, 500);
+        let timer: NodeJS.Timeout;
 
-        return () => clearInterval(cursorInterval);
-    }, []);
-
-    // Stop cursor blinking after 1 second when typing is complete
-    useEffect(() => {
         if (isIntroTypingComplete) {
-            const stopCursorTimer = setTimeout(() => {
+            setShowIntroCursor(true);
+            
+            timer = setTimeout(() => {
                 setShowIntroCursor(false);
-            }, 1000); // Stop blinking after 1 second
-
-            return () => clearTimeout(stopCursorTimer);
+            }, 3500);
         }
+
+        return () => {
+            clearTimeout(timer);
+        };
     }, [isIntroTypingComplete]);
 
     const blockVariants = {
