@@ -101,18 +101,19 @@ const Timeline: React.FC<TimelineProps> = ({ title, experiences }) => {
                 href={experience.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="
-                  timeline-company-link
-                  text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400
-                  text-xl sm:text-2xl font-bold mb-2 inline-block
-                  relative leading-tight tracking-tight
-                  hover:translate-x-1
-                "
+                className="group timeline-company-link text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400 text-xl sm:text-2xl font-bold mb-2 inline-block relative leading-tight tracking-tight"
                 style={{
                   transition: 'color 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
                 }}
                >
                 {experience.company}
+                <span className="
+                  absolute -bottom-0.5 left-0 w-0 h-0.5
+                  bg-gradient-to-r from-blue-600 to-blue-400
+                  dark:from-blue-400 dark:to-blue-300
+                  transition-all duration-300 ease-out
+                  group-hover:w-full
+                "></span>
               </a>
               <div className="
                 text-blue-600 dark:text-blue-400 text-sm font-semibold mb-1
