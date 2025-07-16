@@ -299,6 +299,10 @@
     );
   }
 
+  .dark .glass-carousel-swiper .swiper-slide .glass-card a.group * {
+    transition: all 0.3s ease-out !important;
+  }
+
   .dark .glass-carousel-swiper .swiper-slide img {
     background: linear-gradient(135deg, 
       color-mix(in srgb, white 8%, transparent), 

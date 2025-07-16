@@ -70,12 +70,37 @@ const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ title, projects }) =>
               relative overflow-hidden aspect-video bg-white/5 dark:bg-white/2
               group
             ">
-              <a
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block relative w-full h-full"
-              >
+              {project.url ? (
+                <a
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block relative w-full h-full"
+                >
+                  <img 
+                    srcSet={`${project.image.replace('.webp', '-250.webp')} 250w, ${project.image} 554w`}
+                    sizes="(max-width: 768px) 250px, (max-width: 1024px) 350px, 450px"
+                    src={project.image} 
+                    alt={project.alt}
+                    className="
+                      w-full h-full object-cover transition-all duration-300 ease-out
+                      group-hover:scale-105
+                    "
+                    loading="lazy"
+                  />
+                  <div className="
+                    absolute inset-0 bg-black/70 flex items-center justify-center
+                    opacity-0 transition-all duration-300 ease-out backdrop-blur-sm
+                    group-hover:opacity-100
+                  ">
+                    <span className="
+                      text-white text-lg font-semibold uppercase tracking-wide
+                      py-3 px-6 border-2 border-white rounded-lg transition-all duration-300 ease-out
+                      hover:bg-blue-600 hover:border-blue-600 hover:-translate-y-0.5
+                    ">{/* Use metadata overlay text if available */}View Project</span>
+                  </div>
+                </a>
+              ) : (
                 <img 
                   srcSet={`${project.image.replace('.webp', '-250.webp')} 250w, ${project.image} 554w`}
                   sizes="(max-width: 768px) 250px, (max-width: 1024px) 350px, 450px"
@@ -83,22 +108,10 @@ const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ title, projects }) =>
                   alt={project.alt}
                   className="
                     w-full h-full object-cover transition-all duration-300 ease-out
-                    group-hover:scale-105
                   "
                   loading="lazy"
                 />
-                <div className="
-                  absolute inset-0 bg-black/70 flex items-center justify-center
-                  opacity-0 transition-all duration-300 ease-out backdrop-blur-sm
-                  group-hover:opacity-100
-                ">
-                  <span className="
-                    text-white text-lg font-semibold uppercase tracking-wide
-                    py-3 px-6 border-2 border-white rounded-lg transition-all duration-300 ease-out
-                    hover:bg-blue-600 hover:border-blue-600 hover:-translate-y-0.5
-                  ">View Project</span>
-                </div>
-              </a>
+              )}
             </div>
             
             <div className="
@@ -126,11 +139,11 @@ const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ title, projects }) =>
               
               <div className="flex flex-wrap gap-2 flex-shrink-0">
                 {project.skills.map((skill, skillIndex) => (
-                                      <span key={skillIndex} className="
-                      bg-white/15 dark:bg-white/5 text-gray-800 dark:text-gray-200
-                      border border-white/20 dark:border-white/10 px-2.5 py-1 rounded-xl
-                      text-xs font-normal cursor-default tracking-wide opacity-80
-                    ">
+                  <span key={skillIndex} className="
+                    bg-white/15 dark:bg-white/5 text-gray-800 dark:text-gray-200
+                    border border-white/20 dark:border-white/10 px-2.5 py-1 rounded-xl
+                    text-xs font-normal cursor-default tracking-wide opacity-80
+                  ">
                     {skill}
                   </span>
                 ))}
@@ -140,14 +153,16 @@ const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ title, projects }) =>
                 flex gap-2.5 flex-shrink-0 mt-auto
                 sm:gap-2
               ">
-                <a
-                  href={project.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="project-button-primary"
-                >
-                  View Demo
-                </a>
+                {project.url && (
+                  <a
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="project-button-primary"
+                  >
+                    View Demo
+                  </a>
+                )}
                 {project.githubUrl && (
                   <a
                     href={project.githubUrl}
