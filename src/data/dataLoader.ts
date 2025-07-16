@@ -111,7 +111,8 @@ export interface ExtracurricularActivity {
   title: string;
   subtitle: string;
   description: string;
-  icon: string;
+  image: string;
+  url?: string;
 }
 
 export interface ExtracurricularsData {

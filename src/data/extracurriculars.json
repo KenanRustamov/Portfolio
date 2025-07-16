@@ -1,25 +1,28 @@
 {
   "activities": [
     {
-      "id": "guitar",
-      "title": "Guitarist",
-      "subtitle": "Music & Performance",
-      "description": "Playing acoustic and electric guitar for 8 years. Performed at local events and open mics.",
-      "icon": "/guitar-icon.svg"
-    },
-    {
       "id": "volunteer-teacher",
-      "title": "Volunteer Teacher",
-      "subtitle": "STEM Outreach",
-      "description": "Taught coding basics to middle school students through Code.org.",
-      "icon": "/teaching-icon.svg"
+      "title": "Pandemic Professors",
+      "subtitle": "Volunteer Teacher",
+      "description": "Taught middle school students coding fundamentals and guided them through building a complete game project together during the pandemic. Provided personalized 1-on-1 tutoring to help students develop problem-solving skills and confidence in computer science.",
+      "image": "/src/images/pan-prof.png",
+      "url": "https://www.pandemicprofessors.org/"
     },
     {
-      "id": "chess",
-      "title": "Chess Club President",
-      "subtitle": "Strategy & Leadership",
-      "description": "Organized weekly chess tournaments and taught strategy to new members.",
-      "icon": "/chess-icon.svg"
+      "id": "oakland-outreach",
+      "title": "Oakland Outreach",
+      "subtitle": "Co-Founder/Fundraising Chair",
+      "description": "Co-founded organization at the University of Pittsburgh to destigmatize mental illness, homelessness, and substance abuse through community work and volunteer events. Still active at University of Pittsburgh serving underrepresented communities.",
+      "image": "/src/images/oakland-outreach.png",
+      "url": "https://www.instagram.com/oakland.outreach/"
+    },
+    {
+      "id": "umc",
+      "title": "Underrepresented Minorities in Computing",
+      "subtitle": "Co-founder/Business Manager",
+      "description": "Co-founded UMC at the University of Pittsburgh to provide inclusive environment for underrepresented minorities in computing. Accelerated careers through education, community, and mentorship.",
+      "image": "/src/images/macatpitt.png",
+      "url": "https://www.instagram.com/macatpitt/"
     }
   ],
   "metadata": {
