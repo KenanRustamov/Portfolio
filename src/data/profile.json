@@ -2,8 +2,8 @@
   "profile": {
     "title": "Kenan Rustamov",
     "introText": "Hello, my name is",
-    "subtitle": "Ex-Software Engineer and Current Graduate Student",
-    "description": "I currently study at Johns Hopkins University for a Masters in Computer Science, and conduct AI research at the Johns Hopkins Center for Language and Speech Processing under Professor Jason Eisner. I previously worked as a Software Engineer for 3 years, most recently at JP Morgan Chase on scalable cloud APIs.",
+    "subtitle": "AI Researcher & Software Engineer",
+    "description": "I'm a Master's student at Johns Hopkins University conducting AI research at the Center for Language and Speech Processing. With 3 years of experience building scalable, high-performance systems at firms like JPMorgan Chase, I'm super passionate about developing the next generation of intelligent applications!",
     "profileImage": "/kenanRustamov.webp",
     "profileImageSrcSet": "/kenanRustamov-300.webp 300w, /kenanRustamov.webp 1160w",
     "profileImageSizes": "(max-width: 768px) 300px, (max-width: 1024px) 400px, 480px",
@@ -21,18 +21,18 @@
       "degree": "Master of Science in Computer Science (Thesis)",
       "dates": "Aug 2024 - Present",
       "location": "Baltimore, MD",
-      "description": "Leading first-author AI research for a publication under Jason Eisner by designing, building, and evaluating a novel reactive RAG system, dataset, and framework that enables LLM answers to dynamically update as source documents evolve"
+      "description": "Conducting first-author AI research under the guidance of Professor Jason Eisner. My work involves designing and building a novel reactive RAG framework that enables LLM-generated answers to dynamically update as source documents evolve."
     },
     {
       "university": "University of Pittsburgh",
       "degree": "Bachelor of Science in Computer Science",
       "dates": "Aug 2017 - Aug 2021",
       "location": "Pittsburgh, PA",
-      "description": "Summa Cum Laude (Highest Honor) | Dietrich Scholar | Ran 2 Clubs | Top 5 in Pitt Challenge Hackathon"
+      "description": "Graduated Summa Cum Laude | Dietrich Scholar | Co-founded two university organizations | Placed Top 5 in Pitt Challenge Hackathon"
     }
   ],
   "metadata": {
-    "footerText": "Created By Kenan Rustamov",
+    "footerText": "Designed & Built by Kenan Rustamov",
     "sectionTitles": {
       "workExperience": "Work Experience",
       "projects": "Projects"
