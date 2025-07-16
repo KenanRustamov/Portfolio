@@ -59,40 +59,36 @@ const Timeline: React.FC<TimelineProps> = ({ title, experiences }) => {
         </h2>
       </div>
       
-      <div className="
-        relative max-w-4xl w-11/12 mx-auto 
-        pl-36 pr-5 pb-10
-        md:pl-20 md:pr-4 md:pb-8
-        sm:pl-16 sm:pr-3 sm:pb-5
-        before:content-[''] before:absolute before:w-0.5 
-        before:bg-gradient-to-b before:from-blue-600 before:to-blue-600/30
-        before:top-2 before:bottom-0 before:left-[4rem] before:rounded-sm
-        before:shadow-md before:shadow-blue-600/30
-        md:before:left-[4rem] sm:before:left-[4rem]
-      ">
+      <div
+        className="
+          relative max-w-4xl w-11/12 mx-auto 
+          pl-10.5 md:pl-22.5 pr-5 pb-10
+          before:content-[''] before:absolute before:w-0.5 
+          before:bg-gradient-to-b before:from-blue-600 before:to-blue-600/30
+          before:top-2 before:bottom-0 before:left-4 md:before:left-12 before:rounded-sm
+          before:shadow-md before:shadow-blue-600/30
+        "
+      >
         {experiences.map((experience, index) => (
           <motion.div
             key={`${experience.company}-${index}`}
             className="
-              relative py-6 flex items-start gap-8
+              relative py-6 flex items-start gap-3 md:gap-6
               before:content-[''] before:absolute before:w-3.5 before:h-3.5
               before:bg-blue-600 before:border-2 before:border-white/90
-              before:rounded-full before:top-8 before:-left-[5.4rem] before:z-10
+              before:rounded-full before:top-8 before:-left-8 md:before:-left-12 before:z-10
               before:shadow-lg before:shadow-blue-600/20
               hover:before:scale-125 hover:before:shadow-xl hover:before:shadow-blue-600/30
               before:transition-all before:duration-300
-              md:gap-5 md:before:-left-[1.4rem] sm:gap-4 sm:before:-left-[0.4375rem]
               first:pt-0 first:before:top-2
             "
             variants={itemVariants}
           >
             <div className="
               text-blue-600 dark:text-blue-400 text-xs font-bold
-              uppercase tracking-wide opacity-100 w-24 text-left
-              pr-0 mt-3 flex-shrink-0 pointer-events-none
+              uppercase tracking-wide w-10 md:w-24 text-center
+              mt-2 flex-shrink-0 pointer-events-none
               drop-shadow-md
-              md:w-16 md:text-xs md:pr-4
-              sm:w-12 sm:text-xs sm:pr-2
             ">
               {experience.dates}
             </div>
