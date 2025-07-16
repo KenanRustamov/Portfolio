@@ -1,44 +1,110 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Portfolio Website
+
+A modern, responsive portfolio website built with React, TypeScript, and Vite. Features a beautiful glassmorphic design with smooth animations and interactive components.
+
+## Tech Stack
+
+- **React 19** with TypeScript
+- **Vite** for fast development and building
+- **Tailwind CSS v4** for styling
+- **Framer Motion** for animations
+- **Swiper** for carousel components
+- **Vitest** for testing
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (version 18 or higher)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd Portfolio
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
 
 ## Available Scripts
 
-In the project directory, you can run:
+### `npm run dev`
 
-### `npm start`
-
-Runs the app in the development mode.<br />
+Runs the app in development mode using Vite.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The page will reload automatically when you make changes.<br />
+You'll see any lint errors in the console and browser.
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Builds the app for production to the `dist` folder.<br />
+The build is optimized and minified for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### `npm run preview`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Serves the production build locally for preview.<br />
+Useful for testing the production build before deployment.
 
-### `npm run eject`
+### `npm test`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Launches the test runner (Vitest) in watch mode.<br />
+Tests will re-run automatically when files change.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### `npm run deploy`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Deploys the app to GitHub Pages.<br />
+This runs the build process and deploys to the `gh-pages` branch.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Development
+
+This project uses:
+- **Vite** for fast hot module replacement and optimized builds
+- **Tailwind CSS v4** with custom glassmorphic components
+- **TypeScript** for type safety
+- **ESLint** for code quality
+
+## Project Structure
+
+```
+src/
+├── components/          # React components
+│   ├── Glass/          # Glassmorphic UI components
+│   └── icons/          # SVG icons
+├── contexts/           # React contexts
+├── data/              # JSON data files
+├── hooks/             # Custom React hooks
+├── images/            # Static images
+└── constants/         # Animation and other constants
+```
+
+## Features
+
+- **Responsive Design**: Works perfectly on all device sizes
+- **Dark/Light Mode**: Toggle between themes
+- **Glassmorphic UI**: Modern glass-like components with blur effects
+- **Smooth Animations**: Powered by Framer Motion
+- **Interactive Carousel**: Built with Swiper
+- **TypeScript**: Full type safety throughout the application
+
+## Deployment
+
+The app is configured for deployment to GitHub Pages. Simply run:
+
+```bash
+npm run deploy
+```
+
+This will build the project and deploy it to the `gh-pages` branch.
 
 ## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- [Vite Documentation](https://vitejs.dev/)
+- [React Documentation](https://reactjs.org/)
+- [Tailwind CSS v4](https://tailwindcss.com/)
+- [Framer Motion](https://www.framer.com/motion/)
