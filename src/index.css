@@ -275,6 +275,29 @@
     opacity: 1;
   }
 
+  /* Smooth hover effects for glass cards in carousel */
+  .glass-carousel-swiper .swiper-slide .glass-card {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                backdrop-filter 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+  }
+
+  .glass-carousel-swiper .swiper-slide:hover .glass-card {
+    transform: translateY(-6px) scale(1.015) !important;
+    box-shadow: 0 20px 40px color-mix(in srgb, black 20%, transparent);
+    border-color: color-mix(in srgb, blue 40%, transparent);
+    backdrop-filter: blur(32px) saturate(200%);
+  }
+
+  .dark .glass-carousel-swiper .swiper-slide:hover .glass-card {
+    background: color-mix(in srgb, white 10%, transparent);
+    box-shadow: 0 16px 32px color-mix(in srgb, black 25%, transparent);
+    border-color: color-mix(in srgb, blue 40%, transparent);
+    backdrop-filter: blur(32px) saturate(200%);
+  }
+
   .swiper-pagination-custom {
     bottom: 1rem !important;
     left: 50% !important;
@@ -406,8 +429,10 @@
   }
   
   .glass-card:hover {
-    box-shadow: 0 0 25px rgba(0, 122, 255, 0.3), 0 8px 32px color-mix(in srgb, black 8%, transparent);
-    border-color: rgba(0, 122, 255, 0.5);
+    transform: translateY(-6px) scale(1.015) !important;
+    box-shadow: 0 20px 40px color-mix(in srgb, black 20%, transparent);
+    border-color: color-mix(in srgb, blue 40%, transparent);
+    backdrop-filter: blur(32px) saturate(200%);
   }
 
   /* Dark theme adjustments with enhanced depth */
@@ -437,6 +462,13 @@
       0 8px 32px color-mix(in srgb, black 50%, transparent), 
       0 4px 16px color-mix(in srgb, black 25%, transparent),
       inset 0 1px 0 color-mix(in srgb, white 15%, transparent);
+  }
+
+  .dark .glass-card:hover {
+    background: color-mix(in srgb, white 10%, transparent);
+    box-shadow: 0 16px 32px color-mix(in srgb, black 25%, transparent);
+    border-color: color-mix(in srgb, blue 40%, transparent);
+    backdrop-filter: blur(32px) saturate(200%);
   }
 
   .dark .glass-button {

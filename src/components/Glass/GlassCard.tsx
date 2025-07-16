@@ -5,7 +5,7 @@ interface GlassCardProps {
   children: React.ReactNode;
   className?: string;
   variant?: 'default' | 'nav' | 'button' | 'strong' | 'subtle';
-  hover?: boolean;
+  
   rounded?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl';
   shadow?: 'sm' | 'md' | 'lg' | 'xl';
   animate?: boolean;
@@ -16,7 +16,7 @@ const GlassCard: React.FC<GlassCardProps> = ({
   children,
   className = '',
   variant = 'default',
-  hover = false,
+  
   rounded = '2xl',
   shadow = 'md',
   animate = false,
@@ -48,14 +48,13 @@ const GlassCard: React.FC<GlassCardProps> = ({
     xl: 'shadow-xl'
   };
   
-  const hoverClasses = hover ? 'hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02]' : '';
+  
   
   const combinedClasses = `
     ${baseClasses}
     ${variantClasses[variant]}
     ${roundedClasses[rounded]}
     ${shadowClasses[shadow]}
-    ${hoverClasses}
     ${className}
   `.trim().replace(/\s+/g, ' ');
 
@@ -71,7 +70,6 @@ const GlassCard: React.FC<GlassCardProps> = ({
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        whileHover={hover ? { y: -4, scale: 1.02 } : undefined}
       >
         {children}
       </motion.div>
