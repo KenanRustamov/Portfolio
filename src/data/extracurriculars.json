@@ -1,7 +1,15 @@
 {
   "activities": [
     {
-      "id": "volunteer-teacher",
+      "id": "nova-scholar",
+      "title": "Nova Scholar",
+      "subtitle": "Teacher and Mentor",
+      "description": "Currently teach middle school students the fundamentals of AI and machine learning, introducing them to core concepts and practical applications. Additionally mentor high school students through their first research paper, guiding them through the research process and methodology development.",
+      "image": "/src/images/nova-scholar.png",
+      "url": "https://www.novascholar.education/"
+    },
+    {
+      "id": "pandemic-professors",
       "title": "Pandemic Professors",
       "subtitle": "Volunteer Teacher",
       "description": "Taught middle school students coding fundamentals and guided them through building a complete game project together during the pandemic. Provided personalized 1-on-1 tutoring to help students develop problem-solving skills and confidence in computer science.",
