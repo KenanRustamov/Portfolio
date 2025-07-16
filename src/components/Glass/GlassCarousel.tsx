@@ -54,68 +54,58 @@ const GlassCarousel: React.FC<GlassCarouselProps> = ({ activities, sectionTitle 
         >
           {activities.map((activity) => (
             <SwiperSlide key={activity.id} className="!w-auto self-center">
-              <div className="glass-card p-6 flex flex-col items-center justify-start min-h-[480px] max-w-sm w-full mx-auto group">
-                <div className="w-full h-48 bg-white dark:bg-gray-900 rounded-lg mb-6 overflow-hidden">
-                  <img
-                    src={activity.image}
-                    alt={activity.title}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                    draggable={false}
-                  />
+              <div className="glass-card p-6 flex flex-col items-center justify-start min-h-[480px] max-w-sm w-full mx-auto">
+                <div className="w-full h-48 bg-gradient-to-br from-white/95 to-white/90 dark:from-white/8 dark:to-white/4 rounded-lg mb-6 overflow-hidden">
+                                      <img
+                      src={activity.image}
+                      alt={activity.title}
+                      className="w-full h-full object-cover transition-transform duration-300"
+                      draggable={false}
+                    />
                 </div>
                 <div className="text-center flex-1 flex flex-col">
-                  <h3 className="text-gray-900 dark:text-gray-100 text-2xl font-bold mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
-                    {activity.title}
-                  </h3>
+                  {activity.url ? (
+                    <a
+                      href={activity.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group inline-flex items-center justify-center gap-2 mb-2"
+                    >
+                      <h3 className="text-gray-900 dark:text-gray-100 text-2xl font-bold group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300 relative">
+                        {activity.title}
+                        <span className="
+                          absolute -bottom-0.5 left-0 w-0 h-0.5
+                          bg-gradient-to-r from-blue-600 to-blue-400
+                          dark:from-blue-400 dark:to-blue-300
+                          transition-all duration-300 ease-out
+                          group-hover:w-full
+                        "></span>
+                      </h3>
+                      <svg 
+                        className="w-5 h-5 text-blue-600 dark:text-blue-400 transition-transform duration-300 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5 flex-shrink-0 -translate-y-0.5" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24"
+                      >
+                        <path 
+                          strokeLinecap="round" 
+                          strokeLinejoin="round" 
+                          strokeWidth={2} 
+                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" 
+                        />
+                      </svg>
+                    </a>
+                  ) : (
+                    <h3 className="text-gray-900 dark:text-gray-100 text-2xl font-bold mb-2">
+                      {activity.title}
+                    </h3>
+                  )}
                   <p className="text-blue-600 dark:text-blue-400 text-sm font-semibold mb-4 uppercase tracking-wide">
                     {activity.subtitle}
                   </p>
-                  <p className="text-gray-700 dark:text-gray-300 text-base leading-relaxed opacity-90 mb-6">
+                  <p className="text-gray-700 dark:text-gray-300 text-base leading-relaxed opacity-90">
                     {activity.description}
                   </p>
-                  
-                  {/* Learn More Button - Only show if URL exists */}
-                  {activity.url && (
-                    <div className="mt-auto pt-4">
-                      <a
-                        href={activity.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="
-                          group inline-flex items-center gap-2
-                          text-blue-600 dark:text-blue-400
-                          text-sm font-medium tracking-wide
-                          transition-all duration-300 ease-out
-                          hover:text-blue-700 dark:hover:text-blue-300
-                          hover:gap-3
-                        "
-                      >
-                        <span className="relative">
-                          Learn More
-                          <span className="
-                            absolute -bottom-0.5 left-0 w-0 h-0.5
-                            bg-gradient-to-r from-blue-600 to-blue-400
-                            dark:from-blue-400 dark:to-blue-300
-                            transition-all duration-300 ease-out
-                            group-hover:w-full
-                          "></span>
-                        </span>
-                        <svg 
-                          className="w-4 h-4 transition-transform duration-300 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5" 
-                          fill="none" 
-                          stroke="currentColor" 
-                          viewBox="0 0 24 24"
-                        >
-                          <path 
-                            strokeLinecap="round" 
-                            strokeLinejoin="round" 
-                            strokeWidth={2} 
-                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" 
-                          />
-                        </svg>
-                      </a>
-                    </div>
-                  )}
                 </div>
               </div>
             </SwiperSlide>

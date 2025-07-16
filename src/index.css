@@ -291,13 +291,19 @@
     backdrop-filter: blur(32px) saturate(200%);
   }
 
-  /* White background for images with transparent backgrounds */
+  /* Subtle background for images with transparent backgrounds */
   .glass-carousel-swiper .swiper-slide img {
-    background-color: white;
+    background: linear-gradient(135deg, 
+      color-mix(in srgb, white 95%, transparent), 
+      color-mix(in srgb, white 90%, transparent)
+    );
   }
 
   .dark .glass-carousel-swiper .swiper-slide img {
-    background-color: oklch(19.1% 0.006 0); /* --color-gray-900 */
+    background: linear-gradient(135deg, 
+      color-mix(in srgb, white 8%, transparent), 
+      color-mix(in srgb, white 4%, transparent)
+    );
   }
 
   .dark .glass-carousel-swiper .swiper-slide:hover .glass-card {
