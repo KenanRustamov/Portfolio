@@ -53,8 +53,8 @@ const GlassCarousel: React.FC<GlassCarouselProps> = ({ activities, sectionTitle 
           className="glass-carousel-swiper"
         >
           {activities.map((activity) => (
-            <SwiperSlide key={activity.id} className="!w-auto self-center">
-              <div className="glass-card p-6 flex flex-col items-center justify-start min-h-[480px] max-w-sm w-full mx-auto">
+            <SwiperSlide key={activity.id} className="w-full sm:!w-auto self-center">
+              <div className="glass-card p-6 flex flex-col items-center justify-start w-full max-w-sm mx-auto">
                 <div className="w-full h-48 bg-gradient-to-br from-white/95 to-white/90 dark:from-white/8 dark:to-white/4 rounded-lg mb-6 overflow-hidden">
                                       <img
                       src={activity.image}
