@@ -54,8 +54,8 @@ const GlassCarousel: React.FC<GlassCarouselProps> = ({ activities, sectionTitle 
         >
           {activities.map((activity) => (
             <SwiperSlide key={activity.id} className="w-full sm:!w-auto self-center">
-              <div className="glass-card p-6 flex flex-col items-center justify-start w-full max-w-sm mx-auto">
-                <div className="w-full h-48 bg-gradient-to-br from-white/95 to-white/90 dark:from-white/8 dark:to-white/4 rounded-lg mb-6 overflow-hidden">
+              <div className="project-card w-full max-w-md mx-auto">
+                <div className="w-full aspect-video bg-gradient-to-br from-white/95 to-white/90 dark:from-white/8 dark:to-white/4 mb-0 overflow-hidden">
                                       <img
                       src={activity.image}
                       alt={activity.title}
@@ -63,15 +63,15 @@ const GlassCarousel: React.FC<GlassCarouselProps> = ({ activities, sectionTitle 
                       draggable={false}
                     />
                 </div>
-                <div className="text-center flex-1 flex flex-col">
-                  {activity.url ? (
-                    <a
-                      href={activity.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group inline-flex items-center justify-center gap-1 mb-2"
-                    >
-                      <h3 className="text-gray-900 dark:text-gray-100 text-2xl font-bold group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300 relative">
+                <div className="text-center flex-1 flex flex-col p-6">
+                  <div className="text-center">
+                    {activity.url ? (
+                      <a
+                        href={activity.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group timeline-company-link text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400 text-xl sm:text-2xl font-bold mb-2 inline-block relative leading-tight tracking-tight"
+                      >
                         {activity.title}
                         <span className="
                           absolute -bottom-0.5 left-0 w-0 h-0.5
@@ -80,30 +80,17 @@ const GlassCarousel: React.FC<GlassCarouselProps> = ({ activities, sectionTitle 
                           transition-all duration-300 ease-out
                           group-hover:w-full
                         "></span>
+                      </a>
+                    ) : (
+                      <h3 className="text-gray-900 dark:text-gray-100 text-xl sm:text-2xl font-bold mb-2 leading-tight tracking-tight">
+                        {activity.title}
                       </h3>
-                      {/* Minimalist modern external link icon */}
-                      <svg
-                        className="w-5 h-5 text-blue-600 dark:text-blue-400 align-bottom transition-transform duration-300 ease-out group-hover:translate-x-1 group-hover:-translate-y-1 flex-shrink-0"
-                        width="1em"
-                        height="1em"
-                        viewBox="0 0 20 20"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        aria-hidden="true"
-                      >
-                        <path d="M5 15L15 5M9 5h6v6" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </a>
-                  ) : (
-                    <h3 className="text-gray-900 dark:text-gray-100 text-2xl font-bold mb-2">
-                      {activity.title}
-                    </h3>
-                  )}
-                  <p className="text-blue-600 dark:text-blue-400 text-sm font-semibold mb-4 uppercase tracking-wide">
+                    )}
+                  </div>
+                  <div className="text-blue-600 dark:text-blue-400 text-sm font-semibold mb-1 normal-case leading-snug opacity-90 uppercase tracking-wide text-center">
                     {activity.subtitle}
-                  </p>
-                  <p className="text-gray-700 dark:text-gray-300 text-base leading-relaxed opacity-90">
+                  </div>
+                  <p className="text-gray-800 dark:text-gray-200 leading-relaxed text-sm m-0 opacity-95 font-normal text-center">
                     {activity.description}
                   </p>
                 </div>
