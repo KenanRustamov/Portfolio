@@ -139,11 +139,7 @@ const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ title, projects }) =>
               
               <div className="flex flex-wrap gap-2 flex-shrink-0">
                 {project.skills.map((skill, skillIndex) => (
-                  <span key={skillIndex} className="
-                    bg-white/15 dark:bg-white/5 text-gray-800 dark:text-gray-200
-                    border border-white/20 dark:border-white/10 px-2.5 py-1 rounded-xl
-                    text-xs font-normal cursor-default tracking-wide opacity-80
-                  ">
+                  <span key={skillIndex} className="skill-tag">
                     {skill}
                   </span>
                 ))}

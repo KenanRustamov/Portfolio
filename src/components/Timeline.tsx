@@ -132,17 +132,7 @@ const Timeline: React.FC<TimelineProps> = ({ title, experiences }) => {
               </p>
               <div className="flex flex-wrap gap-2 mt-4">
                 {experience.skills.map((skill, skillIndex) => (
-                  <span key={skillIndex} className="
-                      bg-white/30 dark:bg-white/10 text-gray-800 dark:text-gray-200 
-                      border border-white/20 dark:border-white/20 px-3 py-1.5 rounded-xl
-                      text-xs font-medium cursor-default tracking-wide opacity-90
-                      backdrop-blur-sm
-                      hover:bg-white/50 dark:hover:bg-white/20 hover:border-blue-600/30
-                      hover:opacity-100 hover:-translate-y-0.5
-                    "
-                    style={{
-                      transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
-                    }}>
+                  <span key={skillIndex} className="skill-tag">
                     {skill}
                   </span>
                 ))}

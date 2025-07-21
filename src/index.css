@@ -1097,3 +1097,20 @@
     }
   }
 }
+
+.skill-tag {
+  @apply bg-white/30 dark:bg-white/10 text-gray-800 dark:text-gray-200 border border-white/20 dark:border-white/20 px-3 py-1.5 rounded-xl text-xs font-medium cursor-default tracking-wide opacity-90 backdrop-blur-sm transition-all duration-300;
+}
+.skill-tag:hover {
+  @apply bg-white/50 dark:bg-white/20 border-blue-600/30 opacity-100 -translate-y-0.5;
+}
+
+/* Improved readability for light mode */
+@media (prefers-color-scheme: light) {
+  .skill-tag {
+    @apply shadow-sm;
+    background-color: rgba(255,255,255,0.55) !important;
+    color: #222 !important;
+    border-color: rgba(180,180,180,0.25) !important;
+  }
+}

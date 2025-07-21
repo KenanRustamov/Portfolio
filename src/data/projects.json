@@ -2,10 +2,9 @@
   "projects": [
     {
       "id": "partify",
-      "title": "Partify: A Collaborative Playlist Generator",
-      "subtitle": "Group Playlist Creator with the Spotify API",
+      "title": "Partify",
+      "subtitle": "A Collaborative Playlist Generator",
       "description": "Have you ever tried to create a playlist for a group of friends? Partify was my solution to that problem. It's a web app that connects to Spotify's API to analyze the musical tastes of multiple users and automatically generates a new playlist everyone can enjoy. The app's core feature predated 'Spotify Blend,' a similar tool the company later introduced to their official platform.",
-      "url": "https://partify-us.com",
       "githubUrl": "https://github.com/KenanRustamov/Partify",
       "skills": ["React", "Node.js", "Express"],
       "image": "/partify.webp",
@@ -17,8 +16,8 @@
     },
     {
       "id": "pokemon-battler",
-      "title": "ICY: A Pokémon Battler Using Deep Reinforcement Learning",
-      "subtitle": "Training an Expert AI Agent with TensorFlow and Deep Q-Networks",
+      "title": "ICY (I Choose You)",
+      "subtitle": "A Pokémon Battler Using Deep Reinforcement Learning",
       "description": "I trained an AI to master Pokémon battles using Deep Reinforcement Learning. By implementing a Deep Q-Network (DQN) and a curriculum learning strategy my agent achieved a 90% win rate against a tough, rule-based model.",
       "githubUrl": "https://github.com/KenanRustamov/ICY-Deep-Reinforcement-Learning-Pokemon-Battler",
       "skills": ["TensorFlow", "OpenAI Gym", "DQN", "Reinforcement Learning", "AI"],
