@@ -227,7 +227,7 @@ const IntroDataBlock = (props: IntroDataBlockProps) => {
                 <div className="scroll-indicator">
                     <motion.div 
                         className="
-                            w-1 h-3 bg-blue-600 dark:bg-blue-400 rounded-full mt-2
+                            w-1 h-3 bg-blue-600 dark:bg-blue-400 rounded-full mt-1
                         "
                         animate={{ y: [0, 3, 0] }}
                         transition={{ 

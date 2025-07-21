@@ -636,13 +636,11 @@
     display: flex;
     justify-content: center;
     box-shadow: 0 8px 16px color-mix(in srgb, blue 20%, transparent);
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-                background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
                 box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .scroll-indicator:hover {
-    transform: scale(1.05);
     background: color-mix(in srgb, white 30%, transparent);
     box-shadow: 0 12px 24px color-mix(in srgb, blue 30%, transparent);
   }
