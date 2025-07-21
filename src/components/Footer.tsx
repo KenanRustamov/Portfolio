@@ -1,12 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
 import IconButton from "./IconButton";
-import { getSocialLinksForFooter, getIconPath, getProfileData } from "../data/dataLoader";
+import { getSocialLinksForIntro, getIconPath, getProfileData } from "../data/dataLoader";
 import ThemeSwitch from './ThemeSwitch';
 
 const Footer = (props: any) => {
   // Load data from JSON
-  const socialLinks = getSocialLinksForFooter();
+  const socialLinks = getSocialLinksForIntro();
   const profileData = getProfileData();
 
   let content = 

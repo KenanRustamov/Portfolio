@@ -13,7 +13,7 @@
       {
         "id": "github_intro",
         "label": "GitHub",
-        "href": "https://github.com/kenanr",
+        "href": "https://github.com/kenanrustamov",
         "icon": "gitHubLogo.svg",
         "alt": "GitHub",
         "isExternal": true,
@@ -30,44 +30,6 @@
       },
       {
         "id": "resume_intro",
-        "label": "Resume",
-        "href": "/resume-public.pdf",
-        "icon": "pdf.svg",
-        "alt": "Resume",
-        "isExternal": true,
-        "order": 4
-      }
-    ],
-    "footer": [
-      {
-        "id": "github_footer",
-        "label": "GitHub Profile",
-        "href": "https://github.com/kenanr",
-        "icon": "gitHubLogo.svg",
-        "alt": "GitHub",
-        "isExternal": true,
-        "order": 1
-      },
-      {
-        "id": "linkedin_footer",
-        "label": "LinkedIn Profile",
-        "href": "https://linkedin.com/in/kenanrustamov",
-        "icon": "linkedInLogo.svg",
-        "alt": "LinkedIn",
-        "isExternal": true,
-        "order": 2
-      },
-      {
-        "id": "instagram_footer",
-        "label": "Instagram Profile",
-        "href": "https://www.instagram.com/kenanrustamov1/",
-        "icon": "instagramLogo.svg",
-        "alt": "Instagram",
-        "isExternal": true,
-        "order": 3
-      },
-      {
-        "id": "resume_footer",
         "label": "Resume",
         "href": "/resume-public.pdf",
         "icon": "pdf.svg",

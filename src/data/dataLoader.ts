@@ -98,7 +98,6 @@ export interface SocialLink {
 export interface SocialData {
   socialLinks: {
     intro: SocialLink[];
-    footer: SocialLink[];
   };
   metadata: {
     iconPath: string;
@@ -143,7 +142,6 @@ export const getSocialData = (): SocialData => {
   const data = socialData as SocialData;
   // Sort social links by order
   data.socialLinks.intro.sort((a, b) => a.order - b.order);
-  data.socialLinks.footer.sort((a, b) => a.order - b.order);
   return data;
 };
 
@@ -184,10 +182,7 @@ export const getSocialLinksForIntro = () => {
   return socialLinks.intro;
 };
 
-export const getSocialLinksForFooter = () => {
-  const { socialLinks } = getSocialData();
-  return socialLinks.footer;
-};
+// Remove getSocialLinksForFooter since 'footer' array is deleted
 
 // Icon mapping helper
 export const getIconPath = (iconName: string): string => {
